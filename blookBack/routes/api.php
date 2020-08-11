@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+//ROTAS DE USUARIO
+Route::GET('showUser/{id}','UserController@showUser');
+Route::GET('listUsers','UserController@listUsers');
+Route::POST('createUser','UserController@createUser');
+Route::PUT('updateUser/{id}','UserController@updateUser');
+
