@@ -25,3 +25,11 @@ Route::GET('listUsers','UserController@listUsers');
 Route::POST('createUser','UserController@createUser');
 Route::PUT('updateUser/{id}','UserController@updateUser');
 
+//PASSPORT ROUTES
+Route::POST('register', 'API\PassportController@register');
+Route::POST('login', 'API\PassportController@login');
+
+Route::GROUP(['middleware'=>'auth:api'], function (){
+    Route::GET('logout', 'API\PassportController@logout');
+    Route::POST('getDetails', 'API\PassportController@getDetails');
+});
