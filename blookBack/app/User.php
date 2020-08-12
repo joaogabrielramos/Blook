@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use App\Http\Requests\UserRequest;
 use Laravel\Passport\HasApiTokens;
+use App\Book;
 
 class User extends Authenticatable
 {
@@ -39,6 +40,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function registerBooks() //cadastrar livros
+    {
+        return $this->hasMany('App\Book');
+    }
+
+    public function favoriteBooks() //estante de livros
+    {
+        return $this->belongsToMany('App\Book');
+    }
 
     public function createUser(UserRequest $request)
     {
