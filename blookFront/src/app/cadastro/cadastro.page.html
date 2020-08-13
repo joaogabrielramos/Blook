@@ -1,0 +1,74 @@
+<!-- Por algum motivo, o ionic não está tirando a borda nem da header nem do footer -->
+
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <div>
+      <ion-icon size="large" name="chevron-back-outline" routerLink="/home"></ion-icon>
+      <img src="../../assets/logo.png" alt="logotipo">
+    </div>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <h2>Crie sua conta</h2>
+
+<!--   Tem acontecido umas coisas estranhas nessa página, como a cor do validator que só aparece na primeira vez que a página carrega, e a formatação do css de margem só aparece quando essas cores do validator não aparecem. -->
+
+  <div class="form">
+    <form [formGroup]="registerForm" (ngSubmit)="submitForm(registerForm)">
+
+      <ion-item>
+        <ion-label  class="input" position="floating">Nome completo</ion-label>
+        <ion-input mode="md" type="text" formControlName="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label  class="input" position="floating">E-mail</ion-label>
+        <ion-input type="text" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label  class="input" position="floating">Telefone celular</ion-label>
+        <ion-input type="text" formControlName="phone" [brmasker]="{phone: true}"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label  class="input" position="floating">Senha</ion-label>
+        <ion-input type="password" formControlName="password"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label  class="input" position="floating">Confirme sua senha</ion-label>
+        <ion-input type="password" formControlName="confirmPassword"></ion-input>
+      </ion-item>
+
+      <div class="two-colums">
+        
+        <ion-item>
+          <ion-label  class="input" position="floating">Data de nascimento</ion-label>
+          <ion-input type="text" formControlName="birth" [brmasker]="{mask: '00/00/00000', len:10}"></ion-input>
+        </ion-item>
+        
+        <ion-item>
+          <ion-label  class="input" position="floating">Gênero</ion-label>
+          <ion-select interface="popover" formControlName="gender">
+            <ion-select-option value="female">Feminino</ion-select-option>
+            <ion-select-option value="male">Masculino</ion-select-option>
+            <ion-select-option value="other">Outro</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </div>
+
+      <ion-button mode="ios" type="submit" expand="block" size="small" shape="round" [disabled]="registerForm.invalid">Finalizar</ion-button>
+
+    </form>
+  </div>
+
+</ion-content>
+
+<ion-footer class="ion-no-border">
+  <ion-toolbar>
+    <a>Já tenho conta</a>
+  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,89 @@
+ion-toolbar {
+    --background: var(--cinza-claro);
+}
+ion-content {
+    display: flex;
+    --background: var(--cinza-claro);
+}
+
+ion-toolbar div {
+    --background: var(--cinza-claro);
+    display: grid;
+    grid-template-columns: 42% 58%;
+    align-items: center;
+    justify-content: start;
+    padding-top: 3vh;
+}
+
+ion-icon {
+    color: var(--cinza-medio2);
+    margin-left: 5vw;
+}
+
+ion-toolbar img {
+    width: 15vw;
+}
+
+ion-content {
+    flex-direction: column;
+    align-items: center;
+}
+
+h2 {
+    margin-top: 15%;
+    margin-bottom: 1vh;
+    text-align: center;
+    font-family: var(--ubuntu);
+    font-weight: bold;
+    font-size: 2em;
+    color: var(--marrom);
+}
+
+.form {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form form ion-item {
+    --background: var(--cinza-claro);
+    margin-left: -10px;
+}
+
+.input {
+    padding:0;
+    font-family: var(--montserrat);
+}
+
+.two-colums {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    align-items: center;
+}
+
+ion-button {
+    margin: 3vh 15vw 0;
+    --background: var(--rosa);
+    font-family: var(--ubuntu);
+    font-size: 1.7em;
+}
+
+ion-select {
+    padding-left: 0;
+}
+
+/* Footer */
+
+ion-footer ion-toolbar a {
+    font-family: var(--ubuntu);
+    font-weight: 500;
+    font-size: 1.05em;
+    color: var(--rosa);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
