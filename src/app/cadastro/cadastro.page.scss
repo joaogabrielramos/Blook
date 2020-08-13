@@ -49,7 +49,7 @@ h2 {
 
 .form form ion-item {
     --background: var(--cinza-claro);
-    margin: 0;
+    margin-left: -10px;
 }
 
 .input {
@@ -59,7 +59,7 @@ h2 {
 
 .two-colums {
     display: grid;
-    grid-template-columns: 61% 39%;
+    grid-template-columns: 65% 35%;
     align-items: center;
 }
 

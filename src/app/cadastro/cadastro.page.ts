@@ -19,7 +19,7 @@ export class CadastroPage implements OnInit {
     this.registerForm = this.formbuilder.group({
       name:[null,[Validators.required]],
       email:[null,[Validators.required, Validators.email]],
-      phone:[null,[Validators.required, Validators.maxLength(14)]],
+      phone:[null,[Validators.required, Validators.maxLength(15)]],
       password:[null, [Validators.required, Validators.minLength(8)]],
       confirmPassword:[null, [Validators.required, Validators.minLength(8)]],
       birth:[null,[Validators.required, Validators.maxLength(10)]],
