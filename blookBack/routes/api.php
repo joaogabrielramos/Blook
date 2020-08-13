@@ -43,3 +43,14 @@ Route::PUT('updateBook/{id}','BookController@updateBook');
 
 Route::put('addUser/{id}/{user_id}', 'BookController@addUser');
 Route::put('removeUser/{id}/{user_id}', 'BookController@removeUser');
+
+//ROTAS DE POST
+Route::GET('showPost/{id}','PostController@showPost');
+Route::GET('listPosts','PostController@listPosts');
+Route::POST('createPost','PostController@createPost');
+Route::PUT('updatePost/{id}','PostController@updatePost');
+
+Route::put('addUser/{id}/{user_id}', 'PostController@addUser');
+Route::put('removeUser/{id}/{user_id}', 'PostController@removeUser');
+Route::put('addBook/{id}/{book_id}', 'PostController@addBook');
+Route::put('removeBook/{id}/{book_id}', 'PostController@removeBook');

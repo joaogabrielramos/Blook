@@ -41,12 +41,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function registerBooks() //cadastrar livros
+    public function registerBooks() // cadastrar livros
     {
         return $this->hasMany('App\Book');
     }
 
-    public function favoriteBooks() //estante de livros
+    public function createPosts() // criar posts
+    {
+        return $this->hasMany('App\Post');
+    }
+
+    public function favoriteBooks() // estante de livros
     {
         return $this->belongsToMany('App\Book');
     }

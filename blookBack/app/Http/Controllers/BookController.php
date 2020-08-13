@@ -20,7 +20,7 @@ class BookController extends Controller
     public function updateBook(BookRequest $request, $id)
     {
         $book = Book::findOrFail($id);
-        $book->updateBook($request);
+        $book->updateBook($request, $id);
         return response()->json($book);
     }
 
