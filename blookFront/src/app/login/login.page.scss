@@ -1,0 +1,128 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+
+//barra de toolbar
+
+div.toolbar-container{
+    
+    --background: var(--cinza-claro);
+}
+ion-toolbar{
+    --background: var(--cinza-claro);
+    
+}
+ion-toolbar div{
+    --background: var(--cinza-claro);
+    display: grid;
+    grid-template-columns: 41% 59%;
+    grid-template-areas: "icone logo";
+    align-items: center;
+    justify-content: start;
+
+
+}
+
+
+//icone de voltar
+ion-toolbar ion-icon{
+  
+    margin-left:5vw;
+    width: 25px;
+    height: 25px;
+    
+    
+}
+//logo
+ion-toolbar img{
+    margin-top:1vh;
+    width: 13vw
+
+
+}
+//titulo do form
+.titleForm{
+    background:var(--cinza-claro);
+
+}
+
+.titleForm h2{
+    margin-top: 40px;
+    text-align:center;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 2em;
+    line-height: 34px;
+
+    color:var(--marrom);
+    
+}
+//conteudo
+ion-content{
+    --background: var(--cinza-claro);
+}
+
+ion-item{
+    --background: var(--cinza-claro);
+    margin-bottom: 50px;
+}
+//formulario
+ion-content form{
+    width:80%;
+    margin-left:40px;
+    margin-top: 70px;
+}
+
+ion-content form ion-button{
+    position: absolute;
+    width: 228.79px;
+    height: 54px;
+    left: 73px;
+    top: 380px;
+    --border-radius:30px;
+
+    --background: var(--rosa);
+    --color: #FFFFFF;
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.5em;
+    
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+ion-router-link{
+    position: absolute;
+   
+    
+    left: 34.5vw;
+    top: 75vh;
+
+    font-family: 'Ubuntu';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1.05em;
+    
+    display: flex;
+    align-items: center;
+    text-align: center;
+    
+
+
+
+
+    color: var(--rosa);
+}
+
+
+    
+
+
+
+    

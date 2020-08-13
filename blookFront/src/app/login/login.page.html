@@ -1,0 +1,50 @@
+<!-- Header -->
+
+      <ion-toolbar >
+            <div>
+                <!-- Icon de voltar -->
+                <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+                <!-- Logo -->
+                <img src="../../assets/image/Logo.png" alt="">
+            </div>
+          
+          </ion-toolbar>
+
+      <div class="titleForm"><h2>Acesse sua conta</h2></div>
+   
+
+    <!-- Formulário de Login -->
+    <ion-content>
+      <form [formGroup]="loginForm" (ngSubmit)="submitForm(loginForm)">
+
+        <!-- Input de Email -->
+        <ion-item>
+          <ion-label position="floating">E-mail <ion-text color="danger"></ion-text></ion-label>
+          <ion-input required formControlName="email" type="email"></ion-input>
+        </ion-item>
+        <!-- Input de Senha -->
+        <ion-item>
+          <ion-label position="floating">Senha<ion-text color="danger"></ion-text></ion-label>
+          <ion-input required formControlName="password" type="password"></ion-input>
+        </ion-item>
+        <!-- Botão de Finalizar Login -->
+        <ion-row class="ion-justify-content-center">
+          <ion-button  type="submit" [disabled]="loginForm.invalid">
+            Entrar
+          </ion-button>
+        </ion-row>
+      </form>
+
+      <!-- Link para se cadastrar -->
+      
+     <ion-router-link href='#'>Não tenho conta</ion-router-link>
+    </ion-content>
+   
+ 
+
+ 
+
+
+
+
+
