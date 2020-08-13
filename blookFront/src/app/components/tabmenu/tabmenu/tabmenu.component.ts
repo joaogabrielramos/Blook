@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabmenuComponent implements OnInit {
 
+  auth:boolean = false;
+
   constructor() { }
 
   ngOnInit() {}

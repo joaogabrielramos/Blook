@@ -1,6 +1,9 @@
-<ion-header>
+<ion-header class="ion-no-border" [translucent]="true">
   <ion-toolbar>
-    <ion-title>feed</ion-title>
+    <ion-buttons *ngIf="auth" slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Blook</ion-title>
   </ion-toolbar>
 </ion-header>
 

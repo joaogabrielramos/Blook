@@ -1,4 +1,35 @@
-<p>
-  tabmenu works!
-</p>
-<ion-button></ion-button>
+<ion-footer>
+  <ion-toolbar>
+    <div class="tabs">
+      
+      <ion-item lines="none">
+        <div class="tab-button">
+          <ion-icon name="home-outline"></ion-icon>
+          <ion-label>Home</ion-label>
+        </div>
+      </ion-item>
+
+      <ion-item lines="none">
+        <div class="tab-button">
+          <ion-icon name="search-outline"></ion-icon>
+          <ion-label>Buscar</ion-label>
+        </div>
+      </ion-item>
+
+      <ion-item lines="none" *ngIf="auth">
+        <div class="tab-button">
+          <ion-icon name="notifications-outline"></ion-icon>
+          <ion-label>Notificações</ion-label>
+        </div>
+      </ion-item>
+
+      <ion-item lines="none" *ngIf="auth">
+        <div class="tab-button">
+          <ion-icon name="person-outline"></ion-icon>
+          <ion-label>Perfil</ion-label>
+        </div>
+      </ion-item>
+
+    </div>
+  </ion-toolbar>
+</ion-footer>
