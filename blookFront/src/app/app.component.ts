@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
       title: 'Desafios',
       url: '/folder/Archived',
       icon: 'star'
-    },
+    }
   ];
 
   constructor(

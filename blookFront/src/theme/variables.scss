@@ -3,23 +3,22 @@
 
 /** Ionic CSS Variables **/
 :root {
+    /** Cores app **/
+    --cinza-claro:#F4F5F6;
+    --cinza-medio:#B9B7B7;
+    --cinza-medio2:#888888;
+    --cinza-escuro:#3D3D3D;
+    --verde-musgo:#B3B366;
+    --rosa:#FF9391;
+    --vermelho:#BC0707;
+    --amarelo:#FFFFAC;
+    --azul:#18CDCA;
+    --marrom:#B3706F;
+    --laranja:#F9B739;
 
-  /** Fontes App Hommy **/
-  --montserrat: 'Montserrat', sans-serif;
-  --ubuntu:'Ubuntu', sans-serif;
-
-  /* Cores do app */
-  --amarelo: #FFFFAC;
-  --azul: #18CDCA;
-  --rosa: #FF9391;
-  --vermelho: #BC0707;
-  --marrom: #B3706F;
-  --laranja: #F9B739;
-  --cinza-claro: #F4F5F6;
-  --cinza-medio: #B9B7B7;
-  --cinza-medio2: #888888;
-  --cinza-escuro: #3D3D3D;
-  --verde-musgo: #B3B366;
+    /** Fontes app **/
+    --montserrat:'Montserrat',sans-serif;
+    --ubuntu:'Ubuntu', sans-serif;
 
   /** primary **/
   --ion-color-primary: #FF9391;
