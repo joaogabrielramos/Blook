@@ -30,7 +30,7 @@ ion-content {
 }
 
 h2 {
-    margin-top: 5.5vh;
+    margin-top: 15%;
     margin-bottom: 1vh;
     text-align: center;
     font-family: var(--ubuntu);
@@ -68,17 +68,22 @@ ion-button {
     --background: var(--rosa);
     font-family: var(--ubuntu);
     font-size: 1.7em;
-
 }
 
 ion-select {
     padding-left: 0;
 }
 
-a {
-    margin-top: 6vh;
+/* Footer */
+
+ion-footer ion-toolbar a {
     font-family: var(--ubuntu);
     font-weight: 500;
     font-size: 1.05em;
     color: var(--rosa);
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
 }
