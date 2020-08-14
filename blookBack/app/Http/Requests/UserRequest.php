@@ -35,7 +35,8 @@ class UserRequest extends FormRequest
                 'phone_number' => 'required|min:9',
                 'date_of_birth' => 'required|date_format:d/m/Y',
                 'genre' => 'required|string',
-                'is_admin' => 'boolean'
+                'is_admin' => 'boolean',
+                'profile_pic' => 'image'
             ];
         }
 
@@ -68,6 +69,7 @@ class UserRequest extends FormRequest
             'phone_number.min' => 'Insira um mínimo de caracteres no seu número de telefone',
             'date_of_birth.date_format' => 'Formato de data inválida',
             'genre.required' => 'Insira o seu gênero',
+            'profile_pic' => 'Formato de imagem inválida'
         ];
     }
 }
