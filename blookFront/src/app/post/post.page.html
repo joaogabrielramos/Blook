@@ -1,0 +1,61 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>Blook</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngFor="let post of posts">
+    
+    <div class="top">
+      <div class="avatar">
+        <ion-avatar>
+          <img [src]="post.photoUser" alt="foto do usuário que fez o post">
+        </ion-avatar>      
+        <ion-label>{{ post.user }}</ion-label>
+      </div>
+
+      <ion-icon size="large" name="ellipsis-horizontal-outline"></ion-icon>
+    </div>
+
+    <div class="post">
+      <h2>
+        {{ post.title }}
+      </h2>
+      <img [src]="post.photoPost">
+      <p> {{ post.text }}</p>
+    </div>
+  </div>
+
+  <div class="action">
+    <ion-icon name="heart-outline"></ion-icon>
+    <ion-icon name="share-social-outline"></ion-icon>
+  </div>
+
+  <div class="comment-title">
+    <ion-label>Comentários</ion-label>
+  </div>
+
+  <div class="comment">
+    
+    <form [formGroup]="commentForm" (ngSubmit)="submitForm(commentForm)">
+      <ion-item lines="none">
+        <ion-textarea rows="1" type="text" placeholder="Escreva seu comentário" formControlName="text"></ion-textarea>
+      </ion-item>
+
+      <ion-button size="small" fill="clear" type="submit" [disabled]="commentForm.invalid">
+        <ion-icon slot="end" size="large" name="arrow-forward-outline"></ion-icon>
+      </ion-button>
+    </form>
+  </div>
+
+  <div class="commentText" *ngFor="let comment of comments" >
+    <app-comment [comment]="comment"></app-comment>
+  </div>
+  
+</ion-content>
+
+<app-tabmenu></app-tabmenu>

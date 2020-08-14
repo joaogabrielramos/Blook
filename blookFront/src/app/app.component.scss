@@ -8,7 +8,7 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  margin: 0 4vw;
+  margin: 0 5%;
   color: var(--marrom);
   border-bottom: 1px solid var(--cinza-medio2);
   padding-bottom: 3vh;
@@ -16,13 +16,13 @@
 
 /*Botões do side menu*/
 .menu-option {
-  margin-top: 2vh;
+  margin-top: 5%;
   display:flex;
   flex-direction: column;
 }
 
 ion-item {
-  margin-top: 1vh;
+  margin-top: 3%;
 }
 
 ion-item ion-label {
@@ -33,7 +33,6 @@ ion-item ion-label {
 
 /* Botão Logout */
 .sair {
-  margin-top: 44vh;
   font-weight: bolder;
   font-size: 1.2em;
   color: var(--cinza-escuro);
@@ -50,21 +49,9 @@ ion-menu.md ion-content {
   --padding-bottom: 20px;
 }
 
-ion-menu.md ion-list {
-  padding: 20px 0;
-}
-
-ion-menu.md ion-note {
-  margin-bottom: 30px;
-}
-
 ion-menu.md ion-list-header,
 ion-menu.md ion-note {
   padding-left: 10px;
-}
-
-ion-menu.md ion-list#inbox-list {
-  border-bottom: 1px solid var(--cinza-medio2);
 }
 
 ion-menu.md ion-list#inbox-list ion-list-header {
@@ -88,10 +75,6 @@ ion-menu.md ion-item {
   --padding-start: 10px;
   --padding-end: 10px;
   border-radius: 4px;
-}
-
-ion-menu.md ion-item.selected {
-  --background: rgba(var(--ion-color-primary-rgb), 0.14);
 }
 
 ion-menu.md ion-item.selected ion-icon {

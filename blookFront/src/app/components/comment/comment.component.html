@@ -1,0 +1,20 @@
+<div class="comment">
+  <ion-card>
+    
+    <div class="userComment">
+     
+      <div class="user">
+        <ion-avatar>
+          <img [src]="comment.photo" alt="foto do usuário que fez o comentário"/>
+        </ion-avatar>
+        <ion-label>{{ comment.user }}</ion-label>
+      </div>
+
+      <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+      
+    </div>
+
+    <p> {{ comment.text }} </p>
+
+  </ion-card>
+</div>
