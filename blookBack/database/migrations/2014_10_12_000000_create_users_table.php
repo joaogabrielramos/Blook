@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->string('phone_number');
             $table->string('date_of_birth');
             $table->string('genre');
+            $table->string('profile_pic')->nullable(); // Fazer a validação
             $table->boolean('is_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();

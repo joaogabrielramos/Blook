@@ -33,6 +33,7 @@ Route::GET('showUser/{id}','UserController@showUser');
 Route::GET('listUsers','UserController@listUsers');
 Route::POST('createUser','UserController@createUser');
 Route::PUT('updateUser/{id}','UserController@updateUser');
+Route::DELETE('deleteUser/{id}','UserController@deleteUser');
 
 
 //ROTAS DE LIVRO
@@ -40,6 +41,32 @@ Route::GET('showBook/{id}','BookController@showBook');
 Route::GET('listBooks','BookController@listBooks');
 Route::POST('createBook','BookController@createBook');
 Route::PUT('updateBook/{id}','BookController@updateBook');
+Route::DELETE('deleteBook/{id}','BookController@deleteBook');
 
-Route::put('addUser/{id}/{user_id}', 'BookController@addUser');
-Route::put('removeUser/{id}/{user_id}', 'BookController@removeUser');
+Route::PUT('addUser/{id}/{user_id}', 'BookController@addUser');
+Route::PUT('removeUser/{id}/{user_id}', 'BookController@removeUser');
+
+
+//ROTAS DE POST
+Route::GET('showPost/{id}','PostController@showPost');
+Route::GET('listPosts','PostController@listPosts');
+Route::POST('createPost','PostController@createPost');
+Route::PUT('updatePost/{id}','PostController@updatePost');
+Route::DELETE('deletePost/{id}','PostController@deletePost');
+
+Route::PUT('addUser/{id}/{user_id}', 'PostController@addUser');
+Route::PUT('removeUser/{id}/{user_id}', 'PostController@removeUser');
+Route::PUT('addBook/{id}/{book_id}', 'PostController@addBook');
+Route::PUT('removeBook/{id}/{book_id}', 'PostController@removeBook');
+
+//ROTAS DE COMMENT
+Route::GET('showComment/{id}','CommentController@showComment');
+Route::GET('listComments','CommentController@listComments');
+Route::POST('createComment','CommentController@createComment');
+Route::PUT('updateComment/{id}','CommentController@updateComment');
+Route::DELETE('deleteComment/{id}','CommentController@deleteComment');
+
+Route::PUT('addUser/{id}/{user_id}', 'CommentController@addUser');
+Route::PUT('removeUser/{id}/{user_id}', 'CommentController@removeUser');
+Route::PUT('addPost/{id}/{post_id}', 'CommentController@addPost');
+Route::PUT('removePost/{id}/{post_id}', 'CommentController@removePost');

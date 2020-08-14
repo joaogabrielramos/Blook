@@ -5,9 +5,8 @@ namespace App\Http\Requests;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
-use App\User;
 
-class BookRequest extends FormRequest
+class CommentRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,20 +25,9 @@ class BookRequest extends FormRequest
      */
     public function rules()
     {
-        if ($this->isMethod('POST')) {
-            return [
-                'name' => 'required',
-                'author' => 'required',
-                'image' => 'image',
-                'text' => 'required',
-            ];
-        }
-
-        if ($this->isMethod('PUT')) {
-            return [
-                'image' => 'image'
-            ];
-        }
+        return [
+            'text' => 'required|string'
+        ];
     }
 
     protected function failedValidation(Validator $validator)
@@ -50,10 +38,7 @@ class BookRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Insira o nome do livro',
-            'author.required' => 'Insira o nome do autor do livro',
-            'text.required' => 'Insira a descrição',
-            'image.image' => 'Formato da imagem inválido'
+            'text.required' => 'Insira o texto do comentário.'
         ];
     }
 }

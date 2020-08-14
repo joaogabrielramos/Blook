@@ -7,7 +7,7 @@ use Illuminate\Contracts\Validation\Validator;
 use Illuminate\Http\Exceptions\HttpResponseException;
 use App\User;
 
-class BookRequest extends FormRequest
+class PostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,8 +28,6 @@ class BookRequest extends FormRequest
     {
         if ($this->isMethod('POST')) {
             return [
-                'name' => 'required',
-                'author' => 'required',
                 'image' => 'image',
                 'text' => 'required',
             ];
@@ -50,9 +48,7 @@ class BookRequest extends FormRequest
     public function messages()
     {
         return [
-            'name.required' => 'Insira o nome do livro',
-            'author.required' => 'Insira o nome do autor do livro',
-            'text.required' => 'Insira a descrição',
+            'text.required' => 'Insira o texto',
             'image.image' => 'Formato da imagem inválido'
         ];
     }

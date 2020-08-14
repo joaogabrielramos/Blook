@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use App\Http\Requests\UserRequest;
 use Laravel\Passport\HasApiTokens;
 use App\Book;
+use Illuminate\Support\Facades\Storage;
 
 class User extends Authenticatable
 {
@@ -41,12 +42,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function registerBooks() //cadastrar livros
+    public function registerBooks() // cadastrar livros
     {
         return $this->hasMany('App\Book');
     }
 
-    public function favoriteBooks() //estante de livros
+    public function createPosts() // criar posts
+    {
+        return $this->hasMany('App\Post');
+    }
+
+    public function favoriteBooks() // estante de livros
     {
         return $this->belongsToMany('App\Book');
     }
@@ -61,6 +67,18 @@ class User extends Authenticatable
         $this->genre = $request->genre;
         $this->is_admin = $request->is_admin;
 
+        $this->save();
+
+        if ($request->profile_pic) {
+            if (!Storage::exists('localUserImages/'))
+                Storage::makeDirectory('localUserImages/', 0775, true);
+
+            $file = $request->file('profile_pic');
+            $filename = $this->id.'.'.$file->getClientOriginalExtension();
+            $path = $file->storeAs('localUserImages', $filename);
+            $this->profile_pic = $path;
+        }
+        
         $this->save();
     }
 

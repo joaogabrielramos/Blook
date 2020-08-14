@@ -10,28 +10,36 @@ use App\User;
 
 class Book extends Model
 {
-    public function user()
+    public function user() // Usuário que registrou o livro
     {
         return $this->belongsTo('App\User');
     }
 
-    public function favoriteUsers()
+    public function favoriteUsers() // Usuários que favoritaram o livro
     {
         return $this->belongsToMany('App\User');
     }
+
+    public function posts() // Posts que contém o livro
+    {
+        return $this->hasMany('App\Post');
+    }
+
     public function createBook(BookRequest $request)
     {
         $this->name = $request->name;
         $this->author = $request->author;
         $this->text = $request->text;
 
+        $this->save();
+
         if ($request->image) {
-            if (!Storage::exists('localImages/'))
-                Storage::makeDirectory('localImages/', 0775, true);
+            if (!Storage::exists('localBookImages/'))
+                Storage::makeDirectory('localBookImages/', 0775, true);
 
             $file = $request->file('image');
-            $filename = $this->id . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('localImages', $filename);
+            $filename = $this->id.'.'.$file->getClientOriginalExtension();
+            $path = $file->storeAs('localBookImages', $filename);
             $this->image = $path;
         }
 
@@ -49,16 +57,18 @@ class Book extends Model
 
         if ($request->image) {
 
-            if (!Storage::exists('localImages/'))
-                Storage::makeDirectory('localImages/', 0775, true);
+            if (!Storage::exists('localBookImages/'))
+                Storage::makeDirectory('localBookImages/', 0775, true);
 
             $book = Book::find($id);
-            if ($book->image)
+            if ($book->image){
                 Storage::delete($book->image);
+                $book->save();
+            }
 
             $file = $request->file('image');
             $filename = $this->id . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('localImages', $filename);
+            $path = $file->storeAs('localBookImages', $filename);
             $this->image = $path;
         }
 
