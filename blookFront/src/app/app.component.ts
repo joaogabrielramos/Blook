@@ -47,6 +47,8 @@ export class AppComponent implements OnInit {
       url:'/login',
       icon:'people'
     }
+    
+
   ];
   public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
