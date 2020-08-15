@@ -14,6 +14,7 @@ import { AuthService } from "./services/auth.service";
   styleUrls: ['app.component.scss']
 })
 export class AppComponent implements OnInit {
+  
   public selectedIndex = 0;
   public appPages = [
     
@@ -44,7 +45,7 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public router: Router,
-    public authService: AuthService
+    public authService: AuthService,
   ) {
     this.initializeApp();
   }

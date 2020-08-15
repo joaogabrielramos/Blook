@@ -11,6 +11,10 @@ export class TabmenuComponent implements OnInit {
 
   constructor() { }
 
+  /* isLoggedIn() {
+      return localStorage.getItem("userToken")!==null;
+    } */
+
   ngOnInit() {}
 
 }
