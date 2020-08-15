@@ -1,5 +1,9 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+/* Services */
+import { AuthService } from "./../services/auth.service";
 
 @Component({
   selector: 'app-cadastro',
@@ -10,21 +14,35 @@ export class CadastroPage implements OnInit {
 
   registerForm: FormGroup;
 
-  submitForm(form) {
-    console.log(form);
-    console.log(form.value);
-  }
-
-  constructor(public formbuilder:FormBuilder) {
+  constructor(public formbuilder:FormBuilder,
+              public router: Router,
+              public authService: AuthService
+             ) {
     this.registerForm = this.formbuilder.group({
       name:[null,[Validators.required]],
       email:[null,[Validators.required, Validators.email]],
-      phone:[null,[Validators.required, Validators.maxLength(15)]],
+      phone_number:[null,[Validators.required, Validators.maxLength(15)]],
       password:[null, [Validators.required, Validators.minLength(8)]],
       confirmPassword:[null, [Validators.required, Validators.minLength(8)]],
-      birth:[null,[Validators.required, Validators.maxLength(10)]],
-      gender: [null]
+      date_of_birth:[null,[Validators.required, Validators.maxLength(10)]],
+      genre: [null, [Validators.required]]
     });
+  }
+
+  submitRegister(form) {
+    console.log(form);
+
+    this.authService.register(form.value).subscribe (
+      (res) => {
+        console.log(res);
+        localStorage.setItem('userToken', res.success.token);
+        this.router.navigate(['/feed']);
+      }, (err) => {
+        console.log(err);
+      }
+    );
+
+    console.log("entrei");
   }
 
   ngOnInit() {

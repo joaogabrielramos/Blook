@@ -23,7 +23,7 @@ class CreateUsersTable extends Migration
             $table->string('date_of_birth');
             $table->string('genre');
             $table->string('profile_pic')->nullable(); // Fazer a validação
-            $table->boolean('is_admin')->default(false);
+            $table->boolean('is_admin')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
