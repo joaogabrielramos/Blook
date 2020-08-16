@@ -26,16 +26,18 @@ class Comment {
 })
 export class PostPage implements OnInit {
   
-  commentForm: FormGroup;
-  
+  /* Variáveis */
   posts: Post[];
   comments: Comment[];
+
+  commentForm: FormGroup;
 
   submitForm(form) {
     console.log(form);
     console.log(form.value);
   }
   
+  /*   Construtor */
   constructor(
     public formbuilder: FormBuilder,
     public postService: PostService,
@@ -55,7 +57,6 @@ export class PostPage implements OnInit {
         }
       );
     }
-
 
     /* updatePost(form) {
       this.postService.updatePost(, form.value).subscribe(
@@ -102,5 +103,4 @@ export class PostPage implements OnInit {
       }
     ];
   }
-
 }

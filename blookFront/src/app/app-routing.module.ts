@@ -35,7 +35,11 @@ const routes: Routes = [
   {
     path: 'criar-post',
     loadChildren: () => import('./criar-post/criar-post.module').then( m => m.CriarPostPageModule)
+  },  {
+    path: 'popover-component',
+    loadChildren: () => import('./popover-component/popover-component.module').then( m => m.PopoverComponentPageModule)
   }
+
 ];
 
 @NgModule({

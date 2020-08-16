@@ -5,8 +5,11 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
+import { PopoverController } from '@ionic/angular';
+import { PopoverComponentPage } from './popover-component/popover-component.page';
+
 /* Services */
-import { AuthService } from "./services/auth.service";
+/* import { AuthService } from "./services/auth.service"; */
 
 @Component({
   selector: 'app-root',
@@ -47,13 +50,25 @@ export class AppComponent implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public router: Router,
-    public authService: AuthService,
+    public popover: PopoverController,
+  /*   public authService: AuthService, */
   ) {
     this.initializeApp();
   }
 
+
+  /*Popover*/
+  createPopover() {
+    this.router.navigate(['/feed']);
+    this.popover.create({component:PopoverComponentPage,
+    showBackdrop:false}).then(
+      (popoverElement) => {
+        popoverElement.present();
+      })
+  }
+
 /*   Funções da integração */
-  logout() {
+  /* logout() {
     this.authService.logout().subscribe (
       (res) => {
         console.log(res);
@@ -68,7 +83,7 @@ export class AppComponent implements OnInit {
         console.log(err);
       }
     );
-  }
+  } */
 
   initializeApp() {
     this.platform.ready().then(() => {
