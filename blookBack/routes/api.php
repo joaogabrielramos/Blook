@@ -66,6 +66,7 @@ Route::PUT('removeUser/{id}/{user_id}', 'BookController@removeUser');
 //ROTAS DE POST
 Route::GET('showPost/{id}','PostController@showPost');
 Route::GET('listPosts','PostController@listPosts');
+Route::GET('getPostCard/{id}','PostController@getPostCard');
 
 Route::PUT('addUser/{id}/{user_id}', 'PostController@addUser');
 Route::PUT('removeUser/{id}/{user_id}', 'PostController@removeUser');

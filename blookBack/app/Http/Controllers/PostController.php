@@ -8,6 +8,9 @@ use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\User;
 use App\Book;
+use App\Http\Resources\Users as UserResource;
+use App\Http\Resources\Posts as PostResource;
+
 
 class PostController extends Controller
 {
@@ -78,5 +81,20 @@ class PostController extends Controller
         $post->book_id = NULL;
         $post->save();
         return response()->json($post);
+    }
+
+    public function getPostCard($id)
+    {
+        $post = Post::findOrFail($id);
+        $user = User::findOrFail($post->user_id);
+
+        $postResource = new PostResource($post);
+        $userResource = new UserResource($user);
+
+        return response()->json([
+            'user' => $userResource,
+            'post' => $postResource
+        ]);
+
     }
 }
