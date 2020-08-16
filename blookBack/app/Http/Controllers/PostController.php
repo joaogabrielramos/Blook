@@ -83,18 +83,14 @@ class PostController extends Controller
         return response()->json($post);
     }
 
-    public function getPostCard($id)
+    public function listPostCards()
     {
-        $post = Post::findOrFail($id);
-        $user = User::findOrFail($post->user_id);
+        $posts = Post::all();
 
-        $postResource = new PostResource($post);
-        $userResource = new UserResource($user);
+        $postResource = PostResource::collection($posts);
+        //$postResource = new PostResource($posts);
 
-        return response()->json([
-            'user' => $userResource,
-            'post' => $postResource
-        ]);
+        return response()->json($postResource);
 
     }
 }
