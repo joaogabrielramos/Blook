@@ -37,7 +37,7 @@ export class PostService {
     return this.http.get(this.apiURL + 'showPost/' + id);
   }
 
-  listPosts(): Observable<any> {
-    return this.http.get(this.apiURL + 'listPosts');
+  listPostCards(): Observable<any> {
+    return this.http.get(this.apiURL + 'listPostCards');
   }
 }

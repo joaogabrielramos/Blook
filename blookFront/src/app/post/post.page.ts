@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 /* Services */
 import { PostService } from "./../services/post/post.service";
@@ -31,6 +32,7 @@ export class PostPage implements OnInit {
   /* Variáveis */
   posts: Post[];
   comments: Comment[];
+  postId: any;
 
   commentForm: FormGroup;
 
@@ -44,10 +46,15 @@ export class PostPage implements OnInit {
     public formbuilder: FormBuilder,
     public popoverController: PopoverController,
     public postService: PostService,
-    public router: Router) {
+    public router: Router,
+    private route: ActivatedRoute) {
       this.commentForm = this.formbuilder.group({
         text: [null, [Validators.required, Validators.maxLength(140)]],
       });
+      this.route.params.subscribe(
+        (params) => {
+          this.postId = params.postId;
+          console.log(this.postId);});
     }
 
     /*Função popover de opções do post */

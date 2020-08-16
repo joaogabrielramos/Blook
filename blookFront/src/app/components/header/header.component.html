@@ -1,6 +1,6 @@
 <ion-header class="ion-no-border" [translucent]="true">
   <ion-toolbar>
-    <ion-buttons slot="end">
+    <ion-buttons slot="end" *ngIf="isLoggedIn()">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
     <div class="header">

@@ -1,9 +1,20 @@
 <app-header></app-header>
 
 <ion-content>
-  <div *ngFor="let feedPost of feedPosts">
-    <app-feed-card [feedPost]="feedPost"></app-feed-card>
-  </div>
+
+  <h2> Olá!, user! </h2>
+  <h4> O que você quer ler hoje? </h4>
+
+  <ion-segment value="todos">
+    <ion-segment-button value="todos">
+      <ion-label>Todos</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="quemSigo">
+      <ion-label>Apenas de quem sigo</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+
+    <app-feed-card *ngFor="let feedPost of feedPosts" [feedPost]="feedPost"></app-feed-card>
 </ion-content>
 
 <app-tabmenu></app-tabmenu>

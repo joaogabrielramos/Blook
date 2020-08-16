@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-feed-card',
@@ -9,8 +10,13 @@ export class FeedCardComponent implements OnInit {
 
   @Input() feedPost;
 
-  constructor() { }
+  constructor(public router: Router) { }
 
   ngOnInit() {}
+
+  navigateToPost(id) {
+    this.router.navigate(['/post', {'postId': id}]);
+    console.log(id);
+  }
 
 }

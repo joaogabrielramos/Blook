@@ -4,12 +4,6 @@ import { Router } from '@angular/router';
 /* Services */
 import { PostService } from "./../services/post/post.service";
 
-class FeedPost {
-  photoUser: string;
-  user: string;
-  title: string;
-  text: string;
-}
 
 @Component({
   selector: 'app-feed',
@@ -18,7 +12,7 @@ class FeedPost {
 })
 export class FeedPage implements OnInit {
 
-  feedPosts: FeedPost[];
+  feedPosts = [];
 
   constructor(
     public postService: PostService,
@@ -27,25 +21,20 @@ export class FeedPage implements OnInit {
     }
 
   ngOnInit() {
-    this.feedPosts = [
-      {
-        photoUser:'https://img.cancaonova.com/cnimages/canais/uploads/sites/6/2018/03/formacao_1600x1200-como-a-presenca-da-mulher-pode-ser-harmonia-no-mundo.jpg',
-        user:'Lorem',
-        title: 'A menina que roubava livros',
-        text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consequat vel ligula eget ultricies. Duis eu mattis ligula. Quisque lobortis risus tortor, ut pulvinar lectus mattis vel. Duis cursus elementum posuere. Phasellus egestas ut mauris at maximus. Vestibulum fermentum vel leo non bibendum. Nullam vestibulum'
-      }];
+    this.listPostCards();
   }
 
-  /* listPosts() {
-    this.postService.listPosts().subscribe(
-      (res) => {
-        console.log(res);
-        this.posts=res.posts;
-      }, (err) => {
-        console.log(err);
+    /* Integração */
+    listPostCards() {
+      this.postService.listPostCards().subscribe (
+        (res) => {
+          this.feedPosts = res;
+          console.log(res);
+        }, (err) => {
+          console.log(err);
+        }
+      );
       }
-    );
-  } */
 
 }
 

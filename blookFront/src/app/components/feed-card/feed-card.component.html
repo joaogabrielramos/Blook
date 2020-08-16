@@ -1,21 +1,19 @@
-<div class="post"> 
-  <ion-card>
+<ion-card (click)="navigateToPost(feedPost.id)">
     
-    <div class="userPost">
-     
-      <div class="user">
-        <ion-avatar>
-          <img [src]="feedPost.photoUser" alt="foto do usuário que fez o post"/>
-        </ion-avatar>
-        <ion-label>{{ feedPost.user }}</ion-label>
-      </div>
-
-      <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
-      
+  <div class="userPost">
+    
+    <div class="user">
+      <ion-avatar>
+        <img [src]="feedPost.user.profile_pic" alt="foto do usuário que fez o post"/>
+      </ion-avatar>
+      <ion-label>{{ feedPost.user.name }}</ion-label>
     </div>
 
-    <h2>{{ feedPost.title }}</h2>
-    <p> {{ feedPost.text }} </p>
+    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+    
+  </div>
 
-  </ion-card>
-</div> 
+  <h2>{{ feedPost.title }}</h2>
+  <p> {{ feedPost.text }} </p>
+
+</ion-card>
