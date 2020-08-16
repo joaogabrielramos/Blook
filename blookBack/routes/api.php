@@ -25,6 +25,9 @@ Route::POST('login', 'API\PassportController@login');
 Route::GROUP(['middleware'=>'auth:api'], function (){
     Route::GET('logout', 'API\PassportController@logout');
     Route::POST('getDetails', 'API\PassportController@getDetails');
+    Route::POST('createPost','PostController@createPost');
+    Route::PUT('updatePost/{id}','PostController@updatePost');
+    Route::DELETE('deletePost/{id}','PostController@deletePost');
 });
 
 
@@ -50,9 +53,6 @@ Route::PUT('removeUser/{id}/{user_id}', 'BookController@removeUser');
 //ROTAS DE POST
 Route::GET('showPost/{id}','PostController@showPost');
 Route::GET('listPosts','PostController@listPosts');
-Route::POST('createPost','PostController@createPost');
-Route::PUT('updatePost/{id}','PostController@updatePost');
-Route::DELETE('deletePost/{id}','PostController@deletePost');
 
 Route::PUT('addUser/{id}/{user_id}', 'PostController@addUser');
 Route::PUT('removeUser/{id}/{user_id}', 'PostController@removeUser');

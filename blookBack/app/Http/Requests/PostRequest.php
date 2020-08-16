@@ -28,16 +28,10 @@ class PostRequest extends FormRequest
     {
         if ($this->isMethod('POST')) {
             return [
-                'image' => 'image',
                 'text' => 'required',
             ];
         }
 
-        if ($this->isMethod('PUT')) {
-            return [
-                'image' => 'image'
-            ];
-        }
     }
 
     protected function failedValidation(Validator $validator)
@@ -49,7 +43,6 @@ class PostRequest extends FormRequest
     {
         return [
             'text.required' => 'Insira o texto',
-            'image.image' => 'Formato da imagem inválido'
         ];
     }
 }

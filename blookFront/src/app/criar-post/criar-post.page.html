@@ -1,0 +1,95 @@
+
+  <!-- toolbar -->
+  <ion-toolbar lines='none'>
+    <!-- Botão de voltar -->
+    <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+    <!-- Botão de salvar rascunho -->
+    <ion-button  class="sketch">
+      Salvar rascunho
+    </ion-button>
+    <!-- Botão de publicar -->
+    <form [formGroup]="postForm" (ngSubmit) = "createPost(postForm)">
+      <ion-button class="submit" type="submit" [disabled]="postForm.invalid"> 
+        Publicar
+      </ion-button>
+    </form>
+  </ion-toolbar>
+  
+<ion-content>
+  <!-- Imagem do perfil -->
+  <div>
+    <img src={{avatar.img}} alt="avatar" slot="start">
+
+  </div>
+  <!-- Titulo do rádio -->
+  <div class="titleRadio">
+    <ion-label >Selecione o tipo de post:</ion-label>
+  </div>
+  
+  <!-- Rádio-group de opção de tipos de posts -->
+
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+  
+      <div class="radios">
+        <ion-list>
+          <ion-radio-group name="createPost" value="resenha" formControlName="post_type">
+
+            <ion-item lines='none'>
+              <ion-label>Resenha</ion-label>
+              <ion-radio value="resenha" ></ion-radio>
+            </ion-item>
+            <ion-item lines='none'>
+              <ion-label>Post livre</ion-label>
+              <ion-radio value="postLivre"></ion-radio>
+            </ion-item>
+            <ion-item lines='none'>
+              <ion-label>Livro</ion-label>
+              <ion-radio value="livro"></ion-radio>
+            </ion-item>
+          </ion-radio-group>
+        </ion-list>
+      </div>
+
+        <!-- Input de adicionar o título do post -->
+      <div class="addTitle">
+        
+        <ion-item>
+          <ion-label position="floating">Título</ion-label>
+          <ion-input type="text" clearInput="true" formControlName="title" ></ion-input>
+        </ion-item>
+
+      </div>
+
+      <!-- Text-area pra escrever o post -->
+      <div class="texto">
+
+        <ion-item lines='none'>
+          <ion-textarea placeholder="O que você está lendo?"rows='4' formControlName="text">
+            
+            <!--Botão da câmera -->
+            <div class="photo">
+              <ion-fab>
+                <img
+                    [src]="photo"
+                    vertical="center"
+                    horizontal="center"
+                    class="addFoto"
+                    
+                  />
+                <ion-fab-button size='small' (click)="takePicture()">
+                  <ion-icon name="camera"></ion-icon>
+                </ion-fab-button>
+                
+              </ion-fab>
+            </div>
+          
+          
+          
+          </ion-textarea>
+        </ion-item>
+      
+      </div>
+  </form>
+
+
+</ion-content>

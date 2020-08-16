@@ -10,6 +10,7 @@ import { FeedPage } from './feed.page';
 
 /* Componentes */
 import { TabmenuComponent } from '../components/tabmenu/tabmenu/tabmenu.component';
+import { FeedCardComponent } from '../components/feed-card/feed-card.component'; 
 
 @NgModule({
   imports: [
@@ -18,6 +19,6 @@ import { TabmenuComponent } from '../components/tabmenu/tabmenu/tabmenu.componen
     IonicModule,
     FeedPageRoutingModule
   ],
-  declarations: [FeedPage, TabmenuComponent]
+  declarations: [FeedPage, TabmenuComponent, FeedCardComponent]
 })
 export class FeedPageModule {}

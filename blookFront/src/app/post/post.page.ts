@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+/* Services */
+import { PostService } from "./../services/post/post.service";
 
 class Post {
   photoUser: string;
@@ -32,12 +36,38 @@ export class PostPage implements OnInit {
     console.log(form.value);
   }
   
-  constructor(public formbuilder: FormBuilder) {
-              this.commentForm = this.formbuilder.group({
-                text: [null, [Validators.required, Validators.maxLength(140)]],
-              });
-            }
+  constructor(
+    public formbuilder: FormBuilder,
+    public postService: PostService,
+    public router: Router) {
+      this.commentForm = this.formbuilder.group({
+        text: [null, [Validators.required, Validators.maxLength(140)]],
+      });
+    }
 
+    /* Integração */
+    showPost(id) {
+      this.postService.showPost(id).subscribe(
+        (res) => {
+          console.log(res);
+        }, (err) => {
+          console.log(err);
+        }
+      );
+    }
+
+
+    /* updatePost(form) {
+      this.postService.updatePost(, form.value).subscribe(
+        (res) => {
+          console.log(res);
+        }, (err) => {
+          console.log(err);
+        }
+      );
+    } */
+
+    
   ngOnInit() {
     this.posts = [
       {

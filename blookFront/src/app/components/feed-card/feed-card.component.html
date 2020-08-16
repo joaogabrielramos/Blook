@@ -1,3 +1,21 @@
-<p>
-  feed-card works!
-</p>
+<div class="post"> 
+  <ion-card>
+    
+    <div class="userPost">
+     
+      <div class="user">
+        <ion-avatar>
+          <img [src]="feedPost.photoUser" alt="foto do usuário que fez o post"/>
+        </ion-avatar>
+        <ion-label>{{ feedPost.user }}</ion-label>
+      </div>
+
+      <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+      
+    </div>
+
+    <h2>{{ feedPost.title }}</h2>
+    <p> {{ feedPost.text }} </p>
+
+  </ion-card>
+</div> 

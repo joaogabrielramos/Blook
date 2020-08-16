@@ -30,6 +30,11 @@ const routes: Routes = [
   {
     path: 'post',
     loadChildren: () => import('./post/post.module').then( m => m.PostPageModule)
+    
+  },
+  {
+    path: 'criar-post',
+    loadChildren: () => import('./criar-post/criar-post.module').then( m => m.CriarPostPageModule)
   }
 ];
 

@@ -38,6 +38,8 @@ export class AppComponent implements OnInit {
       url: '/folder/Archived',
       icon: 'star'
     }
+    
+
   ];
 
   constructor(
