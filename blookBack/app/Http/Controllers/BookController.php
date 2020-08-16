@@ -62,4 +62,20 @@ class BookController extends Controller
         $book->save();
         return response()->json($book);
     }
+
+    public function searchBookByName($name)
+    {
+        $query = Book::query();
+        $query->where('name','LIKE','%'.$name.'%');
+
+        return response()->json($query->get());
+    }
+
+    public function searchBookByAuthor($author)
+    {
+        $query = Book::query();
+        $query->where('author','LIKE','%'.$author.'%');
+
+        return response()->json($query->get());
+    }
 }
