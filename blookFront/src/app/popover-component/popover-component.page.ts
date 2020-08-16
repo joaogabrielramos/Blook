@@ -20,6 +20,7 @@ export class PopoverComponentPage implements OnInit {
   ngOnInit() {
   }
 
+  /* Função popover */
   closePopover() {
     this.popover.dismiss();
   }

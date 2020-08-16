@@ -1,0 +1,20 @@
+ion-toolbar { 
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.10);
+}
+
+.header {
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin: 2% 5%;
+}
+
+.header img {
+    width: 12%;
+}
+
+.header ion-title {
+    font-size: 1.3em;
+    text-align: left;
+}

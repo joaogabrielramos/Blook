@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 
 /* Services */
 import { PostService } from "./../services/post/post.service";
+import { PopoverController } from '@ionic/angular';
+import { PostPopoverComponent } from '../components/post-popover/post-popover.component';
 
 class Post {
   photoUser: string;
@@ -40,11 +42,20 @@ export class PostPage implements OnInit {
   /*   Construtor */
   constructor(
     public formbuilder: FormBuilder,
+    public popoverController: PopoverController,
     public postService: PostService,
     public router: Router) {
       this.commentForm = this.formbuilder.group({
         text: [null, [Validators.required, Validators.maxLength(140)]],
       });
+    }
+
+    /*Função popover de opções do post */
+    async presentPopover(event) {
+      const popover = await this.popoverController.create({
+        component: PostPopoverComponent, event
+      });
+      return await popover.present();
     }
 
     /* Integração */
