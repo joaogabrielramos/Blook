@@ -3,6 +3,8 @@
 namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
+use App\Http\Resources\Users as UserResource;
+use App\User;
 
 class Posts extends JsonResource
 {
@@ -14,10 +16,13 @@ class Posts extends JsonResource
      */
     public function toArray($request)
     {
+        $user = User::find($this->user_id);
+
         return [
             'id' => $this->id,
             'title' => $this->title,
             'text' => $this->text,
+            'user' => new UserResource($user),
         ];
     }
 }
