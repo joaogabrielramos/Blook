@@ -14,4 +14,6 @@ export class HeaderComponent implements OnInit {
   isLoggedIn() {
     return localStorage.getItem("userToken")!==null;
   }
+
+  auth = this.isLoggedIn();
 }

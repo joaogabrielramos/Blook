@@ -2,10 +2,10 @@
 
 <ion-content>
 
-  <h2> Olá!, user! </h2>
+  <h2> Olá! </h2>
   <h4> O que você quer ler hoje? </h4>
 
-  <ion-segment value="todos">
+  <ion-segment *ngIf="auth" value="todos">
     <ion-segment-button value="todos">
       <ion-label>Todos</ion-label>
     </ion-segment-button>

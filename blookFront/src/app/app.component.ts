@@ -59,31 +59,12 @@ export class AppComponent implements OnInit {
 
   /*Popover*/
   createPopover() {
-    this.router.navigate(['/feed']);
     this.popover.create({component:PopoverComponentPage,
     showBackdrop:false}).then(
       (popoverElement) => {
         popoverElement.present();
       })
   }
-
-/*   Funções da integração */
-  /* logout() {
-    this.authService.logout().subscribe (
-      (res) => {
-        console.log(res);
-        localStorage.removeItem('userToken');
-        if (this.router.url === '/feed') {
-          window.location.reload();
-        } else{
-          this.router.navigate(['/feed']);
-        }
-        console.log('Já saí!');
-      }, (err) => {
-        console.log(err);
-      }
-    );
-  } */
 
   initializeApp() {
     this.platform.ready().then(() => {

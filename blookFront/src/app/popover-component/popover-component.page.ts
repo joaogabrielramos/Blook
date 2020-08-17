@@ -2,6 +2,9 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import  { PopoverController } from '@ionic/angular';
 
+import { TabmenuComponent } from '../components/tabmenu/tabmenu/tabmenu.component';
+import { HeaderComponent } from '../components/header/header.component';
+
 /* Services */
 import { AuthService } from "../services/auth.service";
 
@@ -11,6 +14,8 @@ import { AuthService } from "../services/auth.service";
   styleUrls: ['./popover-component.page.scss'],
 })
 export class PopoverComponentPage implements OnInit {
+
+  logado: boolean;
 
   constructor(
     public popover: PopoverController,
@@ -32,11 +37,14 @@ export class PopoverComponentPage implements OnInit {
         console.log(res);
         localStorage.removeItem('userToken');
         this.closePopover();
-        if (this.router.url === '/feed') {
+        this.logado = this.authService.isLoggedIn();
+        console.log(this.logado);
+        window.location.reload();
+        /* if (this.router.url === '/feed') {
           window.location.reload();
         } else{
           this.router.navigate(['/feed']);
-        }
+        } */
         console.log('Já saí!');
       }, (err) => {
         console.log(err);

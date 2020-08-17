@@ -12,6 +12,8 @@ import { PostService } from "./../services/post/post.service";
 })
 export class FeedPage implements OnInit {
 
+  auth = localStorage.getItem("userToken")!==null;
+
   feedPosts = [];
 
   constructor(

@@ -7,13 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TabmenuComponent implements OnInit {
 
-  auth:boolean = localStorage.getItem("userToken")!==null;
+  auth = localStorage.getItem("userToken")!==null;
 
   constructor() { }
-
-  isLoggedIn() {
-      return localStorage.getItem("userToken")!==null;
-    }
 
   ngOnInit() {}
 

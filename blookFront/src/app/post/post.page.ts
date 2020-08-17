@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 
 /* Services */
 import { PostService } from "./../services/post/post.service";
+import { AuthService } from '../services/auth.service';
 
 import { PopoverController } from '@ionic/angular';
 
@@ -29,23 +30,36 @@ export class PostPage implements OnInit {
   comments: Comment[];
   postId: any;
 
+  auth = localStorage.getItem("userToken")!==null;
+  isUser = false;
+
   commentForm: FormGroup;
+  updateForm: FormGroup;
 
   submitForm(form) {
     console.log(form);
     console.log(form.value);
   }
-  
+
   /*   Construtor */
   constructor(
     public formbuilder: FormBuilder,
     public popoverController: PopoverController,
     public postService: PostService,
+    public authService: AuthService, 
     public router: Router,
     private route: ActivatedRoute) {
       this.commentForm = this.formbuilder.group({
         text: [null, [Validators.required, Validators.maxLength(140)]],
       });
+      this.updateForm = this.formbuilder.group(
+        {
+        post_type:['postLivre', [Validators.required]],
+        text:[null,[Validators.required]],
+        title:[null],
+        image:[null],
+      })
+
       this.route.params.subscribe(
         (params) => {
           this.postId = params.postId;

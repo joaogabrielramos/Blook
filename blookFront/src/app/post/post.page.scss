@@ -17,22 +17,23 @@ ion-content {
 }
 
 .avatar {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 30% 70%;
     align-items: center;
     justify-content: start;
 }
 
 ion-content div .top .avatar ion-avatar {
-    width: 70px;
-
+    height: 60px;
+    width: 60px;
     margin-right: 8%;
 }
 
 .avatar ion-label {
     font-family: var(--ubuntu);
-    font-size: 1.2em;
+    font-size: 1em;
     font-weight: 500;
+    position:relative;
 }
 
 /* Corpo do post */
@@ -64,6 +65,11 @@ ion-content div .top .avatar ion-avatar {
     font-size: 1em;
     line-height: 1.5em;
     text-align: justify;
+}
+
+/* Modo edição */
+form .radios ion-item, form .addTitle ion-item, form .texto ion-item {
+    --background: var(--amarelo);
 }
 
 /* Ações sobre o post */
@@ -103,11 +109,15 @@ ion-content div .top .avatar ion-avatar {
 .comment form ion-item {
     border: 1px solid var(--cinza-medio2);
     border-radius: 20px;
+
+    align-items: center;
+    
+    height: 89%;
 }
 
 .comment form ion-item ion-textarea {
     font-family: var(--montserrat);
-    height: 50%;
+    font-size: 0.9em;
 }
 
 .comment form ion-icon {

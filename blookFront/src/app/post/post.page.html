@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <ion-content>
-  <div>
+  <div *ngIf="!isUser">
     
     <div class="top">
       <div class="avatar">
@@ -11,7 +11,7 @@
         <ion-label>{{ user.name }}</ion-label>
       </div>
 
-      <ion-button fill="clear" (click)="presentPopover($event)">
+      <ion-button fill="clear" (click)="presentPopover($event)" *ngIf = "auth">
         <ion-icon slot="end" size="large" name="ellipsis-horizontal-outline"></ion-icon>
       </ion-button>
     </div>
@@ -25,6 +25,49 @@
     </div>
   </div>
 
+  <form [formGroup]="updateForm" (ngSubmit)="submitForm(updateForm)" *ngIf="isUser">
+  
+    <div class="radios">
+        <ion-radio-group mode="md" value="postLivre" formControlName="post_type">
+
+          <ion-item lines='none'>
+            <ion-label>Resenha</ion-label>
+            <ion-radio slot="start" value="resenha" ></ion-radio>
+          </ion-item>
+          <ion-item lines='none'>
+            <ion-label>Post livre</ion-label>
+            <ion-radio slot="start" value="postLivre"></ion-radio>
+          </ion-item>
+          <ion-item lines='none'>
+            <ion-label>Livro</ion-label>
+            <ion-radio slot="start" value="livro"></ion-radio>
+          </ion-item>
+
+        </ion-radio-group>
+    </div>
+
+      <!-- Input de adicionar o título do post -->
+    <div class="addTitle">
+      
+      <ion-item>
+        <ion-label position="floating">Título</ion-label>
+        <ion-input type="text" clearInput="true" formControlName="title" ></ion-input>
+      </ion-item>
+
+    </div>
+
+    <!-- Text-area pra escrever o post -->
+    <div class="texto">
+
+      <ion-item lines='none'>
+        <ion-textarea placeholder="O que você está lendo?" rows='4' formControlName="text"></ion-textarea>
+      </ion-item>
+    
+    </div>
+    <ion-button type="submit" [disabled]="updateForm.invalid"> Atualizar </ion-button>
+</form>
+
+<div *ngIf="!isUser">
   <div class="action">
     <ion-icon name="heart-outline"></ion-icon>
     <ion-icon name="share-social-outline"></ion-icon>
@@ -34,7 +77,7 @@
     <ion-label>Comentários</ion-label>
   </div>
 
-  <div class="comment">
+  <div class="comment" *ngIf = "auth">
     
     <form [formGroup]="commentForm" (ngSubmit)="submitForm(commentForm)">
       <ion-item lines="none">
@@ -47,9 +90,10 @@
     </form>
   </div>
 
- <!--  <div class="commentText" *ngFor="let comment of comments" >
+  <div class="commentText" *ngFor="let comment of comments" >
     <app-comment [comment]="comment"></app-comment>
-  </div> -->
+  </div>
+</div>
   
 </ion-content>
 

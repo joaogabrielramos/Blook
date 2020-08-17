@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { PostService } from "./../services/post/post.service";
 
 class avatar{
-  image:string
+  image:string;
 }
 @Component({
   selector: 'app-criar-post',
@@ -16,10 +16,10 @@ class avatar{
   styleUrls: ['./criar-post.page.scss'],
 })
 export class CriarPostPage implements OnInit {
-  avatar:any
+  avatar:any;
 
   photo: SafeResourceUrl;
-  postForm:FormGroup
+  postForm:FormGroup;
 
   constructor(
     private sanitizer: DomSanitizer,

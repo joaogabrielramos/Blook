@@ -31,4 +31,8 @@ export class AuthService {
     this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken');
     return this.http.get(this.apiURL + 'logout', this.httpHeaders);
   }
+
+  isLoggedIn() {
+    return localStorage.getItem("userToken")!==null;
+  }
 }
