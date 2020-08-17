@@ -74,4 +74,20 @@ class Book extends Model
 
         $this->save();
     }
+
+    public function addUser($id, $user_id){
+        $book = Book::findOrFail($id);
+        $user = User::findOrFail($user_id);
+        $book->user_id = $user_id;
+        $book->save();
+        return response()->json($book);
+    }
+
+    public function removeUser($id, $user_id){
+        $book = Book::findOrFail($id);
+        $user = User::findOrFail($user_id);
+        $book->user_id = NULL;
+        $book->save();
+        return response()->json($book);
+    }
 }

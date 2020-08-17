@@ -58,30 +58,10 @@ class PostController extends Controller
         return response()->json(['Post deletado']);
     }
 
-    public function addBook($id, $book_id){
-        $post = Post::findOrFail($id);
-        $book = Book::findOrFail($book_id);
-        $post->book_id = $book_id;
-        $post->save();
-        return response()->json($post);
-    }
-
-    public function removeBook($id, $book_id){
-        $post = Post::findOrFail($id);
-        $book = Book::findOrFail($book_id);
-        $post->book_id = NULL;
-        $post->save();
-        return response()->json($post);
-    }
-
     public function listPostCards()
     {
         $posts = Post::all();
-
         $postResource = PostResource::collection($posts);
-        //$postResource = new PostResource($posts);
-
         return response()->json($postResource);
-
     }
 }

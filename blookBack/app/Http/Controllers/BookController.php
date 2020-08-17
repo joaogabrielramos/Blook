@@ -10,10 +10,11 @@ use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
-    public function createBook(BookRequest $request)
+    public function createBook(BookRequest $request, $user_id)
     {
         $book = new Book();
         $book->createBook($request);
+        $book->addUser($book->id, $user_id);
         return response()->json($book);
     }
 
@@ -45,22 +46,6 @@ class BookController extends Controller
 
         Book::destroy($book->id);
         return response()->json(['Livro deletado']);
-    }
-
-    public function addUser($id, $user_id){
-        $book = Book::findOrFail($id);
-        $user = User::findOrFail($user_id);
-        $book->user_id = $user_id;
-        $book->save();
-        return response()->json($book);
-    }
-
-    public function removeUser($id, $user_id){
-        $book = Book::findOrFail($id);
-        $user = User::findOrFail($user_id);
-        $book->user_id = NULL;
-        $book->save();
-        return response()->json($book);
     }
 
     public function searchBookByName($name)
