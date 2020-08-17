@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-pesquisar',
   templateUrl: './pesquisar.page.html',
@@ -7,10 +8,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PesquisarPage implements OnInit {
   
-  slideOpts = {
-    initialSlide: 0,
-    speed:400
-  };
+
+
   constructor() { }
 
   ngOnInit() {

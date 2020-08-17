@@ -8,6 +8,11 @@ import { PerfilPageRoutingModule } from './perfil-routing.module';
 
 import { PerfilPage } from './perfil.page';
 
+/* Componentes */
+import { TabmenuComponent } from '../components/tabmenu/tabmenu/tabmenu.component';
+ 
+import { HeaderComponent } from '../components/header/header.component';
+
 
 
 @NgModule({
@@ -18,6 +23,6 @@ import { PerfilPage } from './perfil.page';
     PerfilPageRoutingModule,
     
   ],
-  declarations: [PerfilPage]
+  declarations: [PerfilPage,TabmenuComponent,HeaderComponent]
 })
 export class PerfilPageModule {}

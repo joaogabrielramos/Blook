@@ -7,8 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { PopoverComponentPageRoutingModule } from './popover-component-routing.module';
 
 import { PopoverComponentPage } from './popover-component.page';
-import { HeaderComponent } from '../components/header/header.component';
-import { TabmenuComponent } from '../components/tabmenu/tabmenu/tabmenu.component';
+
 
 @NgModule({
   imports: [
@@ -17,6 +16,6 @@ import { TabmenuComponent } from '../components/tabmenu/tabmenu/tabmenu.componen
     IonicModule,
     PopoverComponentPageRoutingModule
   ],
-  declarations: [PopoverComponentPage, HeaderComponent, TabmenuComponent]
+  declarations: [PopoverComponentPage]
 })
 export class PopoverComponentPageModule {}

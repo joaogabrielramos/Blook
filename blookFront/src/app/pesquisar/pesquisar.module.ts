@@ -8,6 +8,12 @@ import { PesquisarPageRoutingModule } from './pesquisar-routing.module';
 
 import { PesquisarPage } from './pesquisar.page';
 
+/* Componentes */
+import { TabmenuComponent } from '../components/tabmenu/tabmenu/tabmenu.component';
+ 
+import { HeaderComponent } from '../components/header/header.component';
+
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +21,6 @@ import { PesquisarPage } from './pesquisar.page';
     IonicModule,
     PesquisarPageRoutingModule
   ],
-  declarations: [PesquisarPage]
+  declarations: [PesquisarPage,TabmenuComponent,HeaderComponent]
 })
 export class PesquisarPageModule {}

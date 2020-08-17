@@ -1,12 +1,11 @@
-<ion-header>
-  <ion-toolbar>
-      <ion-title>Blook</ion-title>
-  </ion-toolbar>
-</ion-header>
+<!-- Header -->
+<app-header></app-header>
 
 <ion-content>
+
+  <!-- Slide de gêneros de livro -->
   <div class="slides">
-    <ion-slides mode="ios" scrollbar="false" pager="false" [options]="slideOpts">
+    <ion-slides mode="ios" scrollbar="false" pager="false">
       <ion-slide>
         <ion-chip color="primary" mode="ios" >
           <ion-label>Romance</ion-label>
@@ -40,15 +39,15 @@
 
 
 
-
+<!-- Barra de pesquisa -->
 <div class="searchBar">
-  <ion-searchbar placeholder="Pesquisar" inputmode="decimal" type="decimal" (ionChange)="onSearchChange($event)" [debounce]="250" ></ion-searchbar>
+  <ion-searchbar placeholder="Pesquisar" inputmode="decimal" type="text" [debounce]="250" ></ion-searchbar>
 </div>
 
 
-
+<!-- Botão pra alternar a lista (Usuário,Livros e Resenhas) -->
 <div class="segment">
-  <ion-segment value="search" (ionChange)="segmentChanged($event)">
+  <ion-segment value="search">
     <ion-segment-button value="user">
       <ion-label>Usuário</ion-label>
     </ion-segment-button>
@@ -62,9 +61,5 @@
 </div>
 </ion-content>
 
-
-<ion-footer>
-  <ion-toolbar>
-      <ion-title>Footer</ion-title>
-  </ion-toolbar>
-</ion-footer>
+<!-- TabMenu -->
+<app-tabmenu></app-tabmenu>
