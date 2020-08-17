@@ -1,4 +1,4 @@
-ion-toolbar { 
+ion-header { 
     box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.10);
 }
 
@@ -17,4 +17,27 @@ ion-toolbar {
 .header ion-title {
     font-size: 1.3em;
     text-align: left;
+}
+
+.button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+
+.button ion-button {
+    width: 42%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3%;
+
+    font-family: var(--ubuntu);
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.inscrever {
+    color: white;
 }
