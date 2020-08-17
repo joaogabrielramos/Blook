@@ -2,6 +2,10 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
+/* Toast */
+import { ToastController } from '@ionic/angular';
+
+
 /* Services */
 import { AuthService } from "./../services/auth.service";
 
@@ -16,7 +20,8 @@ export class CadastroPage implements OnInit {
 
   constructor(public formbuilder:FormBuilder,
               public router: Router,
-              public authService: AuthService
+              public authService: AuthService,
+              public toastController:ToastController
              ) {
     this.registerForm = this.formbuilder.group({
       name:[null,[Validators.required]],
@@ -27,6 +32,15 @@ export class CadastroPage implements OnInit {
       date_of_birth:[null,[Validators.required, Validators.maxLength(10)]],
       genre: [null, [Validators.required]]
     });
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Registrado com sucesso!',
+      duration: 2000,
+      color:"dark"
+    });
+    toast.present();
   }
 
   submitRegister(form) {

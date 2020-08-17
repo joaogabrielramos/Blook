@@ -2,6 +2,10 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
+/*Toast*/
+import { ToastController } from '@ionic/angular';
+
+
 /* Services */
 import { AuthService } from "./../services/auth.service";
 
@@ -17,12 +21,23 @@ loginForm:FormGroup;
 
   constructor(public formBuilder : FormBuilder,
               public router: Router,
-              public authService: AuthService 
+              public authService: AuthService,
+              public toastController :ToastController
              ) { 
     this.loginForm = this.formBuilder.group({
       email:[null,[Validators.email,Validators.required]],
       password:[null,[Validators.required,Validators.minLength(8)]]
     });
+    
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Logado com sucesso!',
+      duration: 2000,
+      color:"dark"
+    });
+    toast.present();
   }
 
   submitLogin(form){
@@ -40,7 +55,8 @@ loginForm:FormGroup;
 
     console.log("entrei");
   }
-  
+
+ 
   ngOnInit() {
   }
 

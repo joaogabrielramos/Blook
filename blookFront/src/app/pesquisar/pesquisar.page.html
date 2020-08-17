@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-toolbar>
+      <ion-title>Blook</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="slides">
+    <ion-slides mode="ios" scrollbar="false" pager="false" [options]="slideOpts">
+      <ion-slide>
+        <ion-chip color="primary" mode="ios" >
+          <ion-label>Romance</ion-label>
+        </ion-chip>
+        <ion-chip color="secondary" mode="ios" >
+          <ion-label>Ficção</ion-label>
+        </ion-chip>
+        <ion-chip color="success" mode="ios" >
+          <ion-label>Fantasia</ion-label>
+        </ion-chip>
+
+      </ion-slide>
+
+      <ion-slide>
+        <ion-chip color="warning" mode="ios">
+          <ion-label>Comédia</ion-label>
+        </ion-chip>
+        <ion-chip color="danger" mode="ios" >
+          <ion-label>Terror</ion-label>
+        </ion-chip>
+        <ion-chip color="medium" mode="ios" >
+          <ion-label>Suspense</ion-label>
+        </ion-chip>
+        
+      </ion-slide>
+    </ion-slides>
+
+
+
+  </div>
+
+
+
+
+<div class="searchBar">
+  <ion-searchbar placeholder="Pesquisar" inputmode="decimal" type="decimal" (ionChange)="onSearchChange($event)" [debounce]="250" ></ion-searchbar>
+</div>
+
+
+
+<div class="segment">
+  <ion-segment value="search" (ionChange)="segmentChanged($event)">
+    <ion-segment-button value="user">
+      <ion-label>Usuário</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Post">
+      <ion-label>Posts</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="resenha">
+      <ion-label>Resenhas</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</div>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar>
+      <ion-title>Footer</ion-title>
+  </ion-toolbar>
+</ion-footer>

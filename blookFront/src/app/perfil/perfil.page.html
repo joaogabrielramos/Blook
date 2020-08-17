@@ -1,0 +1,66 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Blook</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+
+<div class="perfil">
+
+
+    <ion-avatar>
+        <img [src]="image" alt="aaa" />
+    </ion-avatar>
+    
+    <h4>Nome</h4>
+    <p>Descrição</p>
+    
+    <ion-button  color="success" fill='outline' >Seguir
+    </ion-button>
+    
+
+</div>
+
+
+<div class="atividade">
+
+    <h3>2</h3>
+    <h5>posts</h5>
+
+    <h3>2</h3>
+    <h5>livros</h5>
+
+    <h3>2</h3>
+    <h5>seguidores</h5>
+
+    <h3>2</h3>
+    <h5>seguindo</h5>
+
+
+</div>
+
+<div class="tipoConteudo">
+
+    <ion-segment value="perfilSegment" (ionChange)="segmentChanged($event)">
+        <ion-segment-button value="post">
+            <ion-label>Posts</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="book">
+            <ion-label>Livros</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
+
+</div>
+
+
+</ion-content>
+
+
+<ion-footer>
+    <ion-toolbar>
+        <ion-title>Footer</ion-title>
+    </ion-toolbar>
+</ion-footer>

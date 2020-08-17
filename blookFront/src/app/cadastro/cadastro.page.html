@@ -60,7 +60,7 @@
 
       </div>
 
-      <ion-button mode="ios" type="submit" expand="block" size="small" shape="round" [disabled]="registerForm.invalid">Finalizar</ion-button>
+      <ion-button mode="ios" type="submit" expand="block" size="small" shape="round" [disabled]="registerForm.invalid" (click)="presentToast()">Finalizar</ion-button>
 
     </form>
   </div>
