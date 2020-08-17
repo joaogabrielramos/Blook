@@ -10,10 +10,10 @@ use App\Post;
 
 class CommentController extends Controller
 {
-    public function createComment(CommentRequest $request)
+    public function createComment(CommentRequest $request, $post_id)
     {
         $comment = new Comment();
-        $comment->createComment($request);
+        $comment->createComment($request, $post_id);
         return response()->json($comment);
     }
 

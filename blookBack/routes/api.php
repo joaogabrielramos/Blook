@@ -40,7 +40,7 @@ Route::GROUP(['middleware'=>'auth:api'], function (){
     Route::DELETE('deletePost/{id}','PostController@deletePost');
 
     //ROTAS DE COMENTÁRIO
-    Route::POST('createComment','CommentController@createComment');
+    Route::POST('createComment/{post_id}','CommentController@createComment');
     Route::PUT('updateComment/{id}','CommentController@updateComment');
     Route::DELETE('deleteComment/{id}','CommentController@deleteComment');
 });

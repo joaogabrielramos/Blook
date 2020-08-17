@@ -7,6 +7,7 @@ use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Storage;
 use App\User;
 use App\Book;
+use Auth;
 
 class Post extends Model
 {
@@ -22,6 +23,9 @@ class Post extends Model
 
     public function createPost(PostRequest $request)
     {
+        $user = Auth::user();
+        $this->user_id = $user->id;
+
         $this->title = $request->title;
         $this->text = $request->text;
         $this->post_type = $request->post_type;

@@ -15,10 +15,10 @@ use App\Http\Resources\Posts as PostResource;
 class PostController extends Controller
 {
 
-    public function createPost(PostRequest $request)
+    public function createPost(PostRequest $request, $post_id)
     {
         $post = new Post();
-        $post->createPost($request);
+        $post->createPost($request, $post_id);
         return response()->json($post);
     }
 
