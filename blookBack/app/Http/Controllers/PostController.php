@@ -14,6 +14,7 @@ use App\Http\Resources\Posts as PostResource;
 
 class PostController extends Controller
 {
+
     public function createPost(PostRequest $request)
     {
         $post = new Post();
@@ -56,46 +57,10 @@ class PostController extends Controller
         return response()->json(['Post deletado']);
     }
 
-    public function addUser($id, $user_id){
-        $post = Post::findOrFail($id);
-        $user = User::findOrFail($user_id);
-        $post->user_id = $user_id;
-        $post->save();
-        return response()->json($post);
-    }
-
-    public function removeUser($id, $user_id){
-        $post = Post::findOrFail($id);
-        $user = User::findOrFail($user_id);
-        $post->user_id = NULL;
-        $post->save();
-        return response()->json($post);
-    }
-
-    public function addBook($id, $book_id){
-        $post = Post::findOrFail($id);
-        $book = Book::findOrFail($book_id);
-        $post->book_id = $book_id;
-        $post->save();
-        return response()->json($post);
-    }
-
-    public function removeBook($id, $book_id){
-        $post = Post::findOrFail($id);
-        $book = Book::findOrFail($book_id);
-        $post->book_id = NULL;
-        $post->save();
-        return response()->json($post);
-    }
-
     public function listPostCards()
     {
         $posts = Post::all();
-
         $postResource = PostResource::collection($posts);
-        //$postResource = new PostResource($posts);
-
         return response()->json($postResource);
-
     }
 }

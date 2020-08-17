@@ -57,6 +57,16 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Book');
     }
 
+    public function followers() // usuarios seguidores
+    {
+        return $this->hasMany('App\User');
+    }
+
+    public function followed() // usuarios seguindo
+    {
+        return $this->hasMany('App\User');
+    }
+
     public function createUser(UserRequest $request)
     {
         $this->name = $request->name;
@@ -78,7 +88,7 @@ class User extends Authenticatable
             $path = $file->storeAs('localUserImages', $filename);
             $this->profile_pic = $path;
         }
-        
+
         $this->save();
     }
 
