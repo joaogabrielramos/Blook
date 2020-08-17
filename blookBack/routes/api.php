@@ -35,7 +35,7 @@ Route::GROUP(['middleware'=>'auth:api'], function (){
     Route::DELETE('deleteBook/{id}','BookController@deleteBook');
 
     //ROTAS DE POST
-    Route::POST('createPost','PostController@createPost');
+    Route::POST('createPost/{user_id}','PostController@createPost');
     Route::PUT('updatePost/{id}','PostController@updatePost');
     Route::DELETE('deletePost/{id}','PostController@deletePost');
 

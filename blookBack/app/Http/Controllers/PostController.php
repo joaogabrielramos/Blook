@@ -14,10 +14,12 @@ use App\Http\Resources\Posts as PostResource;
 
 class PostController extends Controller
 {
-    public function createPost(PostRequest $request)
+
+    public function createPost(PostRequest $request, $user_id)
     {
         $post = new Post();
         $post->createPost($request);
+        $post->addUser($post->id, $user_id);
         return response()->json($post);
     }
 
@@ -54,22 +56,6 @@ class PostController extends Controller
 
         Post::destroy($post->id);
         return response()->json(['Post deletado']);
-    }
-
-    public function addUser($id, $user_id){
-        $post = Post::findOrFail($id);
-        $user = User::findOrFail($user_id);
-        $post->user_id = $user_id;
-        $post->save();
-        return response()->json($post);
-    }
-
-    public function removeUser($id, $user_id){
-        $post = Post::findOrFail($id);
-        $user = User::findOrFail($user_id);
-        $post->user_id = NULL;
-        $post->save();
-        return response()->json($post);
     }
 
     public function addBook($id, $book_id){
