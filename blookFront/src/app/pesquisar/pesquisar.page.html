@@ -7,6 +7,7 @@
   <div class="slides">
     <ion-slides mode="ios" scrollbar="false" pager="false">
       <ion-slide>
+        <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
         <ion-chip color="primary" mode="ios" >
           <ion-label>Romance</ion-label>
         </ion-chip>
@@ -16,10 +17,12 @@
         <ion-chip color="success" mode="ios" >
           <ion-label>Fantasia</ion-label>
         </ion-chip>
-
+        <ion-icon slot="start" name="chevron-forward-outline"></ion-icon>
       </ion-slide>
 
       <ion-slide>
+        <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+
         <ion-chip color="warning" mode="ios">
           <ion-label>Comédia</ion-label>
         </ion-chip>
@@ -41,8 +44,10 @@
 
 <!-- Barra de pesquisa -->
 <div class="searchBar">
-  <ion-searchbar placeholder="Pesquisar" inputmode="decimal" type="text" [debounce]="250" ></ion-searchbar>
+  <ion-searchbar placeholder="Pesquisar" [(ngModel)]="queryText" (ionInput)="filterUser($event)" ></ion-searchbar>
 </div>
+
+
 
 
 <!-- Botão pra alternar a lista (Usuário,Livros e Resenhas) -->
@@ -59,6 +64,17 @@
     </ion-segment-button>
   </ion-segment>
 </div>
+
+
+<ion-list>
+  
+  <ion-item lines='none' *ngFor="let user of users">
+  
+    <h3>{{user.name}}</h3>
+  
+  </ion-item>
+    
+  </ion-list>
 </ion-content>
 
 <!-- TabMenu -->
