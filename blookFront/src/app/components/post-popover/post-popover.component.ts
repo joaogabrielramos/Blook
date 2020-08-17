@@ -1,5 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { PopoverController } from '@ionic/angular';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
+
+/* Services */
+import { PostService } from "../../services/post/post.service";
 
 @Component({
   selector: 'app-post-popover',
@@ -8,12 +13,40 @@ import { PopoverController } from '@ionic/angular';
 })
 export class PostPopoverComponent implements OnInit {
 
-  constructor(public popoverController: PopoverController) { }
+
+  @Input() post;
+  
+
+  constructor(
+    public popoverController: PopoverController,
+    public router: Router,
+    private route: ActivatedRoute,
+    public postService: PostService) {
+      /* this.route.params.subscribe(
+        (params) => {
+          this.postId = params.postId;
+          console.log(this.postId);
+        }) */
+    }
 
   ngOnInit() {}
 
   close() {
     this.popoverController.dismiss();
+    localStorage.removeItem('id');
   }
 
+
+  /* Integração */
+  deletePost() {
+    this.postService.deletePost(localStorage.getItem('id')).subscribe(
+      (res) => {
+        this.close();
+        this.router.navigate(['/feed']);
+        console.log('post deletado');
+      }, (err) => {
+        console.log(err);
+      }
+    );
+    }
 }

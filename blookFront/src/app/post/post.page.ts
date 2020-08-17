@@ -5,16 +5,10 @@ import { ActivatedRoute } from '@angular/router';
 
 /* Services */
 import { PostService } from "./../services/post/post.service";
-import { PopoverController } from '@ionic/angular';
-import { PostPopoverComponent } from '../components/post-popover/post-popover.component';
 
-class Post {
-  photoUser: string;
-  user: string;
-  title: string;
-  photoPost: string;
-  text: string; 
-}
+import { PopoverController } from '@ionic/angular';
+
+import { PostPopoverComponent } from '../components/post-popover/post-popover.component';
 
 class Comment {
   photo: string;
@@ -30,7 +24,8 @@ class Comment {
 export class PostPage implements OnInit {
   
   /* Variáveis */
-  posts: Post[];
+  post = [];
+  user = [];
   comments: Comment[];
   postId: any;
 
@@ -54,7 +49,8 @@ export class PostPage implements OnInit {
       this.route.params.subscribe(
         (params) => {
           this.postId = params.postId;
-          console.log(this.postId);});
+          console.log(this.postId);
+        });
     }
 
     /*Função popover de opções do post */
@@ -62,6 +58,7 @@ export class PostPage implements OnInit {
       const popover = await this.popoverController.create({
         component: PostPopoverComponent, event
       });
+      localStorage.setItem("id", this.postId);
       return await popover.present();
     }
 
@@ -69,7 +66,10 @@ export class PostPage implements OnInit {
     showPost(id) {
       this.postService.showPost(id).subscribe(
         (res) => {
-          console.log(res);
+          this.post = res.post;
+          this.user = res.user;
+          console.log(this.post);
+          console.log(this.user);
         }, (err) => {
           console.log(err);
         }
@@ -88,15 +88,7 @@ export class PostPage implements OnInit {
 
     
   ngOnInit() {
-    this.posts = [
-      {
-        photoUser:"https://img.cancaonova.com/cnimages/canais/uploads/sites/6/2018/03/formacao_1600x1200-como-a-presenca-da-mulher-pode-ser-harmonia-no-mundo.jpg",
-        user:"Lorem",
-        title: "A menina que roubava livros",
-        photoPost:"https://i.zst.com.br/images/livros-na-black-friday-2019-confira-nossas-apostas-photo946164244-44-1a-2f.jpg",
-        text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consequat vel ligula eget ultricies. Duis eu mattis ligula. Quisque lobortis risus tortor, ut pulvinar lectus mattis vel. Duis cursus elementum posuere. Phasellus egestas ut mauris at maximus. Vestibulum fermentum vel leo non bibendum. Nullam vestibulum efficitur ipsum id molestie.Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus felis quam, pretium id lorem quis, aliquam posuere turpis. Cras in placerat risus. Aliquam sit amet erat quis nunc eleifend tincidunt. Vestibulum viverra mi eget nibh volutpat, sed imperdiet nisl pretium. Aliquam posuere lacus id lectus scelerisque, eu condimentum neque accumsan. Quisque nec eros in sapien elementum pellentesque. Proin vulputate sodales urna. Fusce viverra quis purus eu eleifend. Aenean vel sollicitudin augue, vel suscipit magna. Nullam convallis tristique nibh, sodales venenatis mi tincidunt in. Sed rhoncus gravida nisl. Phasellus sed leo lorem.Proin laoreet massa gravida scelerisque maximus. Vestibulum volutpat finibus purus vitae dignissim. Donec eleifend aliquet justo, et venenatis felis porta quis. Duis efficitur eget neque et vestibulum. Aliquam in interdum nulla. Sed egestas, elit ac rutrum viverra, est risus ultricies quam, vel porta dolor nunc eu ante. Suspendisse ut mattis metus. Sed leo est, dignissim sed ante et, efficitur blandit ante.Nunc auctor tempor ultrices. Praesent et sodales augue. Sed sit amet ante in turpis blandit vulputate a feugiat arcu. Sed scelerisque laoreet quam, a tincidunt dui ornare rutrum. Nam tortor risus, aliquam ac ligula consectetur, finibus convallis felis. Aliquam eu sem facilisis massa faucibus venenatis. Vivamus molestie, ipsum quis interdum tempor, risus nunc ullamcorper eros, ut molestie mauris libero non nisi. Aenean maximus quam nec augue pulvinar, vitae gravida velit aliquam. Donec condimentum elit vel velit bibendum, sit amet rutrum odio auctor. Maecenas vitae eleifend dui. Cras molestie nulla justo, nec vulputate metus eleifend et. Proin felis arcu, porta sed ante et, laoreet blandit ante. Aenean molestie vitae lorem sit amet venenatis. Quisque efficitur pretium est, in vestibulum dolor consequat quis. Suspendisse ultricies nibh et molestie ornare. Fusce vitae dapibus ligula.'
-      }
-    ];
+    this.showPost(this.postId);
     
     this.comments = [
       {

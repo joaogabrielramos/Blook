@@ -1,14 +1,14 @@
 <app-header></app-header>
 
 <ion-content>
-  <div *ngFor="let post of posts">
+  <div>
     
     <div class="top">
       <div class="avatar">
         <ion-avatar>
-          <img [src]="post.photoUser" alt="foto do usuário que fez o post">
+          <img src="{{user.profile_pic}}" alt="foto do usuário que fez o post">
         </ion-avatar>      
-        <ion-label>{{ post.user }}</ion-label>
+        <ion-label>{{ user.name }}</ion-label>
       </div>
 
       <ion-button fill="clear" (click)="presentPopover($event)">
@@ -20,7 +20,7 @@
       <h2>
         {{ post.title }}
       </h2>
-      <img [src]="post.photoPost">
+      <img src="{{post.image}}">
       <p> {{ post.text }}</p>
     </div>
   </div>
@@ -47,9 +47,9 @@
     </form>
   </div>
 
-  <div class="commentText" *ngFor="let comment of comments" >
+ <!--  <div class="commentText" *ngFor="let comment of comments" >
     <app-comment [comment]="comment"></app-comment>
-  </div>
+  </div> -->
   
 </ion-content>
 
