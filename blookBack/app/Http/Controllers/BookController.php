@@ -10,11 +10,10 @@ use Illuminate\Support\Facades\Storage;
 
 class BookController extends Controller
 {
-    public function createBook(BookRequest $request, $user_id)
+    public function createBook(BookRequest $request)
     {
         $book = new Book();
         $book->createBook($request);
-        $book->addUser($book->id, $user_id);
         return response()->json($book);
     }
 

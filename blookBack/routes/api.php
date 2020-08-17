@@ -30,12 +30,12 @@ Route::GROUP(['middleware'=>'auth:api'], function (){
     Route::DELETE('deleteUser/{id}','UserController@deleteUser');
 
     //ROTAS DE LIVRO
-    Route::POST('createBook/{user_id}','BookController@createBook');
+    Route::POST('createBook','BookController@createBook');
     Route::PUT('updateBook/{id}','BookController@updateBook');
     Route::DELETE('deleteBook/{id}','BookController@deleteBook');
 
     //ROTAS DE POST
-    Route::POST('createPost/{user_id}','PostController@createPost');
+    Route::POST('createPost','PostController@createPost');
     Route::PUT('updatePost/{id}','PostController@updatePost');
     Route::DELETE('deletePost/{id}','PostController@deletePost');
 
