@@ -67,7 +67,7 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User');
     }
 
-    public function followed() // usuarios que sigo
+    public function following() // usuarios que sigo
     {
         return $this->belongsToMany('App\User');
     }

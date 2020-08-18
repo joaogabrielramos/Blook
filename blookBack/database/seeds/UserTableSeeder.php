@@ -14,8 +14,8 @@ class UserTableSeeder extends Seeder
         factory (App\User::class,20)->create()->each(function ($user) {
             $book = factory(App\Book::class, 2)->make();
             $post = factory(App\Post::class, 2)->make();
-            $user->registerBooks()->saveMany($book);
-            $user->createPosts()->saveMany($post);
+            $user->registredBooks()->saveMany($book);
+            $user->createdPosts()->saveMany($post);
         });
     }
 }
