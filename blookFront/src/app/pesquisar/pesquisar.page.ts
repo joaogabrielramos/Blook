@@ -12,7 +12,6 @@ import { clear } from 'console';
   styleUrls: ['./pesquisar.page.scss'],
 })
 export class PesquisarPage implements OnInit {
-  apiURL:string = 'http://localhost:8000/api/';
     users:Array<{name:String}>;
     queryText:string;
     allUsers:any;
@@ -20,27 +19,19 @@ export class PesquisarPage implements OnInit {
     posts=[]
     allPosts:any;
     
+    auth=localStorage.getItem('userToken')!==null;
 
-  constructor(public searchService:SearchService) {
+  constructor(public searchService: SearchService) {
     this.queryText='';
     
-     
-    
-    this.allUsers = this.users
-    this.allPosts = this.posts
-    
-   
-   
-
-  
+    this.allUsers = this.users;
+    this.allPosts = this.posts;
     
   }
 
   ngOnInit() {
-    // this.listUser();
-    // this.listPost();
-    
-
+    this.listUser();
+    this.listPost();
     
   }
 
@@ -49,10 +40,11 @@ export class PesquisarPage implements OnInit {
     this.searchService.listUsers().subscribe(
       (res)=>{
         console.log(res);
-        this.users=res[0]
-        this.allUsers = res[0]
-      },(err) =>{console.log(err);}
-    );
+        this.users=res[0];
+        this.allUsers = res[0];
+      },(err) =>{
+        console.log(err);
+      });
   }
 
 
@@ -74,8 +66,8 @@ export class PesquisarPage implements OnInit {
     this.searchService.listPosts().subscribe(
       (res)=>{
         console.log(res);
-        this.posts= res[0]
-        this.allPosts=res[0]
+        this.posts= res[0];
+        this.allPosts=res[0];
         
       },(err) =>{console.log(err);}
       
@@ -90,7 +82,7 @@ export class PesquisarPage implements OnInit {
         return (post.title.toLowerCase().indexOf(val.toLowerCase())>-1)
       })
     }else{
-      this.posts = this.allPosts
+      this.posts = this.allPosts;
     }
   }
 

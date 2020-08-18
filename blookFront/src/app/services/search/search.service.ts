@@ -22,10 +22,11 @@ export class SearchService {
 
 
   listUsers(): Observable<any>{
-    return this.http.get(this.apiURL +'listUsers')
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken');
+    return this.http.get(this.apiURL + 'listUsers', this.httpHeaders);
   }
 
   listPosts():Observable<any>{
-    return this.http.get(this.apiURL+'listPosts')
+    return this.http.get(this.apiURL + 'listPosts');
   }
 }

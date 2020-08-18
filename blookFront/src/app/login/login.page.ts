@@ -31,6 +31,10 @@ loginForm:FormGroup;
     
   }
 
+  backToHome() {
+    this.router.navigate(['/feed']);
+  }
+
   async presentToast() {
     const toast = await this.toastController.create({
       message: 'Login efetuado com sucesso!',
@@ -48,7 +52,9 @@ loginForm:FormGroup;
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
         this.router.navigate(['/feed']);
-        window.location.reload();
+        if (this.router.url === '/feed') {
+          window.location.reload();
+        }
       }, (err) => {
         console.log(err);
       }

@@ -35,6 +35,10 @@ export class CadastroPage implements OnInit {
     });
   }
 
+  backToHome() {
+    this.router.navigate(['/feed']);
+  }
+
   async presentToast() {
     const toast = await this.toastController.create({
       message: 'Cadastrado com sucesso. Seja bem vinda(o)!',

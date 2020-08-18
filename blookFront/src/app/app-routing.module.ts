@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/Inbox',
+    redirectTo: 'feed',
     pathMatch: 'full'
   },
   {
@@ -35,7 +35,8 @@ const routes: Routes = [
   {
     path: 'criar-post',
     loadChildren: () => import('./criar-post/criar-post.module').then( m => m.CriarPostPageModule)
-  },  {
+  },
+  {
     path: 'popover-component',
     loadChildren: () => import('./popover-component/popover-component.module').then( m => m.PopoverComponentPageModule)
   },
