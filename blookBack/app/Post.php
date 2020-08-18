@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Http\Request;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Storage;
 use App\User;
@@ -16,9 +17,14 @@ class Post extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function book() // cadastrar livros
+    public function book() // livro relativo ao post
     {
         return $this->belongsTo('App\Book');
+    }
+
+    public function comments() // comentarios relativos ao post
+    {
+        return $this->hasMany('App\Comment');
     }
 
     public function createPost(PostRequest $request)
@@ -45,7 +51,7 @@ class Post extends Model
         $this->save();
     }
 
-    public function updatePost(PostRequest $request, $id)
+    public function updatePost(Request $request)
     {
         if ($request->title)
             $this->title = $request->title;
@@ -57,7 +63,7 @@ class Post extends Model
             if (!Storage::exists('localPostImages/'))
                 Storage::makeDirectory('localPostImages/', 0775, true);
 
-            $post = Post::find($id);
+            $post = Post::find($this->id);
             if ($post->image)
                 Storage::delete($post->image);
 

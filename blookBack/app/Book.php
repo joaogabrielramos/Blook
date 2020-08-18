@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Http\Requests\BookRequest;
 use Illuminate\Support\Facades\Storage;
 use App\User;
+use Auth;
 
 
 class Book extends Model
@@ -15,7 +16,7 @@ class Book extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function favoriteUsers() // Usuários que favoritaram o livro
+    public function users() // Usuários que favoritaram o livro
     {
         return $this->belongsToMany('App\User');
     }
@@ -27,6 +28,8 @@ class Book extends Model
 
     public function createBook(BookRequest $request)
     {
+        $user = Auth::user();
+        $this->user_id = $user->id;
         $this->name = $request->name;
         $this->author = $request->author;
         $this->text = $request->text;
