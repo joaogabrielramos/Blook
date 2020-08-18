@@ -9,7 +9,7 @@
     </ion-button>
     <!-- Botão de publicar -->
     <form [formGroup]="postForm" (ngSubmit) = "createPost(postForm)">
-      <ion-button class="submit" type="submit" [disabled]="postForm.invalid"> 
+      <ion-button class="submit" type="submit" [disabled]="postForm.invalid" (click)="presentToast()"> 
         Publicar
       </ion-button>
     </form>

@@ -36,7 +36,7 @@ export class CadastroPage implements OnInit {
 
   async presentToast() {
     const toast = await this.toastController.create({
-      message: 'Registrado com sucesso!',
+      message: 'Cadastrado com sucesso. Seja bem vinda(o)!',
       duration: 2000,
       color:"dark"
     });
@@ -51,6 +51,7 @@ export class CadastroPage implements OnInit {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
         this.router.navigate(['/feed']);
+        window.location.reload();
       }, (err) => {
         console.log(err);
       }

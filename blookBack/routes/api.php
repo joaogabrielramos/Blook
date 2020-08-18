@@ -28,6 +28,7 @@ Route::GROUP(['middleware'=>'auth:api'], function (){
     Route::GET('getDetails', 'API\PassportController@getDetails');
     Route::PUT('updateUser/{id}','UserController@updateUser');
     Route::DELETE('deleteUser/{id}','UserController@deleteUser');
+    Route::GET('listUsers','UserController@listUsers');
 
     //ROTAS DE LIVRO
     Route::POST('createBook','BookController@createBook');
@@ -49,7 +50,7 @@ Route::GROUP(['middleware'=>'auth:api'], function (){
 //ROTAS DE USUARIO
 Route::GET('showUser/{id}','UserController@showUser');
 Route::GET('searchUserByName/{name}','UserController@searchUserByName');
-Route::GET('listUsers','UserController@listUsers');
+
 Route::POST('createUser','UserController@createUser');
 
 
@@ -76,7 +77,7 @@ Route::PUT('removeBook/{id}/{book_id}', 'PostController@removeBook');
 
 //ROTAS DE COMENTÁRIO
 Route::GET('showComment/{id}','CommentController@showComment');
-Route::GET('listComments','CommentController@listComments');
+Route::GET('listComments/{post_id}','CommentController@listComments');
 
 Route::PUT('addUser/{id}/{user_id}', 'CommentController@addUser');
 Route::PUT('removeUser/{id}/{user_id}', 'CommentController@removeUser');

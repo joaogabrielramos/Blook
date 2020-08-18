@@ -33,7 +33,7 @@ loginForm:FormGroup;
 
   async presentToast() {
     const toast = await this.toastController.create({
-      message: 'Logado com sucesso!',
+      message: 'Login efetuado com sucesso!',
       duration: 2000,
       color:"dark"
     });
@@ -48,6 +48,7 @@ loginForm:FormGroup;
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
         this.router.navigate(['/feed']);
+        window.location.reload();
       }, (err) => {
         console.log(err);
       }

@@ -4,6 +4,9 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
+/*Toast*/
+import { ToastController } from '@ionic/angular';
+
 /* Services */
 import { PostService } from "./../services/post/post.service";
 
@@ -25,6 +28,7 @@ export class CriarPostPage implements OnInit {
     private sanitizer: DomSanitizer,
     public formbuilder:FormBuilder,
     public postService: PostService,
+    public toastController :ToastController,
     public router: Router ) { 
     this.postForm = this.formbuilder.group(
       {
@@ -41,6 +45,7 @@ export class CriarPostPage implements OnInit {
 
   ngOnInit() {}
 
+  
   /* Integração Post */
   createPost(form) {
       console.log(form);
@@ -57,6 +62,15 @@ export class CriarPostPage implements OnInit {
     )
   }
   
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Seu post foi publicado com sucesso!',
+      duration: 2000,
+      color:"dark"
+    });
+    toast.present();
+  }
+
   /*   Função upload câmera capacitor */
   async takePicture() {
     const image = await Plugins.Camera.getPhoto({

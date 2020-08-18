@@ -80,7 +80,7 @@
 
   <div class="comment" *ngIf = "auth">
     
-    <form [formGroup]="commentForm" (ngSubmit)="submitForm(commentForm)">
+    <form [formGroup]="commentForm" (ngSubmit)="createComment(commentForm)">
       <ion-item lines="none">
         <ion-textarea rows="1" type="text" placeholder="Escreva seu comentário" formControlName="text"></ion-textarea>
       </ion-item>

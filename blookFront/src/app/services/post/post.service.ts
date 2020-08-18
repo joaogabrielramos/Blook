@@ -37,6 +37,11 @@ export class PostService {
     return this.http.get(this.apiURL + 'showPost/' + id);
   }
 
+  createComment(form): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken');
+    return this.http.post(this.apiURL + 'createComment/', form, this.httpHeaders);
+  }
+  
   listPostCards(): Observable<any> {
     return this.http.get(this.apiURL + 'listPostCards');
   }

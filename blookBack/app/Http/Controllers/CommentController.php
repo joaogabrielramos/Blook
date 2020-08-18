@@ -30,10 +30,10 @@ class CommentController extends Controller
         return response()->json($comment);
     }
 
-    public function listComments()
+    public function listComments($post_id)
     {
-        $comment = Comment::all();
-        return response()->json([$comment]);
+        $comments = Comment::where('post_id', '=', $post_id)->get();
+        return response()->json([$comments]);
     }
 
     public function deleteComment($id)
