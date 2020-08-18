@@ -69,8 +69,7 @@ class UserController extends Controller
         $follower = Auth::user();
         $followed = User::findOrFail($id);
 
-        $follow = Follow::where('follower', '=', $follower->id)->get();
-
+        $follow = Follow::where('follower', '=', $follower->id)->where('followed', '=', $followed->id)->get();
         $follow->delete();
 
         return response()->json($follow, 200);
@@ -79,7 +78,6 @@ class UserController extends Controller
     public function getfollowers($id)
     {
         $user = User::findOrFail($id);
-
         return response()->json($user->followers());
     }
 
