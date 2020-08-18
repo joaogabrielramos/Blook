@@ -11,7 +11,7 @@
         <ion-label>{{ user.name }}</ion-label>
       </div>
 
-      <ion-button fill="clear" (click)="presentPopover($event)" *ngIf = "auth">
+      <ion-button fill="clear" (click)="presentPopover($event)" *ngIf = "userId==postUserId">
         <ion-icon slot="end" size="large" name="ellipsis-horizontal-outline"></ion-icon>
       </ion-button>
     </div>
@@ -25,7 +25,7 @@
     </div>
   </div>
 
-  <form [formGroup]="updateForm" (ngSubmit)="submitForm(updateForm)" *ngIf="isUser">
+  <form [formGroup]="updateForm" (ngSubmit)="submitForm(updateForm)" *ngIf="editMode">
   
     <div class="radios">
         <ion-radio-group mode="md" value="postLivre" formControlName="post_type">

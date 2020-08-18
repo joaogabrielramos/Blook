@@ -38,6 +38,14 @@ const routes: Routes = [
   },  {
     path: 'popover-component',
     loadChildren: () => import('./popover-component/popover-component.module').then( m => m.PopoverComponentPageModule)
+  },
+  {
+    path: 'perfil',
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+  },
+  {
+    path: 'pesquisar',
+    loadChildren: () => import('./pesquisar/pesquisar.module').then( m => m.PesquisarPageModule)
   }
 
 ];

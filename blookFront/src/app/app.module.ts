@@ -11,8 +11,12 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
 
+
+
 import { PopoverComponentPageModule } from './popover-component/popover-component.module';
 import { PopoverComponentPage } from './popover-component/popover-component.page';
+
+
 
 
 @NgModule({
@@ -23,7 +27,8 @@ import { PopoverComponentPage } from './popover-component/popover-component.page
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
-    PopoverComponentPageModule
+    PopoverComponentPageModule,
+  
   ],
   providers: [
     StatusBar,

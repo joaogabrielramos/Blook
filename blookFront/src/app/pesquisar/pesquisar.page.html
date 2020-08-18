@@ -1,0 +1,81 @@
+<!-- Header -->
+<app-header></app-header>
+
+<ion-content>
+
+  <!-- Slide de gêneros de livro -->
+  <div class="slides">
+    <ion-slides mode="ios" scrollbar="false" pager="false">
+      <ion-slide>
+        <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+        <ion-chip color="primary" mode="ios" >
+          <ion-label>Romance</ion-label>
+        </ion-chip>
+        <ion-chip color="secondary" mode="ios" >
+          <ion-label>Ficção</ion-label>
+        </ion-chip>
+        <ion-chip color="success" mode="ios" >
+          <ion-label>Fantasia</ion-label>
+        </ion-chip>
+        <ion-icon slot="start" name="chevron-forward-outline"></ion-icon>
+      </ion-slide>
+
+      <ion-slide>
+        <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+
+        <ion-chip color="warning" mode="ios">
+          <ion-label>Comédia</ion-label>
+        </ion-chip>
+        <ion-chip color="danger" mode="ios" >
+          <ion-label>Terror</ion-label>
+        </ion-chip>
+        <ion-chip color="medium" mode="ios" >
+          <ion-label>Suspense</ion-label>
+        </ion-chip>
+        
+      </ion-slide>
+    </ion-slides>
+
+
+
+  </div>
+
+
+
+<!-- Barra de pesquisa -->
+<div class="searchBar">
+  <ion-searchbar placeholder="Pesquisar" [(ngModel)]="queryText" (ionInput)="filterUser($event)" ></ion-searchbar>
+</div>
+
+
+
+
+<!-- Botão pra alternar a lista (Usuário,Livros e Resenhas) -->
+<div class="segment">
+  <ion-segment value="search">
+    <ion-segment-button value="user">
+      <ion-label>Usuário</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="Post">
+      <ion-label>Posts</ion-label>
+    </ion-segment-button>
+    <ion-segment-button value="resenha">
+      <ion-label>Resenhas</ion-label>
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+
+<ion-list>
+  
+  <ion-item lines='none' *ngFor="let user of users">
+  
+    <h3>{{user.name}}</h3>
+  
+  </ion-item>
+    
+  </ion-list>
+</ion-content>
+
+<!-- TabMenu -->
+<app-tabmenu></app-tabmenu>

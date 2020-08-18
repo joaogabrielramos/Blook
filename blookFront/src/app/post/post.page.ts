@@ -29,9 +29,8 @@ export class PostPage implements OnInit {
   user = [];
   comments: Comment[];
   postId: any;
-
-  auth = localStorage.getItem("userToken")!==null;
-  isUser = false;
+  userId = -2;
+  postUserId = -1;
 
   commentForm: FormGroup;
   updateForm: FormGroup;
@@ -67,12 +66,23 @@ export class PostPage implements OnInit {
         });
     }
 
+    callGetDetails() {
+      this.authService.getDetails().subscribe(
+        (res) => {
+          this.userId = res.success.id;
+          console.log('user', res);
+        }, (err) => {
+          console.log(err);
+        }
+      )
+    }
+
     /*Função popover de opções do post */
     async presentPopover(event) {
       const popover = await this.popoverController.create({
         component: PostPopoverComponent, event
       });
-      localStorage.setItem("id", this.postId);
+      localStorage.setItem("post_id", this.postId);
       return await popover.present();
     }
 
@@ -82,27 +92,30 @@ export class PostPage implements OnInit {
         (res) => {
           this.post = res.post;
           this.user = res.user;
+          this.postUserId = res.user.id;
           console.log(this.post);
-          console.log(this.user);
+          console.log('post', this.user);
         }, (err) => {
           console.log(err);
         }
       );
     }
 
-    /* updatePost(form) {
-      this.postService.updatePost(, form.value).subscribe(
+    updatePost(form) {
+      this.postService.updatePost(this.postId, form.value).subscribe(
         (res) => {
+          this.editMode = true;
           console.log(res);
         }, (err) => {
           console.log(err);
         }
       );
-    } */
+    }
 
     
   ngOnInit() {
     this.showPost(this.postId);
+    this.callGetDetails();
     
     this.comments = [
       {

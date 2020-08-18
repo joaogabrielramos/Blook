@@ -15,10 +15,10 @@ use App\Http\Resources\Posts as PostResource;
 class PostController extends Controller
 {
 
-    public function createPost(PostRequest $request, $post_id)
+    public function createPost(PostRequest $request)
     {
         $post = new Post();
-        $post->createPost($request, $post_id);
+        $post->createPost($request);
         return response()->json($post);
     }
 
@@ -31,8 +31,8 @@ class PostController extends Controller
 
     public function showPost($id)
     {
-        $post = Post::find($id);
-        $user = User::find($post->user_id);
+        $post = Post::findOrFail($id);
+        $user = User::findOrFail($post->user_id);
 
         return response()->json([
             'post' => $post,

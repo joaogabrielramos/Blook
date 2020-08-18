@@ -1,0 +1,60 @@
+<!-- Header -->
+<app-header></app-header>
+
+<ion-content>
+<!-- Parte do perfil do Usuário -->
+<div class="perfil">
+
+
+    <ion-avatar>
+        <img [src]="image" alt="Foto de perfil" />
+    </ion-avatar>
+    
+    <h4>Nome</h4>
+    <p>Descrição</p>
+    
+    <ion-button   fill='outline' >
+        Seguir
+    </ion-button>
+    
+
+</div>
+
+<!-- Atividade do Usuário  -->
+
+<div class="atividade">
+
+    <h3>2</h3>
+    <h5>posts</h5>
+
+    <h3>2</h3>
+    <h5>livros</h5>
+
+    <h3>2</h3>
+    <h5>seguidores</h5>
+
+    <h3>2</h3>
+    <h5>seguindo</h5>
+
+
+</div>
+<!-- Botão pra selecionar conteúdo postado do Usuário -->
+<div class="tipoConteudo">
+
+    <ion-segment value="perfilSegment">
+        <ion-segment-button value="post">
+            <ion-label>Posts</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="book">
+            <ion-label>Livros</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
+
+</div>
+
+
+</ion-content>
+
+<!-- TabMenu -->
+<app-tabmenu></app-tabmenu>

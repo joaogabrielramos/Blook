@@ -25,7 +25,7 @@ Route::POST('login', 'API\PassportController@login');
 Route::GROUP(['middleware'=>'auth:api'], function (){
     //ROTAS DE USUARIO
     Route::GET('logout', 'API\PassportController@logout');
-    Route::POST('getDetails', 'API\PassportController@getDetails');
+    Route::GET('getDetails', 'API\PassportController@getDetails');
     Route::PUT('updateUser/{id}','UserController@updateUser');
     Route::DELETE('deleteUser/{id}','UserController@deleteUser');
 

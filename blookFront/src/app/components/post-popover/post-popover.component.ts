@@ -13,6 +13,7 @@ import { PostService } from "../../services/post/post.service";
 })
 export class PostPopoverComponent implements OnInit {
 
+  editMode:boolean = false;
 
   @Input() post;
   
@@ -33,13 +34,13 @@ export class PostPopoverComponent implements OnInit {
 
   close() {
     this.popoverController.dismiss();
-    localStorage.removeItem('id');
+    localStorage.removeItem('post_id');
   }
 
 
   /* Integração */
   deletePost() {
-    this.postService.deletePost(localStorage.getItem('id')).subscribe(
+    this.postService.deletePost(localStorage.getItem('post_id')).subscribe(
       (res) => {
         this.close();
         this.router.navigate(['/feed']);
@@ -48,5 +49,10 @@ export class PostPopoverComponent implements OnInit {
         console.log(err);
       }
     );
-    }
+  }
+
+  toggleEdit(id){ 
+    this.editMode = true;
+    console.log(id);
+  }
 }
