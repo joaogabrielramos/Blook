@@ -32,10 +32,10 @@ export class CriarPostPage implements OnInit {
     public router: Router ) { 
     this.postForm = this.formbuilder.group(
       {
-      post_type:[null,[Validators.required]],
+      post_type:["postLivre",[Validators.required]],
       text:[null,[Validators.required]],
       title:[null],
-      image:[null],
+      image:[],
     })
 
     this.avatar = {

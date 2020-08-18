@@ -53,7 +53,7 @@ export class PostPage implements OnInit {
         post_type:['postLivre', [Validators.required]],
         text:[null,[Validators.required]],
         title:[null],
-        image:[null],
+        image:[],
       })
 
       this.route.params.subscribe(
@@ -129,7 +129,7 @@ export class PostPage implements OnInit {
     this.commentService.listComments(this.postId).subscribe(
       (res) => {
         console.log(res);
-        this.comments=res.comments;
+        this.comments=res;
       }, (err) => {
         console.log(err);
       }

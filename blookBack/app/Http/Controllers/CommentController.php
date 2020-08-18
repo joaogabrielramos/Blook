@@ -7,6 +7,7 @@ use App\Comment;
 use App\Http\Requests\CommentRequest;
 use App\User;
 use App\Post;
+use App\Http\Resources\Comments as CommentResource;
 
 class CommentController extends Controller
 {
@@ -33,7 +34,7 @@ class CommentController extends Controller
     public function listComments($post_id)
     {
         $comments = Comment::where('post_id', '=', $post_id)->get();
-        return response()->json([$comments]);
+        return response()->json(CommentResource::collection($comments));
     }
 
     public function deleteComment($id)

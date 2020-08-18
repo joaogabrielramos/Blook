@@ -5,9 +5,9 @@
      
       <div class="user">
         <ion-avatar>
-          <img [src]="comment.photo" alt="foto do usuário que fez o comentário"/>
+          <img [src]="comment.user.profile_pic" alt="foto do usuário que fez o comentário"/>
         </ion-avatar>
-        <ion-label>{{ comment.user }}</ion-label>
+        <ion-label>{{ comment.user.name }}</ion-label>
       </div>
 
       <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
