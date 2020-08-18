@@ -2,6 +2,32 @@ ion-content {
     --background: var(--cinza-claro);
 }
 
-ion-toolbar { 
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.10);
+h2 {
+    font-family: var(--ubuntu);
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--marrom);
+
+    margin: 5% 5% 2%;
 }
+
+h4 {
+    font-family: var(--montserrat);
+    font-size: 1em;
+    color: var(--marrom);
+
+    margin: 0% 5% 5%;
+}
+
+ion-segment {
+    font-family: var(--ubuntu);
+}
+
+.cards {
+    display: flex;
+    flex-direction: column-reverse;
+    
+    margin-bottom: 0%;
+}
+
+

@@ -3,7 +3,6 @@ import _ from 'lodash';
 
 /* Services */
 import { SearchService } from '../services/search/search.service';
-import { clear } from 'console';
 
 
 @Component({
@@ -21,6 +20,8 @@ export class PesquisarPage implements OnInit {
     
     auth=localStorage.getItem('userToken')!==null;
 
+    userSearchMode: boolean = false;
+
   constructor(public searchService: SearchService) {
     this.queryText='';
     
@@ -35,6 +36,9 @@ export class PesquisarPage implements OnInit {
     
   }
 
+  toggleModesOfSearch(){
+      this.userSearchMode = true;
+  }
 
   listUser(){
     this.searchService.listUsers().subscribe(
@@ -46,7 +50,6 @@ export class PesquisarPage implements OnInit {
         console.log(err);
       });
   }
-
 
 
   filterUser(us:any){
@@ -68,6 +71,7 @@ export class PesquisarPage implements OnInit {
         console.log(res);
         this.posts= res[0];
         this.allPosts=res[0];
+        this.userSearchMode = false;
         
       },(err) =>{console.log(err);}
       

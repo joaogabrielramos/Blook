@@ -5,7 +5,7 @@
   <h2> Olá! </h2>
   <h4> O que você quer ler hoje? </h4>
 
-  <ion-segment *ngIf="auth" value="todos">
+  <ion-segment mode="md" *ngIf="auth" value="todos">
     <ion-segment-button value="todos">
       <ion-label>Todos</ion-label>
     </ion-segment-button>
@@ -14,13 +14,15 @@
     </ion-segment-button>
   </ion-segment>
 
+  <div class="cards">
     <app-feed-card *ngFor="let feedPost of feedPosts" [feedPost]="feedPost"></app-feed-card>
+  </div>
 
-    <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf="auth">
-      <ion-fab-button color="primary" routerLink="/criar-post">
-        <ion-icon name="pencil-outline"></ion-icon>
-      </ion-fab-button>
-    </ion-fab>
+  <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf="auth">
+    <ion-fab-button color="primary" routerLink="/criar-post">
+      <ion-icon name="pencil-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
 
 <app-tabmenu></app-tabmenu>

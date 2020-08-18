@@ -3,17 +3,17 @@
   <div class="userPost">
     
     <div class="user">
-      <ion-avatar>
+      <ion-avatar size="large">
         <img [src]="feedPost.user.profile_pic" alt="foto do usuário que fez o post"/>
       </ion-avatar>
       <ion-label>{{ feedPost.user.name }}</ion-label>
     </div>
 
-    <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+    <ion-icon size="large" name="ellipsis-horizontal-outline"></ion-icon>
     
   </div>
-
-  <h2>{{ feedPost.title }}</h2>
-  <p> {{ feedPost.text }} </p>
-
+  <div class="content">
+    <h2>{{ feedPost.title }}</h2>
+    <p> {{ feedPost.text }} </p>
+  </div>
 </ion-card>

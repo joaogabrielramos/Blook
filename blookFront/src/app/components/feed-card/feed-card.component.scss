@@ -1,0 +1,53 @@
+ion-card {
+    --background: var(--amarelo);
+    margin-bottom: 0%;
+}
+
+.userPost {
+    margin: 3% 5%;
+
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.userPost .user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+.user ion-label {
+    font-family: var(--ubuntu);
+    font-size: 1em;
+    font-weight: 500;
+    color: black;
+
+    margin-left: 8%;
+}
+
+ion-icon {
+    color: var(--marrom);
+}
+
+.content {
+    margin: 3% 5%;
+}
+
+.content h2{
+    font-family: var(--ubuntu);
+    font-weight: bolder;
+    font-size: 1.5em;
+    color: black;
+}
+
+.content p {
+    font-family: var(--montserrat);
+    font-size: 1em;
+    text-align: justify;
+    color: black;
+    
+    margin-top: 3%;
+}

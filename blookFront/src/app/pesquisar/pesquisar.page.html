@@ -52,32 +52,35 @@
 
   <!-- Botão pra alternar a lista (Usuário,Livros e Resenhas) -->
   <div class="segment">
-    <ion-segment value="search">
-      <ion-segment-button value="user" (click)='listUser()'>
-        <ion-label>Usuário</ion-label>
+    <ion-segment mode="md" value="post">
+      <ion-segment-button value="user" *ngIf="auth" (click)="toggleModesOfSearch()">
+        <ion-label>Usuários</ion-label>
       </ion-segment-button>
-      <ion-segment-button value="Post" (click)='listPost()' >
+      <ion-segment-button value="post" (click)="listPost()">
         <ion-label>Posts</ion-label>
       </ion-segment-button>
       
     </ion-segment>
   </div>
 
-
+  <div *ngIf="userSearchMode">
     <ion-list *ngIf="auth">
-      <ion-item lines='none' *ngFor="let user of users" >
+      <ion-item lines='none' *ngFor="let user of users">
       
         <h3>{{user.name}}</h3>
       
       </ion-item>
     </ion-list>
-
+  </div>
+  
+  <div *ngIf="!userSearchMode">
     <ion-card *ngFor="let post of posts">
       <ion-card-title>{{post.title}}</ion-card-title>
       <ion-card-content>
         {{post.text}}
       </ion-card-content>
     </ion-card>
+  </div>
   
 </ion-content>
 

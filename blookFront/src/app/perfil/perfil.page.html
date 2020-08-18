@@ -7,15 +7,20 @@
 
 
     <ion-avatar>
-        <img [src]="image" alt="Foto de perfil" />
+        <img [src]="userDetails.profile_pic" alt="Foto de perfil" />
     </ion-avatar>
     
-    <h4>Nome</h4>
-    <p>Descrição</p>
+    <h4>{{ userDetails.name }}</h4>
+    <p>"O mundo está nas mãos daqueles que têm a coragem de sonhar e de correr o risco de viver seus sonhos" <strong>Paulo Coelho</strong> </p>
+
     
-    <ion-button   fill='outline' >
+    <ion-button shape="round"  fill='outline'>
         Seguir
     </ion-button>
+    <ion-button shape="round" fill='outline'>
+        Editar perfil
+    </ion-button>
+    
     
 
 </div>
@@ -24,18 +29,25 @@
 
 <div class="atividade">
 
-    <h3>2</h3>
-    <h5>posts</h5>
+    <div>
+        <h3>2</h3>
+        <h5>posts</h5>
+    </div>
 
-    <h3>2</h3>
-    <h5>livros</h5>
+    <div>
+        <h3>2</h3>
+        <h5>livros</h5>
+    </div>
 
-    <h3>2</h3>
-    <h5>seguidores</h5>
+    <div>
+        <h3>2</h3>
+        <h5>seguidores</h5>
+    </div>
 
-    <h3>2</h3>
-    <h5>seguindo</h5>
-
+    <div>
+        <h3>2</h3>
+        <h5>seguindo</h5>
+    </div>
 
 </div>
 <!-- Botão pra selecionar conteúdo postado do Usuário -->
