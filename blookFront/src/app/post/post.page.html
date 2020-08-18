@@ -1,7 +1,7 @@
 <app-header></app-header>
 
 <ion-content>
-  <div *ngIf="!isUser">
+  <div *ngIf="!editMode">
     
     <div class="top">
       <div class="avatar">
@@ -11,9 +11,10 @@
         <ion-label>{{ user.name }}</ion-label>
       </div>
 
-      <ion-button fill="clear" (click)="presentPopover($event)" *ngIf = "userId==postUserId">
-        <ion-icon slot="end" size="large" name="ellipsis-horizontal-outline"></ion-icon>
-      </ion-button>
+      <div *ngIf = "userId==postUserId">
+          <ion-icon slot="end" size="large" name="create-outline" (click)="toggleEdit()"></ion-icon>
+          <ion-icon slot="end" size="large" name="trash-outline" (click)="deletePost()"></ion-icon>
+      </div>
     </div>
 
     <div class="post">
@@ -25,7 +26,7 @@
     </div>
   </div>
 
-  <form [formGroup]="updateForm" (ngSubmit)="submitForm(updateForm)" *ngIf="editMode">
+  <form [formGroup]="updateForm" (ngSubmit)="updatePost(updateForm)" *ngIf="editMode">
   
     <div class="radios">
         <ion-radio-group mode="md" value="postLivre" formControlName="post_type">
@@ -67,7 +68,7 @@
     <ion-button type="submit" [disabled]="updateForm.invalid"> Atualizar </ion-button>
 </form>
 
-<div *ngIf="!isUser">
+<div *ngIf="!editMode">
   <div class="action">
     <ion-icon name="heart-outline"></ion-icon>
     <ion-icon name="share-social-outline"></ion-icon>

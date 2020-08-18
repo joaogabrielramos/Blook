@@ -37,22 +37,4 @@ export class PostPopoverComponent implements OnInit {
     localStorage.removeItem('post_id');
   }
 
-
-  /* Integração */
-  deletePost() {
-    this.postService.deletePost(localStorage.getItem('post_id')).subscribe(
-      (res) => {
-        this.close();
-        this.router.navigate(['/feed']);
-        console.log('post deletado');
-      }, (err) => {
-        console.log(err);
-      }
-    );
-  }
-
-  toggleEdit(id){ 
-    this.editMode = true;
-    console.log(id);
-  }
 }

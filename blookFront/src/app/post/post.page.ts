@@ -32,6 +32,8 @@ export class PostPage implements OnInit {
   userId = -2;
   postUserId = -1;
 
+  editMode:boolean = false;
+
   commentForm: FormGroup;
   updateForm: FormGroup;
 
@@ -101,16 +103,33 @@ export class PostPage implements OnInit {
       );
     }
 
+    toggleEdit(){ 
+      this.editMode = true;
+    }
+
     updatePost(form) {
       this.postService.updatePost(this.postId, form.value).subscribe(
         (res) => {
-          this.editMode = true;
+          this.editMode = false;
           console.log(res);
         }, (err) => {
           console.log(err);
         }
       );
     }
+
+    /* Integração */
+  deletePost(id) {
+    this.postService.deletePost(this.postId).subscribe(
+      (res) => {
+        console.log(res);
+        this.router.navigate(['/feed']);
+        console.log('post deletado');
+      }, (err) => {
+        console.log(err);
+      }
+    );
+  }
 
     
   ngOnInit() {
