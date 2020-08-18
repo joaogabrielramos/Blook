@@ -8,11 +8,11 @@ class Follow extends Model
 {
     public function newFollow($follower_id, $followed_id)
     {
-        $follow = new Follow;
+        /*$follow = new Follow;
 
         $follow->follower = $follower_id;
         $follow->followed = $followed_id;
         $follow->save();
-        return response()->json($follow, 200);
+        return response()->json($follow, 200);*/
     }
 }
