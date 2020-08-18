@@ -26,8 +26,8 @@ Route::GROUP(['middleware'=>'auth:api'], function (){
     //ROTAS DE USUARIO
     Route::GET('logout', 'API\PassportController@logout');
     Route::GET('getDetails', 'API\PassportController@getDetails');
-    Route::GET('getfollowers/{id}','UserController@getfollowers');
-    Route::GET('getfollowing/{id}','UserController@getfollowing');
+    Route::GET('getFollowers/{id}','UserController@getfollowers');
+    Route::GET('getFollowing/{id}','UserController@getfollowing');
     Route::POST('followUser/{id}','UserController@followUser');
     Route::PUT('updateUser','UserController@updateUser');
     Route::DELETE('deleteUser/{id}','UserController@deleteUser');
