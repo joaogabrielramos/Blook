@@ -42,27 +42,32 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    public function registerBooks() // cadastrar livros
+    public function registredBooks() // livros cadastrados
     {
         return $this->hasMany('App\Book');
     }
 
-    public function createPosts() // criar posts
+    public function createdPosts() // posts criados
     {
         return $this->hasMany('App\Post');
     }
 
-    public function favoriteBooks() // estante de livros
+    public function comments() // comentarios
+    {
+        return $this->hasMany('App\Comment');
+    }
+
+    public function favoritedBooks() // livros favoritados (minha estante)
     {
         return $this->belongsToMany('App\Book');
     }
 
-    public function followers() // usuarios seguidores
+    public function followers() // seguidores
     {
         return $this->belongsToMany('App\User');
     }
 
-    public function followed() // usuarios seguindo
+    public function followed() // usuarios que sigo
     {
         return $this->belongsToMany('App\User');
     }

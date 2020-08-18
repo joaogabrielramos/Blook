@@ -15,14 +15,14 @@ use App\Http\Resources\Posts as PostResource;
 class PostController extends Controller
 {
 
-    public function createPost(PostRequest $request, $post_id)
+    public function createPost(PostRequest $request)
     {
         $post = new Post();
-        $post->createPost($request, $post_id);
+        $post->createPost($request);
         return response()->json($post);
     }
 
-    public function updatePost(PostRequest $request, $id)
+    public function updatePost(Request $request, $id)
     {
         $post = Post::findOrFail($id);
         $post->updatePost($request);
