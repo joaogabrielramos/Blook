@@ -29,7 +29,7 @@ Route::GROUP(['middleware'=>'auth:api'], function (){
     Route::GET('getfollowers/{id}','UserController@getfollowers');
     Route::GET('getfollowing/{id}','UserController@getfollowing');
     Route::POST('followUser/{id}','UserController@followUser');
-    Route::PUT('updateUser/{id}','UserController@updateUser');
+    Route::PUT('updateUser','UserController@updateUser');
     Route::DELETE('deleteUser/{id}','UserController@deleteUser');
 
     //ROTAS DE LIVRO
