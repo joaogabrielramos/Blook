@@ -59,11 +59,17 @@ class UserController extends Controller
         if($followed->followers->contains($follower->id))
         {
             $followed->followers()->detach($follower->id);
-            return response()->json(['Você deixou de seguir '. $followed->name]);
+            return response()->json([
+                'response' => false,
+                'message' => 'Você deixou de seguir '. $followed->name
+            ]);
         }
 
         $followed->followers()->attach($follower->id);
-        return response()->json(['Você agora está seguindo '. $followed->name]);
+        return response()->json([
+            'response' => true,
+            'message' => 'Você agora está seguindo '. $followed->name
+        ]);
     }
 
     public function getFollowers($id)
@@ -86,10 +92,16 @@ class UserController extends Controller
         if($post->users->contains($user->id))
         {
             $post->users()->detach($user->id);
-            return response()->json(['Você discurtiu esse post']);
+            return response()->json([
+                'response' => false,
+                'message' => 'Você discurtiu esse post'
+            ]);
         }
 
         $post->users()->attach($user->id);
-        return response()->json(['Você curtiu esse post']);
+        return response()->json([
+            'response' => true,
+            'message' =>'Você curtiu esse post'
+        ]);
     }
 }

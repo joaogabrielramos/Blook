@@ -28,8 +28,8 @@ Route::GROUP(['middleware'=>'auth:api'], function (){
     Route::GET('getDetails', 'API\PassportController@getDetails');
     Route::GET('getFollowers/{id}','UserController@getFollowers');
     Route::GET('getFollowing/{id}','UserController@getFollowing');
-    Route::POST('followUser/{id}','UserController@followUser');
-    Route::POST('likePost/{id}','UserController@likePost');
+    Route::GET('followUser/{id}','UserController@followUser');
+    Route::GET('likePost/{id}','UserController@likePost');
     Route::PUT('updateUser','UserController@updateUser');
     Route::DELETE('deleteUser/{id}','UserController@deleteUser');
 
