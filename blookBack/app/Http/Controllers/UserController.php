@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests\UserRequest;
 use App\User;
 use Auth;
-use App\Follow;
+use App\Post;
 
 class UserController extends Controller
 {
@@ -59,12 +59,11 @@ class UserController extends Controller
         if($followed->followers->contains($follower->id))
         {
             $followed->followers()->detach($follower->id);
-            return response()->json(['Você deixou de seguir esse usuário']);
+            return response()->json(['Você deixou de seguir '. $followed->name]);
         }
 
         $followed->followers()->attach($follower->id);
-
-        return response()->json(['seguindo']);
+        return response()->json(['Você agora está seguindo '. $followed->name]);
     }
 
     public function getFollowers($id)
@@ -77,5 +76,20 @@ class UserController extends Controller
     {
         $user = User::findOrFail($id);
         return response()->json($user->following());
+    }
+
+    public function likePost($id)
+    {
+        $user = Auth::user(); // Usuário que realiza a ação de curtir
+        $post = Post::findOrFail($id); // Post que está sendo curtido
+
+        if($post->users->contains($user->id))
+        {
+            $post->users()->detach($user->id);
+            return response()->json(['Você discurtiu esse post']);
+        }
+
+        $post->users()->attach($user->id);
+        return response()->json(['Você curtiu esse post']);
     }
 }

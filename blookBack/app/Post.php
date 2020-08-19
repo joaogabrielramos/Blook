@@ -27,6 +27,11 @@ class Post extends Model
         return $this->hasMany('App\Comment');
     }
 
+    public function users() // usuários que curtiram o post
+    {
+        return $this->belongsToMany('App\User', 'posts_users', 'post_id', 'user_id');
+    }
+
     public function createPost(PostRequest $request)
     {
         $user = Auth::user();

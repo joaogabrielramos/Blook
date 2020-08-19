@@ -72,6 +72,11 @@ class User extends Authenticatable
         return $this->belongsToMany('App\User', 'follows', 'follower', 'followed');
     }
 
+    public function likedPosts() // posts curtidos
+    {
+        return $this->belongsToMany('App\Post', 'posts_users', 'user_id', 'post_id');
+    }
+
     public function createUser(UserRequest $request)
     {
         $this->name = $request->name;
