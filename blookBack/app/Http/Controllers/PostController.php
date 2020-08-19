@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Post;
 use App\User;
 use App\Book;
+use Auth;
 use App\Http\Resources\Users as UserResource;
 use App\Http\Resources\Posts as PostResource;
 
@@ -59,8 +60,28 @@ class PostController extends Controller
 
     public function listPostCards()
     {
-        $posts = Post::all();
+        $posts = Post::orderBy('id', 'desc')->get();
         $postResource = PostResource::collection($posts);
+
         return response()->json($postResource);
+    }
+
+    public function listFollowingPosts()
+    {
+        $user = Auth::user();
+        $users_id = $user->following->pluck('id');
+        $posts = Post::orderBy('id', 'desc')->whereIn('user_id', $users_id)->get();
+        $postResource = PostResource::collection($posts);
+
+        return response()->json($postResource);
+    }
+
+    public function listUserPosts($id)
+    {
+        $user = User::findOrFail($id);
+        $posts = $user->createdPosts()->orderBy('id', 'desc')->get();
+        $postResource = PostResource::collection($posts);
+
+        return response()->json([$postResource]);
     }
 }

@@ -26,9 +26,10 @@ Route::GROUP(['middleware'=>'auth:api'], function (){
     //ROTAS DE USUARIO
     Route::GET('logout', 'API\PassportController@logout');
     Route::GET('getDetails', 'API\PassportController@getDetails');
-    Route::GET('getFollowers/{id}','UserController@getfollowers');
-    Route::GET('getFollowing/{id}','UserController@getfollowing');
+    Route::GET('getFollowers/{id}','UserController@getFollowers');
+    Route::GET('getFollowing/{id}','UserController@getFollowing');
     Route::POST('followUser/{id}','UserController@followUser');
+    Route::POST('likePost/{id}','UserController@likePost');
     Route::PUT('updateUser','UserController@updateUser');
     Route::DELETE('deleteUser/{id}','UserController@deleteUser');
     Route::GET('listUsers','UserController@listUsers');
@@ -39,6 +40,7 @@ Route::GROUP(['middleware'=>'auth:api'], function (){
     Route::DELETE('deleteBook/{id}','BookController@deleteBook');
 
     //ROTAS DE POST
+    Route::GET('listFollowingPosts','PostController@listFollowingPosts');
     Route::POST('createPost','PostController@createPost');
     Route::PUT('updatePost/{id}','PostController@updatePost');
     Route::DELETE('deletePost/{id}','PostController@deletePost');
@@ -71,6 +73,7 @@ Route::PUT('removeUser/{id}/{user_id}', 'BookController@removeUser');
 Route::GET('showPost/{id}','PostController@showPost');
 Route::GET('listPosts','PostController@listPosts');
 Route::GET('listPostCards','PostController@listPostCards');
+Route::GET('listUserPosts/{id}','PostController@listUserPosts');
 
 Route::PUT('addUser/{id}/{user_id}', 'PostController@addUser');
 Route::PUT('removeUser/{id}/{user_id}', 'PostController@removeUser');
