@@ -69,13 +69,13 @@ class UserController extends Controller
     public function getFollowers($id)
     {
         $user = User::findOrFail($id);
-        return response()->json($user->followers());
+        return response()->json($user->followers()->count());
     }
 
     public function getFollowing($id)
     {
         $user = User::findOrFail($id);
-        return response()->json($user->following());
+        return response()->json($user->following()->count());
     }
 
     public function likePost($id)
