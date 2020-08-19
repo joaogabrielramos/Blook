@@ -29,7 +29,7 @@
   <form [formGroup]="updateForm" (ngSubmit)="updatePost(updateForm)" *ngIf="editMode">
   
     <div class="radios">
-        <ion-radio-group mode="md" formControlName="post_type">
+        <ion-radio-group [value]='this.post.post_type' mode="md" formControlName="post_type">
 
           <ion-item lines='none'>
             <ion-label>Resenha</ion-label>
@@ -52,7 +52,7 @@
       
       <ion-item>
         <ion-label position="floating">Título</ion-label>
-        <ion-input type="text" clearInput="true" formControlName="title"></ion-input>
+        <ion-input [value]='this.post.title' type="text" clearInput="true" formControlName="title"></ion-input>
       </ion-item>
 
     </div>
@@ -61,7 +61,7 @@
     <div class="texto">
 
       <ion-item lines='none'>
-        <ion-textarea placeholder="O que você está lendo?" rows='4' formControlName="text"></ion-textarea>
+        <ion-textarea [value]='this.post.text' placeholder="O que você está lendo?" rows='4' formControlName="text"></ion-textarea>
       </ion-item>
     
     </div>

@@ -24,4 +24,9 @@ export class ProfileService {
     return this.http.put(this.apiURL + 'updateUser', form, this.httpHeaders);
   }
 
+  followUser(id): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken');
+    return this.http.post(this.apiURL + 'followUser' + id, this.httpHeaders);
+  }
+
 }

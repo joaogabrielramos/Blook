@@ -65,7 +65,7 @@
 
   <div *ngIf="userSearchMode">
     <ion-list *ngIf="auth">
-      <ion-item lines='none' *ngFor="let user of users">
+      <ion-item lines='none' *ngFor="let user of users" (click)="navigateToProfile(allUsers.id)">
       
         <h3>{{user.name}}</h3>
       

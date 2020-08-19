@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 /*Services*/
@@ -15,11 +15,15 @@ import { ProfileService } from '../services/profile/profile.service';
 export class PerfilPage implements OnInit {
   userDetails = [];
 
+  userId = -2;
+  profileUserId = -1;
+
   updateUserForm: FormGroup;
   editProfileMode: boolean = false;
 
   constructor(public formbuilder:FormBuilder,
               public router: Router,
+              private route: ActivatedRoute,
               public authService: AuthService,
               public profileService: ProfileService, 
              ) {
@@ -29,6 +33,12 @@ export class PerfilPage implements OnInit {
       date_of_birth:[null, [Validators.required, Validators.maxLength(10)]],
       genre: [Validators.required],
     });
+
+    this.route.params.subscribe(
+      (params) => {
+        this.profileUserId = params.postId;
+        console.log(this.profileUserId);
+      });
   }
 
   ngOnInit() {
@@ -39,11 +49,13 @@ export class PerfilPage implements OnInit {
     this.editProfileMode = true;
   }
 
+
   /* Integrações */
   getDetails() {
     this.authService.getDetails().subscribe(
       (res) => {
         this.userDetails = res.success;
+        this.profileUserId = res.userDetails.id;
         console.log('user:', this.userDetails);
       }, (err) => {
         console.log(err);
@@ -62,7 +74,16 @@ export class PerfilPage implements OnInit {
       }, (err) => {
         console.log(err);
       }
-    )
+    );
   }
 
+  followUser(id) {
+    this.profileService.followUser(this.profileUserId).subscribe(
+      (res) => {
+        console.log("Usuário Seguido!", res);
+      }, (err) => {
+        console.log(err);
+      }
+    );
+  }
 }

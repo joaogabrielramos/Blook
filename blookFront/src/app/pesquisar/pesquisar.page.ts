@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import _ from 'lodash';
+import { Router } from '@angular/router';
 
 /* Services */
 import { SearchService } from '../services/search/search.service';
+
 
 
 @Component({
@@ -22,7 +24,9 @@ export class PesquisarPage implements OnInit {
 
     userSearchMode: boolean = false;
 
-  constructor(public searchService: SearchService) {
+
+  constructor(public router: Router,
+    public searchService: SearchService) {
     this.queryText='';
     
     this.allUsers = this.users;
@@ -35,6 +39,13 @@ export class PesquisarPage implements OnInit {
     this.listPost();
     
   }
+
+  /* Rotas */
+  navigateToProfile(id){
+    this.router.navigate(['/perfil', {'profileUserId': id}]);
+    console.log(id);
+  }
+
 
   toggleModesOfSearch(){
       this.userSearchMode = true;

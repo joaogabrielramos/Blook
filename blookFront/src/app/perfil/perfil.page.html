@@ -5,27 +5,32 @@
 <!-- Parte do perfil do Usuário -->
 <div *ngIf="!editProfileMode" class="perfil">
 
+    <div class="info">
+        <ion-avatar>
+            <img [src]="userDetails.profile_pic" alt="Foto de perfil" />
+        </ion-avatar>
 
-    <ion-avatar>
-        <img [src]="userDetails.profile_pic" alt="Foto de perfil" />
-    </ion-avatar>
-    
-    <h4>{{ userDetails.name }}</h4>
-    <p>"O mundo está nas mãos daqueles que têm a coragem de sonhar e de correr o risco de viver seus sonhos" <strong>Paulo Coelho</strong> </p>
+        <div class="bio">
+            <h4>{{ userDetails.name }}</h4>
+            <p>"O mundo está nas mãos daqueles que têm a coragem de sonhar e de correr o risco de viver seus sonhos" <br/><strong>Paulo Coelho</strong> </p>
+        
+       
+            <div class="buttons">
+                <ion-button shape="round" size="small" fill='outline' *ngIf="!userId==profileUserId">
+                    Seguir
+                </ion-button>
 
-    
-    <ion-button shape="round"  fill='outline'>
-        Seguir
-    </ion-button>
+                <ion-button shape="round" size="small" *ngIf="!userId==profileUserId">
+                    Seguindo
+                </ion-button>
+                
+                <ion-button shape="round" size="small" fill='outline' (click)="toggleEdit()">
+                    Editar perfil
+                </ion-button>
+            </div>
+        </div>
 
-    <ion-button shape="round"  fill='outline'>
-        Seguindo
-    </ion-button>
-
-    <ion-button shape="round" fill='outline' (click)="toggleEdit()">
-        Editar perfil
-    </ion-button>
-    
+    </div>
     
 
 </div>
@@ -34,22 +39,22 @@
 
 <div *ngIf="!editProfileMode" class="atividade">
 
-    <div>
+    <div class="count">
         <h3>2</h3>
         <h5>posts</h5>
     </div>
 
-    <div>
+    <div class="count">
         <h3>2</h3>
         <h5>livros</h5>
     </div>
 
-    <div>
+    <div class="count">
         <h3>2</h3>
         <h5>seguidores</h5>
     </div>
 
-    <div>
+    <div class="count">
         <h3>2</h3>
         <h5>seguindo</h5>
     </div>
@@ -58,7 +63,7 @@
 <!-- Botão pra selecionar conteúdo postado do Usuário -->
 <div *ngIf="!editProfileMode" class="tipoConteudo">
 
-    <ion-segment value="post">
+    <ion-segment mode="md" value="post">
         <ion-segment-button value="post">
             <ion-label>Posts</ion-label>
         </ion-segment-button>
@@ -70,11 +75,11 @@
 
 </div>
 
-<form [formGroup]="updateUserForm" (ngSubmit)="updateProfile(updateUserForm)">
+<form [formGroup]="updateUserForm" (ngSubmit)="updateProfile(updateUserForm)" *ngIf="editProfileMode">
 
     <ion-item>
       <ion-label  class="input" position="floating">Nome completo</ion-label>
-      <ion-input [value]="this.userDetails.name" type="text" formControlName="name"></ion-input>
+      <ion-input [value]='this.userDetails.name' type="text" formControlName="name"></ion-input>
     </ion-item>
 
     <ion-item>
@@ -91,7 +96,7 @@
       
       <ion-item>
         <ion-label  class="input" position="floating">Gênero</ion-label>
-        <ion-select [value]="this.userDetails.genre" interface="popover" formControlName="genre">
+        <ion-select [value]='this.userDetails.genre' interface="popover" formControlName="genre">
           <ion-select-option value="feminino">Feminino</ion-select-option>
           <ion-select-option value="masculino">Masculino</ion-select-option>
           <ion-select-option value="outros">Outro</ion-select-option>
