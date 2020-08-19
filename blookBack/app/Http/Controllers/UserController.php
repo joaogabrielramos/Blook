@@ -53,35 +53,27 @@ class UserController extends Controller
 
     public function followUser($id)
     {
-        $follower = Auth::user();
-        $followed = User::findOrFail($id);
+        $follower = Auth::user(); // Usuário que realiza a ação de seguir
+        $followed = User::findOrFail($id); // Usuário que está sendo seguido
 
-        $follow = new Follow;
-        $follow->follower = $follower->id;
-        $follow->followed = $followed->id;
-        $follow->save();
+        if($followed->followers->contains($follower->id))
+        {
+            $followed->followers()->detach($follower->id);
+            return response()->json(['Você deixou de seguir esse usuário']);
+        }
 
-        return response()->json($follow, 200);
+        $followed->followers()->attach($follower->id);
+
+        return response()->json(['seguindo']);
     }
 
-    public function unFollowUser($id)
-    {
-        $follower = Auth::user();
-        $followed = User::findOrFail($id);
-
-        $follow = Follow::where('follower', '=', $follower->id)->where('followed', '=', $followed->id)->get();
-        $follow->delete();
-
-        return response()->json($follow, 200);
-    }
-
-    public function getfollowers($id)
+    public function getFollowers($id)
     {
         $user = User::findOrFail($id);
         return response()->json($user->followers());
     }
 
-    public function getfollowing($id)
+    public function getFollowing($id)
     {
         $user = User::findOrFail($id);
         return response()->json($user->following());

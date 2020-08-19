@@ -64,12 +64,12 @@ class User extends Authenticatable
 
     public function followers() // seguidores
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User', 'follows', 'followed', 'follower');
     }
 
     public function following() // usuarios que sigo
     {
-        return $this->belongsToMany('App\User');
+        return $this->belongsToMany('App\User', 'follows', 'follower', 'followed');
     }
 
     public function createUser(UserRequest $request)
