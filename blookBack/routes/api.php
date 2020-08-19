@@ -72,6 +72,7 @@ Route::PUT('removeUser/{id}/{user_id}', 'BookController@removeUser');
 Route::GET('showPost/{id}','PostController@showPost');
 Route::GET('listPosts','PostController@listPosts');
 Route::GET('listPostCards','PostController@listPostCards');
+Route::GET('listUserPosts/{id}','PostController@listUserPosts');
 
 Route::PUT('addUser/{id}/{user_id}', 'PostController@addUser');
 Route::PUT('removeUser/{id}/{user_id}', 'PostController@removeUser');

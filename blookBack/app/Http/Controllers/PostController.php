@@ -62,6 +62,7 @@ class PostController extends Controller
     {
         $posts = Post::orderBy('id', 'desc')->get();
         $postResource = PostResource::collection($posts);
+
         return response()->json($postResource);
     }
 
@@ -73,5 +74,14 @@ class PostController extends Controller
         $postResource = PostResource::collection($posts);
 
         return response()->json($postResource);
+    }
+
+    public function listUserPosts($id)
+    {
+        $user = User::findOrFail($id);
+        $posts = $user->createdPosts()->orderBy('id', 'desc')->get();
+        $postResource = PostResource::collection($posts);
+
+        return response()->json([$postResource]);
     }
 }
