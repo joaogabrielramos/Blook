@@ -7,23 +7,26 @@
 
     <div class="info">
         <ion-avatar>
-            <img [src]="userDetails.profile_pic" alt="Foto de perfil" />
+            <img [src]="profileDetails.profile_pic" alt="Foto de perfil" />
         </ion-avatar>
 
         <div class="bio">
-            <h4>{{ userDetails.name }}</h4>
-            <p>"O mundo está nas mãos daqueles que têm a coragem de sonhar e de correr o risco de viver seus sonhos" <br/><strong>Paulo Coelho</strong> </p>
+            <h4>{{ profileDetails.name }}</h4>
+            <p>"O mundo está nas mãos daqueles que têm a coragem de sonhar e de correr o risco de viver seus sonhos" <br/>Paulo Coelho </p>
         
        
             <div class="buttons">
-                <ion-button shape="round" size="small" fill='outline' *ngIf="userId!=profileUserId" (click)="follow()">
-                    Seguir
-                </ion-button>
-
-                <ion-button shape="round" size="small" *ngIf="userId!=profileUserId" (click)="unfollow()">
-                    Seguindo
-                </ion-button>
                 
+                <div *ngIf="userId!=profileUserId">
+                    <ion-button shape="round" size="small" fill='outline' *ngIf="followMode" (click)="follow()">
+                        Seguir
+                    </ion-button>
+                </div>
+                <div *ngIf="userId!=profileUserId">
+                    <ion-button shape="round" size="small" *ngIf="!followMode"(click)="unfollow()">
+                        Seguindo
+                    </ion-button>
+                </div>
                 <ion-button shape="round" size="small" fill='outline' *ngIf="userId==profileUserId" (click)="toggleEdit()">
                     Editar perfil
                 </ion-button>

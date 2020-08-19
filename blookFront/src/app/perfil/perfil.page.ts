@@ -20,7 +20,8 @@ export class PerfilPage implements OnInit {
 
   updateUserForm: FormGroup;
   editProfileMode: boolean = false;
-  followMode:boolean = false;
+  followMode:boolean = true;
+  profileDetails = [];
 
   constructor(public formbuilder:FormBuilder,
               public router: Router,
@@ -44,20 +45,11 @@ export class PerfilPage implements OnInit {
 
   ngOnInit() {
     this.getDetails();
+    this.showUser();
   }
 
   toggleEdit(){ 
     this.editProfileMode = true;
-  }
-
-  follow(){
-    this.followMode = true;
-    this.followUser();
-}
-
-  unfollow() {
-    this.followMode = false;
-    this.followUser();
   }
 
   /* Integrações */
@@ -73,6 +65,17 @@ export class PerfilPage implements OnInit {
     );
   }
 
+  showUser() {
+    this.profileService.showUser(this.profileUserId).subscribe(
+      (res) => {
+        console.log(res);
+        this.profileDetails = res;
+      }, (err) => {
+        console.log(err);
+      }
+    );
+  }
+
   updateProfile(form) {
     console.log(form.value);
 
@@ -80,7 +83,7 @@ export class PerfilPage implements OnInit {
       (res) => {
         console.log(res);
         this.editProfileMode = false;
-        this.getDetails();
+        this.showUser();
       }, (err) => {
         console.log(err);
       }
@@ -90,7 +93,8 @@ export class PerfilPage implements OnInit {
   followUser() {
     this.profileService.followUser(this.profileUserId).subscribe(
       (res) => {
-        console.log("Usuário Seguido!", res);
+        console.log(res);
+
       }, (err) => {
         console.log(err);
       }
