@@ -20,7 +20,7 @@ export class PerfilPage implements OnInit {
 
   updateUserForm: FormGroup;
   editProfileMode: boolean = false;
-  followMode:boolean = true;
+  followMode:boolean;
   profileDetails = [];
 
   constructor(public formbuilder:FormBuilder,
@@ -94,7 +94,7 @@ export class PerfilPage implements OnInit {
     this.profileService.followUser(this.profileUserId).subscribe(
       (res) => {
         console.log(res);
-
+        this.followMode = res.response;
       }, (err) => {
         console.log(err);
       }

@@ -11,6 +11,10 @@ ion-content {
     margin-left: 5%;
 }
 
+.info ion-avatar img {
+    width: 80px;
+}
+
 .bio {
     display: flex;
     flex-direction: column;
