@@ -5,8 +5,6 @@ import { Router } from '@angular/router';
 /* Services */
 import { SearchService } from '../services/search/search.service';
 
-
-
 @Component({
   selector: 'app-pesquisar',
   templateUrl: './pesquisar.page.html',
@@ -41,7 +39,7 @@ export class PesquisarPage implements OnInit {
   }
 
   /* Rotas */
-  navigateToProfile(id){
+  navigateToProfileUser(id){
     this.router.navigate(['/perfil', {'profileUserId': id}]);
     console.log(id);
   }

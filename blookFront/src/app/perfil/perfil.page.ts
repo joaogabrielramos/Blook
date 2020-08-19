@@ -36,7 +36,7 @@ export class PerfilPage implements OnInit {
 
     this.route.params.subscribe(
       (params) => {
-        this.profileUserId = params.postId;
+        this.profileUserId = params.profileUserId;
         console.log(this.profileUserId);
       });
   }
@@ -55,7 +55,7 @@ export class PerfilPage implements OnInit {
     this.authService.getDetails().subscribe(
       (res) => {
         this.userDetails = res.success;
-        this.profileUserId = res.userDetails.id;
+        this.userId = res.userDetails.id;
         console.log('user:', this.userDetails);
       }, (err) => {
         console.log(err);
