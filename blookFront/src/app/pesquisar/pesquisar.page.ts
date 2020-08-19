@@ -40,6 +40,10 @@ export class PesquisarPage implements OnInit {
       this.userSearchMode = true;
   }
 
+  togglePost() {
+    this.userSearchMode = false;
+  }
+
   listUser(){
     this.searchService.listUsers().subscribe(
       (res)=>{

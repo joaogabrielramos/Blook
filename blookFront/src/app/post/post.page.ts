@@ -50,9 +50,9 @@ export class PostPage implements OnInit {
       });
       this.updateForm = this.formbuilder.group(
         {
-        post_type:['postLivre', [Validators.required]],
-        text:[null,[Validators.required]],
-        title:[null],
+        post_type:[[Validators.required]],
+        text:[[Validators.required]],
+        title:[[Validators.required]],
         image:[],
       })
 
@@ -106,6 +106,7 @@ export class PostPage implements OnInit {
       this.postService.updatePost(this.postId, form.value).subscribe(
         (res) => {
           this.editMode = false;
+          this.showPost(this.postId);
           console.log(res);
         }, (err) => {
           console.log(err);

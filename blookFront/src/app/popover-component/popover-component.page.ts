@@ -39,7 +39,7 @@ export class PopoverComponentPage implements OnInit {
         this.closePopover();
         this.logado = this.authService.isLoggedIn();
         console.log(this.logado);
-        window.location.reload();
+        this.router.navigate(['/feed']).then(()=>window.location.reload());
         /* if (this.router.url === '/feed') {
           window.location.reload();
         } else{

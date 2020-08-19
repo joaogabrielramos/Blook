@@ -51,10 +51,10 @@ loginForm:FormGroup;
       (res) => {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
-        this.router.navigate(['/feed']);
-        if (this.router.url === '/feed') {
+        this.router.navigate(['/feed']).then(()=>window.location.reload());
+/*         if (this.router.url === '/feed') {
           window.location.reload();
-        }
+        } */
       }, (err) => {
         console.log(err);
       }

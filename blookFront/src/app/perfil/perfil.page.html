@@ -3,7 +3,7 @@
 
 <ion-content>
 <!-- Parte do perfil do Usuário -->
-<div class="perfil">
+<div *ngIf="!editProfileMode" class="perfil">
 
 
     <ion-avatar>
@@ -17,7 +17,12 @@
     <ion-button shape="round"  fill='outline'>
         Seguir
     </ion-button>
-    <ion-button shape="round" fill='outline'>
+
+    <ion-button shape="round"  fill='outline'>
+        Seguindo
+    </ion-button>
+
+    <ion-button shape="round" fill='outline' (click)="toggleEdit()">
         Editar perfil
     </ion-button>
     
@@ -27,7 +32,7 @@
 
 <!-- Atividade do Usuário  -->
 
-<div class="atividade">
+<div *ngIf="!editProfileMode" class="atividade">
 
     <div>
         <h3>2</h3>
@@ -51,9 +56,9 @@
 
 </div>
 <!-- Botão pra selecionar conteúdo postado do Usuário -->
-<div class="tipoConteudo">
+<div *ngIf="!editProfileMode" class="tipoConteudo">
 
-    <ion-segment value="perfilSegment">
+    <ion-segment value="post">
         <ion-segment-button value="post">
             <ion-label>Posts</ion-label>
         </ion-segment-button>
@@ -65,6 +70,39 @@
 
 </div>
 
+<form [formGroup]="updateUserForm" (ngSubmit)="updateProfile(updateUserForm)">
+
+    <ion-item>
+      <ion-label  class="input" position="floating">Nome completo</ion-label>
+      <ion-input [value]="this.userDetails.name" type="text" formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  class="input" position="floating">Telefone celular</ion-label>
+      <ion-input type="text" formControlName="phone_number" [brmasker]="{phone: true}"></ion-input>
+    </ion-item>
+
+    <div class="two-colums">
+      
+      <ion-item>
+        <ion-label  class="input" position="floating">Data de nascimento</ion-label>
+        <ion-input type="text" formControlName="date_of_birth" [brmasker]="{mask: '00/00/0000', len:10}"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label  class="input" position="floating">Gênero</ion-label>
+        <ion-select [value]="this.userDetails.genre" interface="popover" formControlName="genre">
+          <ion-select-option value="feminino">Feminino</ion-select-option>
+          <ion-select-option value="masculino">Masculino</ion-select-option>
+          <ion-select-option value="outros">Outro</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </div>
+
+    <ion-button mode="ios" type="submit" size="small" shape="round" [disabled]="updateUserForm.invalid">Atualizar</ion-button>
+
+  </form>
 
 </ion-content>
 

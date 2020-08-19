@@ -19,6 +19,9 @@ export class ProfileService {
 
   constructor(public http: HttpClient) { }
 
-  
+  updateProfile(form): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken');
+    return this.http.put(this.apiURL + 'updateUser', form, this.httpHeaders);
+  }
 
 }
