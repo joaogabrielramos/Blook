@@ -51,6 +51,7 @@ loginForm:FormGroup;
       (res) => {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
+        console.log("entrei");
         this.router.navigate(['/feed']).then(()=>window.location.reload());
 /*         if (this.router.url === '/feed') {
           window.location.reload();
@@ -60,7 +61,7 @@ loginForm:FormGroup;
       }
     );
 
-    console.log("entrei");
+    
   }
 
  

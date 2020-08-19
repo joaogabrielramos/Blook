@@ -31,7 +31,7 @@ export class ProfileService {
 
   followUser(id): Observable<any> {
     this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken');
-    return this.http.post(this.apiURL + 'followUser' + id, this.httpHeaders);
+    return this.http.post(this.apiURL + 'followUser/' + id, this.httpHeaders);
   }
 
 }

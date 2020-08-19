@@ -1,0 +1,91 @@
+// Cor de fundo
+ion-content{
+    --background:var(--cinza-claro);
+}
+
+
+//botão de segmento de posts e usuário
+
+ion-segment-button{
+    --background-checked:#DDDFE1;
+    font-family: 'Ubuntu',sans-serif;
+}
+
+
+// Barra de pesquisa
+.searchBar{
+    margin: 2%;
+    
+}
+
+.searchBar ion-searchbar{
+    --background:#FFFF;
+    --border-radius:20px;
+    height:4.3vh;
+    margin-top:3vh;
+}
+
+// slide de categorias
+.slides{
+    margin:2%;
+    
+}
+
+.slides ion-slides{
+    padding: 20px;
+}
+
+ion-chip{
+    height:5vh;
+    color:#FFFF
+    
+}
+
+//Cards do post
+
+.postsCard{
+    display: grid;
+    grid-template-columns:100%;
+    
+}
+
+.postsCard ion-card{
+    text-align: center;    
+    --background:var(--amarelo);
+    height: 30vh;
+    border-radius: 20px;
+}
+
+.postsCard ion-card h4{
+    font-family: 'Montserrat',sans-serif;
+    color: #000;
+    font-size: 0.9em;
+}
+
+
+// Lista de Usuários
+.listUsers div{
+    display: grid;
+    
+    grid-template-columns:50% 50%;
+    
+}
+
+.listUsers ion-card{
+    
+    --background:var(--amarelo);
+    height: 11vh;
+    border-radius: 20px;
+    width: 45vw;
+  
+    
+}
+
+.listUsers ion-card-title{
+    
+    text-align: center;
+    font-family: "Ubuntu",sans-serif;
+    color: #000;
+    font-size: 1em;
+    margin:10% 5% 5% 5%;
+}

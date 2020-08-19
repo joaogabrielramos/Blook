@@ -40,17 +40,15 @@ export class TabmenuComponent implements OnInit {
   getDetails() {
     this.authService.getDetails().subscribe(
       (res) => {
+        console.log(res);
         this.userDetails = res.success;
-        this.userId = res.userDetails.id;
         console.log('user:', this.userDetails);
+        this.userId = this.userDetails.id;
+        
       }, (err) => {
-        console.log(err);
+        console.log( err);
       }
     );
-  }
-
-  ionViewWillEnter() {
-    this.getDetails();
   }
 
   ngOnInit() {

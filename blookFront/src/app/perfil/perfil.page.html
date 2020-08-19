@@ -16,15 +16,15 @@
         
        
             <div class="buttons">
-                <ion-button shape="round" size="small" fill='outline' *ngIf="!userId==profileUserId">
+                <ion-button shape="round" size="small" fill='outline' *ngIf="userId!=profileUserId" (click)="follow()">
                     Seguir
                 </ion-button>
 
-                <ion-button shape="round" size="small" *ngIf="!userId==profileUserId">
+                <ion-button shape="round" size="small" *ngIf="userId!=profileUserId" (click)="unfollow()">
                     Seguindo
                 </ion-button>
                 
-                <ion-button shape="round" size="small" fill='outline' (click)="toggleEdit()">
+                <ion-button shape="round" size="small" fill='outline' *ngIf="userId==profileUserId" (click)="toggleEdit()">
                     Editar perfil
                 </ion-button>
             </div>

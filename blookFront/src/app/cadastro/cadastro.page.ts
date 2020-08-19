@@ -54,15 +54,15 @@ export class CadastroPage implements OnInit {
     this.authService.register(form.value).subscribe (
       (res) => {
         console.log(res);
+        console.log("entrei");
         localStorage.setItem('userToken', res.success.token);
-        this.router.navigate(['/feed']);
-        window.location.reload();
+        this.router.navigate(['/feed']).then(()=>window.location.reload());
       }, (err) => {
         console.log(err);
       }
     );
 
-    console.log("entrei");
+    
   }
 
   ngOnInit() {
