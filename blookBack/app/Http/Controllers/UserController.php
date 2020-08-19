@@ -27,7 +27,16 @@ class UserController extends Controller
     public function showUser($id)
     {
         $user = User::findOrFail($id);
-        return response()->json($user);
+        $authUser = Auth::user();
+        $follow = false;
+
+        if($user->followers->contains($authUser->id))
+            $follow = true;
+
+        return response()->json([
+            'userDetails' => $user,
+            'following' => $follow
+        ]);
     }
 
     public function listUsers()
