@@ -33,7 +33,7 @@ class CommentController extends Controller
 
     public function listComments($post_id)
     {
-        $comments = Comment::where('post_id', '=', $post_id)->get();
+        $comments = Comment::where('post_id', '=', $post_id)->orderBy('id', 'desc')->get();
         return response()->json(CommentResource::collection($comments));
     }
 
