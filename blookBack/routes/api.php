@@ -32,23 +32,23 @@ Route::GROUP(['middleware'=>'auth:api'], function (){
     Route::GET('likePost/{id}','UserController@likePost');
     Route::GET('showUser/{id}','UserController@showUser');
     Route::PUT('updateUser','UserController@updateUser');
-    Route::DELETE('deleteUser/{id}','UserController@deleteUser');
+    Route::DELETE('deleteUser/{id}','UserController@deleteUser')->middleware('userPermission');
 
     //ROTAS DE LIVRO
     Route::POST('createBook','BookController@createBook');
     Route::PUT('updateBook/{id}','BookController@updateBook');
-    Route::DELETE('deleteBook/{id}','BookController@deleteBook');
+    Route::DELETE('deleteBook/{id}','BookController@deleteBook')->middleware('bookPermission');
 
     //ROTAS DE POST
     Route::GET('listFollowingPosts','PostController@listFollowingPosts');
     Route::POST('createPost','PostController@createPost');
     Route::PUT('updatePost/{id}','PostController@updatePost');
-    Route::DELETE('deletePost/{id}','PostController@deletePost');
+    Route::DELETE('deletePost/{id}','PostController@deletePost')->middleware('postPermission');
 
     //ROTAS DE COMENTÁRIO
     Route::POST('createComment/{post_id}','CommentController@createComment');
     Route::PUT('updateComment/{id}','CommentController@updateComment');
-    Route::DELETE('deleteComment/{id}','CommentController@deleteComment');
+    Route::DELETE('deleteComment/{id}','CommentController@deleteComment')->middleware('commentPermission');
 });
 
 
