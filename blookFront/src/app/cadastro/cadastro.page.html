@@ -1,9 +1,11 @@
 <!-- Por algum motivo, o ionic não está tirando a borda nem da header nem do footer -->
-
+<!-- Header -->
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <div>
+      <!-- Icon de voltar -->
       <ion-icon size="large" name="chevron-back-outline" (click) = "backToHome()"></ion-icon>
+      <!-- Logotipo -->
       <img src="../../assets/logo.png" alt="logotipo">
     </div>
   </ion-toolbar>
@@ -14,41 +16,54 @@
 
 <!--   Tem acontecido umas coisas estranhas nessa página, como a cor do validator que só aparece na primeira vez que a página carrega, e a formatação do css de margem só aparece quando essas cores do validator não aparecem. -->
 
+<!-- Formulário -->
+
   <div class="form">
-    <form [formGroup]="registerForm" (ngSubmit)="submitRegister(registerForm)">
-
+    <form [formGroup]="registerForm"   (ngSubmit)="submitRegister(registerForm)">
+      <!-- Input de nome -->
+        <ion-item>
+          <ion-label position="floating">Nome completo</ion-label>
+          <ion-input  formControlName="name" type="text"></ion-input>
+        
+        </ion-item>
+       <!-- Input de email -->
       <ion-item>
-        <ion-label  class="input" position="floating">Nome completo</ion-label>
-        <ion-input mode="md" type="text" formControlName="name"></ion-input>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input formControlName="email" type="text"></ion-input>
       </ion-item>
 
+      <!-- Input de telefone -->
       <ion-item>
-        <ion-label  class="input" position="floating">E-mail</ion-label>
-        <ion-input type="text" formControlName="email"></ion-input>
-      </ion-item>
-
-      <ion-item>
-        <ion-label  class="input" position="floating">Telefone celular</ion-label>
+        <ion-label  class="input" position="floating">Telefone celular<ion-text color="danger">*</ion-text></ion-label>
         <ion-input type="text" formControlName="phone_number" [brmasker]="{phone: true}"></ion-input>
       </ion-item>
 
+      <!-- Input de senha -->
       <ion-item>
-        <ion-label  class="input" position="floating">Senha</ion-label>
-        <ion-input type="password" formControlName="password"></ion-input>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
       </ion-item>
-
-      <ion-item>
-        <ion-label  class="input" position="floating">Confirme sua senha</ion-label>
-        <ion-input type="password" formControlName="confirmPassword"></ion-input>
-      </ion-item>
-
-      <div class="two-colums">
+     
+  
+        <!-- Input de confirmar a senha -->
+        <ion-item>
+          <ion-label position='floating'>Confirmar senha</ion-label>
+          <ion-input formControlName="confirmpassword" type="password"></ion-input>
         
+        </ion-item>
+          <!-- Erro caso a senha não coincidirem -->
+          <div class="error-message" *ngIf="!registerForm.get('confirmpassword').errors && registerForm.hasError('passwordNotMatch') && (registerForm.get('confirmpassword').dirty || registerForm.get('confirmpassword').touched)">
+          As senhas não coincidem !!
+          </div>
+
+  
+      <div class="two-colums">
+        <!-- Input de data de nascimento -->
         <ion-item>
           <ion-label  class="input" position="floating">Data de nascimento</ion-label>
           <ion-input type="text" formControlName="date_of_birth" [brmasker]="{mask: '00/00/00000', len:10}"></ion-input>
         </ion-item>
-        
+        <!-- Select de gênero -->
         <ion-item>
           <ion-label  class="input" position="floating">Gênero</ion-label>
           <ion-select interface="popover" formControlName="genre">
@@ -59,14 +74,14 @@
         </ion-item>
 
       </div>
-
+      <!-- Botão de submit -->
       <ion-button mode="ios" type="submit" expand="block" size="small" shape="round" [disabled]="registerForm.invalid" (click)="presentToast()">Finalizar</ion-button>
 
     </form>
   </div>
 
 </ion-content>
-
+<!-- Link para logar -->
 <ion-footer class="ion-no-border">
   <ion-toolbar>
     <a routerLink="/login">Já tenho conta</a>

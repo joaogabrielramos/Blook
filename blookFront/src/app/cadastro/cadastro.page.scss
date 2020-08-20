@@ -63,6 +63,12 @@ h2 {
     align-items: center;
 }
 
+.error-message{
+    font-family: 'Ubuntu';
+    font-size: 0.9em;
+    color: var(--vermelho);
+}
+
 ion-button {
     margin: 3vh 15vw 0;
     --background: var(--rosa);
@@ -81,7 +87,7 @@ ion-footer ion-toolbar a {
     font-weight: 500;
     font-size: 1.05em;
     color: var(--rosa);
-    
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -97,29 +97,19 @@ ion-content form ion-button{
     text-align: center;
 }
 
-ion-router-link{
-    position: absolute;
-   
-    
-    left: 33%;
-    top: 93%;
+// Link para cadastro
 
-    font-family: 'Ubuntu';
-    font-style: normal;
+ion-footer ion-toolbar a {
+    font-family: var(--ubuntu);
     font-weight: 500;
     font-size: 1.05em;
-    
-    display: flex;
-    align-items: center;
-    text-align: center;
-    
-
-
-
-
     color: var(--rosa);
-}
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 
+}
 
     
 
