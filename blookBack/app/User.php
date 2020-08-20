@@ -88,19 +88,6 @@ class User extends Authenticatable
         $this->is_admin = $request->is_admin;
         $this->profile_pic = 'https://lorempixel.com/480/640/?'.rand(00000,99999);
 
-        /*$this->save();
-        if ($request->profile_pic)
-        {
-            $this->profile_pic = $request->profile_pic;
-            if (!Storage::exists('localUserImages/'))
-                Storage::makeDirectory('localUserImages/', 0775, true);
-
-            $file = $request->file('profile_pic');
-            $filename = $this->id.'.'.$file->getClientOriginalExtension();
-            $path = $file->storeAs('localUserImages', $filename);
-            $this->profile_pic = $path;
-        }*/
-
         $this->save();
     }
 
