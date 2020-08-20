@@ -1,6 +1,6 @@
 {
-  "appId": "com.appPackageId.Blook",
-  "appName": "Blook",
+  "appId": "com.appPackageId.blook",
+  "appName": "blook",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "src",

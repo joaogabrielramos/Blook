@@ -13,7 +13,7 @@ import { ProfileService } from '../services/profile/profile.service';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-  myDetails = [];
+  myDetails = { id: null,};
 
   userId = -2;
   profileUserId = -1;
@@ -84,6 +84,7 @@ export class PerfilPage implements OnInit {
       (res) => {
         console.log(res);
         this.editProfileMode = false;
+        this.updateUserForm.reset();
         this.showUser();
       }, (err) => {
         console.log(err);

@@ -51,12 +51,16 @@ export class CriarPostPage implements OnInit {
       console.log(form);
       console.log(form.value);
       let body = form.value;
-
+      
+      if(this.photo) {
+        body.image = this.photo['changingThisBreaksApplicationSecurity'];
+      }
     this.postService.createPost(body).subscribe(
       (res) => {
         console.log(res);
         this.presentToast();
         this.router.navigate(['/feed']);
+        this.postForm.reset();
       }, (err) => {
         console.log(err);
       }

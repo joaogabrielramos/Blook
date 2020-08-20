@@ -37,9 +37,6 @@ export class PostPage implements OnInit {
 
   commentForm: FormGroup;
   updateForm: FormGroup;
-  
-  
-
 
   /*   Construtor */
   constructor(
@@ -137,6 +134,7 @@ export class PostPage implements OnInit {
         (res) => {
           this.editMode = false;
           this.showPost(this.postId);
+          this.updateForm.reset();
           console.log(res);
         }, (err) => {
           console.log(err);

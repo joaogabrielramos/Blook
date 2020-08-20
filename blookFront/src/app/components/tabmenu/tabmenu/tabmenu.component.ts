@@ -11,7 +11,7 @@ import { AuthService } from '../../../services/auth.service';
 })
 export class TabmenuComponent implements OnInit {
   
-  userDetails = [];
+  userDetails = { id: null,};
 
   userId;
 
