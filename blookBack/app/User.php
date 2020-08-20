@@ -87,17 +87,18 @@ class User extends Authenticatable
         $this->genre = $request->genre;
         $this->is_admin = $request->is_admin;
 
-        $this->save();
-
-        if ($request->profile_pic) {
-            if (!Storage::exists('localUserImages/'))
+        /*$this->save();
+        if ($request->profile_pic)
+        {
+            $this->profile_pic = $request->profile_pic;
+            /*if (!Storage::exists('localUserImages/'))
                 Storage::makeDirectory('localUserImages/', 0775, true);
 
             $file = $request->file('profile_pic');
             $filename = $this->id.'.'.$file->getClientOriginalExtension();
             $path = $file->storeAs('localUserImages', $filename);
             $this->profile_pic = $path;
-        }
+        }*/
 
         $this->save();
     }
