@@ -38,7 +38,7 @@ class BookController extends Controller
 
     public function deleteBook($id)
     {
-        $book = Book::find($id);
+        $book = Book::findOrfail($id);
 
         if ($book->image)
             Storage::delete($book->image);

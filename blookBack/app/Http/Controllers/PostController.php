@@ -36,7 +36,7 @@ class PostController extends Controller
         $user = User::find($post->user_id);
         $liked = false;
 
-        if($user_id != 0)
+        if($user_id != 0) // Caso o user_id seja zero, o usuário não está logado
         {
             $authUser = User::find($user_id);
 

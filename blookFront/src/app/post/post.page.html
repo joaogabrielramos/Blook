@@ -11,8 +11,8 @@
         <ion-label>{{ user.name }}</ion-label>
       </div>
 
-      <div *ngIf = "userId==postUserId">
-          <ion-icon class="userAction" slot="end" name="create-outline" (click)="toggleEdit()"></ion-icon>
+      <div *ngIf = "showDeleteButton()">
+          <ion-icon class="userAction" *ngIf = "userId==postUserId" slot="end" name="create-outline" (click)="toggleEdit()"></ion-icon>
           <ion-icon class="userAction" slot="end" name="trash-outline" (click)="deletePost()"></ion-icon>
       </div>
     </div>
@@ -68,35 +68,34 @@
     <ion-button type="submit" [disabled]="updateForm.invalid"> Atualizar </ion-button>
 </form>
 
-<div *ngIf="!editMode">
-  <div class="action" *ngIf="auth">
-    <ion-icon name="heart-outline" *ngIf="!liked" (click)="likePost()"></ion-icon>
-    <ion-icon name="heart" *ngIf="liked" (click)="likePost()"></ion-icon>
-    <ion-icon name="share-social-outline"></ion-icon>
-  </div>
+  <div *ngIf="!editMode">
+    <div class="action" *ngIf="auth">
+      <ion-icon name="heart-outline" *ngIf="!liked" (click)="likePost()"></ion-icon>
+      <ion-icon name="heart" *ngIf="liked" (click)="likePost()"></ion-icon>
+      <ion-icon name="share-social-outline"></ion-icon>
+    </div>
 
-  <div class="comment-title">
-    <ion-label>Comentários</ion-label>
-  </div>
+    <div class="comment-title">
+      <ion-label>Comentários</ion-label>
+    </div>
 
-  <div class="comment" *ngIf = "auth">
-    
-    <form [formGroup]="commentForm" (ngSubmit)="createComment(commentForm)">
-      <ion-item lines="none">
-        <ion-textarea rows="1" type="text" placeholder="Escreva seu comentário" formControlName="text"></ion-textarea>
-      </ion-item>
+    <div class="comment" *ngIf = "auth">
+      
+      <form [formGroup]="commentForm" (ngSubmit)="createComment(commentForm)">
+        <ion-item lines="none">
+          <ion-textarea rows="1" type="text" placeholder="Escreva seu comentário" formControlName="text"></ion-textarea>
+        </ion-item>
 
-      <ion-button size="small" fill="clear" type="submit" [disabled]="commentForm.invalid">
-        <ion-icon slot="end" size="large" name="arrow-forward-outline"></ion-icon>
-      </ion-button>
-    </form>
-  </div>
+        <ion-button size="small" fill="clear" type="submit" [disabled]="commentForm.invalid">
+          <ion-icon slot="end" size="large" name="arrow-forward-outline"></ion-icon>
+        </ion-button>
+      </form>
+    </div>
 
-  <div class="commentText" *ngFor="let comment of comments" >
-    <app-comment [comment]="comment"></app-comment>
-  </div>
-</div>
-  
+    <div class="commentText" *ngFor="let comment of comments" >
+      <app-comment (trashClicked)='deleteComment($event)' [comment]='comment'></app-comment>
+    </div>
+  </div> 
 </ion-content>
 
 <app-tabmenu></app-tabmenu>

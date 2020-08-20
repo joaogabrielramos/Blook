@@ -24,9 +24,12 @@ export class FeedPage implements OnInit {
     public router: Router) {
 
     }
-
-  ngOnInit() {
+  
+  ionViewWillEnter() {
     this.listPostCards();
+  }
+  
+  ngOnInit() {
     
   }
 

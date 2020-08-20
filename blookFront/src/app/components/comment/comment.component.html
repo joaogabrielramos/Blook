@@ -10,7 +10,9 @@
         <ion-label>{{ comment.user.name }}</ion-label>
       </div>
 
-      <ion-icon name="ellipsis-horizontal-outline"></ion-icon>
+      <div>
+          <ion-icon class="userAction" slot="end" name="trash-outline" *ngIf="(isAdmin==1) || (userId==comment.user.id)" (click)="deleteComment(comment.id)"></ion-icon>
+      </div>
       
     </div>
 

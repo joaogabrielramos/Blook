@@ -28,13 +28,17 @@ export class PostPage implements OnInit {
   userId = 0;
   postUserId = -1;
   liked: boolean;
+  isAdmin: number;
 
+  
   auth=localStorage.getItem('userToken')!==null;
 
   editMode:boolean = false;
 
   commentForm: FormGroup;
   updateForm: FormGroup;
+  
+  
 
 
   /*   Construtor */
@@ -64,15 +68,38 @@ export class PostPage implements OnInit {
         });
     }
 
+    ngOnInit() {
+      this.showPost(this.postId);
+      this.callGetDetails();
+      this.listComments(this.postId);
+      this.showDeleteButton();
+    }
+
     callGetDetails() {
       this.authService.getDetails().subscribe(
         (res) => {
           this.userId = res.success.id;
-          console.log('user', res);
+          this.isAdmin = res.success.is_admin;
         }, (err) => {
           console.log(err);
         }
       )
+    }
+
+    showDeleteButton(){
+      if (this.userId==this.postUserId || this.isAdmin==1) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+
+    showDeleteCommentButton(commentUserId){ 
+      if (this.userId==commentUserId || this.isAdmin==1) {
+        return true;
+      } else {
+        return false;
+      }
     }
 
     /*Função popover de opções do post */
@@ -92,8 +119,6 @@ export class PostPage implements OnInit {
           this.user = res.user;
           this.postUserId = res.user.id;
           this.liked = res.liked;
-          console.log(this.post);
-          console.log('post', this.user);
         }, (err) => {
           console.log(err);
         }
@@ -144,6 +169,7 @@ export class PostPage implements OnInit {
       (res) => {
         console.log(res);
         this.comments=res;
+        console.log(this.comments);
       }, (err) => {
         console.log(err);
       }
@@ -162,10 +188,16 @@ export class PostPage implements OnInit {
     );
 
   }
-    
-  ngOnInit() {
-    this.showPost(this.postId);
-    this.callGetDetails();
-    this.listComments(this.postId);
+
+  deleteComment(id) {
+    this.commentService.deleteComment(id).subscribe(
+      (res) => {
+        this.listComments(this.postId);
+        console.log(res);
+      }, (err) => {
+        console.log(err);
+      }
+    )
   }
+    
 }

@@ -128,3 +128,58 @@ form .radios ion-item, form .addTitle ion-item, form .texto ion-item {
     color: var(--marrom);
 
 }
+
+.comment ion-card {
+    margin: 3% 10%;
+
+    --background: var(--amarelo);
+    border: 1px solid rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+
+    color: black;
+}
+
+/* header do comentário */
+.userComment {
+    display: grid;
+    grid-template-columns: 80% 20%;
+    justify-content: space-between;
+    align-items: center;
+
+    margin: 1% 3% 4%;
+}
+
+
+.user {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: start;
+}
+
+.userComment .user ion-avatar {
+    width: 32px;
+    height: 32px;
+
+    margin-right: 3%;
+}
+
+.userComment .user ion-label {
+    font-family: var(--montserrat);
+    font-size: 0.9em;
+    font-weight: 600;
+}
+
+.userComment ion-icon {
+    color: var(--marrom);
+    font-size: 16px;
+    justify-self: end;
+}
+
+/* texto do comentário */
+.comment ion-card p {
+    font-family: var(--montserrat);
+
+    margin-left: 3%;
+    margin-right: 3%;
+}
