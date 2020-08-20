@@ -25,7 +25,7 @@ export class CriarPostPage implements OnInit {
   postForm:FormGroup;
 
   constructor(
-    private sanitizer: DomSanitizer,
+    public sanitizer: DomSanitizer,
     public formbuilder:FormBuilder,
     public postService: PostService,
     public toastController :ToastController,
@@ -35,7 +35,7 @@ export class CriarPostPage implements OnInit {
       post_type:["postLivre",[Validators.required]],
       text:[null,[Validators.required]],
       title:[null],
-      image:[],
+      image:[null],
     })
 
     this.avatar = {

@@ -84,12 +84,14 @@ class User extends Authenticatable
         $this->password = bcrypt($request->password);
         $this->phone_number = $request->phone_number;
         $this->date_of_birth = $request->date_of_birth;
-        $this->genre = $request->genre;
+        $this->gender = $request->gender;
         $this->is_admin = $request->is_admin;
+        $this->profile_pic = 'https://lorempixel.com/480/640/?'.rand(00000,99999);
 
-        $this->save();
-
-        if ($request->profile_pic) {
+        /*$this->save();
+        if ($request->profile_pic)
+        {
+            $this->profile_pic = $request->profile_pic;
             if (!Storage::exists('localUserImages/'))
                 Storage::makeDirectory('localUserImages/', 0775, true);
 
@@ -97,7 +99,7 @@ class User extends Authenticatable
             $filename = $this->id.'.'.$file->getClientOriginalExtension();
             $path = $file->storeAs('localUserImages', $filename);
             $this->profile_pic = $path;
-        }
+        }*/
 
         $this->save();
     }
@@ -113,8 +115,10 @@ class User extends Authenticatable
             $this->phone_number = $request->phone_number;
         if ($request->date_of_birth)
             $this->date_of_birth = $request->date_of_birth;
-        if ($request->genre)
-            $this->genre = $request->genre;
+        if ($request->gender)
+            $this->gender = $request->genrder;
+        if ($request->profile_pic)
+            $this->profile_pic = $request->profile_pic;
 
         $this->save();
     }

@@ -41,7 +41,7 @@ class PostController extends Controller
             $authUser = User::find($user_id);
 
             if($post->users->contains($authUser->id))
-                $liked = false;
+                $liked = true;
         }
 
         return response()->json([

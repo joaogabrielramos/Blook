@@ -27,7 +27,7 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
         'phone_number' => $faker->cellphoneNumber,
         'date_of_birth' => $faker->date($format = 'd-m-Y', $max = 'now'),
-        'genre' => $faker->randomElement($array = array ('masculino','feminino','outros')),
+        'gender' => $faker->randomElement($array = array ('masculino','feminino','outros')),
         'is_admin' => $faker->boolean($chanceOfGettingTrue = 5)
     ];
 });

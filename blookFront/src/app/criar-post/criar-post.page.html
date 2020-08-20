@@ -51,28 +51,24 @@
       <div class="texto">
 
         <ion-item lines='none'>
-          <ion-textarea placeholder="O que você está lendo?"rows='4' formControlName="text">
-            
+          <ion-textarea placeholder="O que você está lendo?"rows='14' formControlName="text">
+          </ion-textarea>  
             <!--Botão da câmera -->
-            <div class="photo">
-              <ion-fab>
-                <img
-                    [src]="photo"
-                    vertical="center"
-                    horizontal="center"
-                    class="addFoto"
-                    
-                  />
-                <ion-fab-button size='small' (click)="takePicture()">
-                  <ion-icon name="camera"></ion-icon>
-                </ion-fab-button>
-                
-              </ion-fab>
-            </div>
+          <div class="photo">
+            <ion-fab>
+              <img
+                  [src]="photo"
+                  vertical="center"
+                  horizontal="center"
+                  class="addFoto"  
+              >
+              <ion-fab-button size='small' (click)="takePicture()">
+                <ion-icon name="camera"></ion-icon>
+              </ion-fab-button>
+              
+            </ion-fab>
+          </div>
           
-          
-          
-          </ion-textarea>
         </ion-item>
       
       </div>

@@ -37,22 +37,16 @@ class Post extends Model
         $user = Auth::user();
         $this->user_id = $user->id;
 
+        if ($request->title) {
         $this->title = $request->title;
+        }
+        
         $this->text = $request->text;
         $this->post_type = $request->post_type;
-
-        $this->save();
-
+        
         if ($request->image) {
-            if (!Storage::exists('localPostImages/'))
-                Storage::makeDirectory('localPostImages/', 0775, true);
-
-            $file = $request->file('image');
-            $filename = $this->id.'.'.$file->getClientOriginalExtension();
-            $path = $file->storeAs('localPostImages', $filename);
-            $this->image = $path;
+        $this->image = $request->image;
         }
-
         $this->save();
     }
 
@@ -60,22 +54,12 @@ class Post extends Model
     {
         if ($request->title)
             $this->title = $request->title;
+
         if ($request->text)
             $this->text = $request->text;
 
         if ($request->image) {
-
-            if (!Storage::exists('localPostImages/'))
-                Storage::makeDirectory('localPostImages/', 0775, true);
-
-            $post = Post::find($this->id);
-            if ($post->image)
-                Storage::delete($post->image);
-
-            $file = $request->file('image');
-            $filename = $this->id . '.' . $file->getClientOriginalExtension();
-            $path = $file->storeAs('localPostImages', $filename);
-            $this->image = $path;
+            $this->image = $request->image;
         }
 
         $this->save();

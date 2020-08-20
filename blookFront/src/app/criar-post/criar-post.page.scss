@@ -119,9 +119,6 @@ ion-item{
     margin-top: 4%;
     display: flex;
     justify-content: center;
-    
-    
-    
 }
 
 
@@ -135,33 +132,42 @@ ion-item{
 
 .texto ion-textarea{
 
-    height:370px;
-    width: 300px;
+    width: 80vw;
+    height: 63vh;
+
     font-family: var(--montserrat);
     font-size:1.2em;
     color: rgba(179,112,111,0.8);
-    
-    
+     
 }
 
 
 
 //Botão da câmera
+
+
 .photo ion-fab{
-    position: absolute;
-    bottom: 2%;
+    position: fixed;
+    bottom: 12%;
     right: 0;
-    left: 0;
-    
+    left: 7%;
+
+    justify-content: start;
+    align-items: end;
 }
 
 .photo ion-fab-button{
+    position: fixed;
     --background:var(--marrom);
 }
 
 .photo img{
+    left: 10%;
+    bottom: 5%;
+    position: fixed;
     max-width: 100%;
-    max-height: 25vh;
-    margin-left: 13%;
+    max-height: 5vh;
+    margin-left: 15%;
+
 }
 
