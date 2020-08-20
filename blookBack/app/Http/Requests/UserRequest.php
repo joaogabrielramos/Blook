@@ -34,7 +34,7 @@ class UserRequest extends FormRequest
                 'password' => 'required|min:8',
                 'phone_number' => 'required|min:9',
                 'date_of_birth' => 'required|date_format:d/m/Y',
-                'genre' => 'required|string',
+                'gender' => 'required|string',
                 'is_admin' => 'boolean',
                 'profile_pic' => 'image'
             ];
@@ -45,7 +45,7 @@ class UserRequest extends FormRequest
                 'email' => 'email|unique:users,email',
                 'phone_number' => 'min:9',
                 'date_of_birth' => 'date_format:d/m/Y',
-                'genre' => 'string',
+                'gender' => 'string',
             ];
         }
     }
