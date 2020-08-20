@@ -55,10 +55,10 @@ export class PostPage implements OnInit {
       });
       this.updateForm = this.formbuilder.group(
         {
-        post_type:[[Validators.required]],
-        text:[[Validators.required]],
-        title:[[Validators.required]],
-        image:[],
+        post_type:[null, [Validators.required]],
+        text:[null, [Validators.required]],
+        title:[null, [Validators.required]],
+        image:[null],
       })
 
       this.route.params.subscribe(
@@ -88,14 +88,6 @@ export class PostPage implements OnInit {
 
     showDeleteButton(){
       if (this.userId==this.postUserId || this.isAdmin==1) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-
-    showDeleteCommentButton(commentUserId){ 
-      if (this.userId==commentUserId || this.isAdmin==1) {
         return true;
       } else {
         return false;

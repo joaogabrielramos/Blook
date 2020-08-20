@@ -55,6 +55,7 @@ export class CriarPostPage implements OnInit {
     this.postService.createPost(body).subscribe(
       (res) => {
         console.log(res);
+        this.presentToast();
         this.router.navigate(['/feed']);
       }, (err) => {
         console.log(err);

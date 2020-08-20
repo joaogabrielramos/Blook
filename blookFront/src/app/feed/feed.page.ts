@@ -16,6 +16,8 @@ export class FeedPage implements OnInit {
 
   feedMode: boolean = false;
 
+  message: string;
+
   auth = localStorage.getItem("userToken")!==null;
   
   
@@ -74,5 +76,5 @@ export class FeedPage implements OnInit {
           this.listFollowingPosts();
           console.log(this.feedPosts);
       }
-  }
+    }
 }

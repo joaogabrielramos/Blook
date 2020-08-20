@@ -26,9 +26,10 @@ ion-toolbar ion-icon{
 
     --border-radius: 30px;
 
-    font-family:Ubuntu;
+    font-family: var(--ubuntu);
+    font-weight: bold;
     text-align: center;
-    font-size: 0.8em;
+    font-size: 0.9em;
 
     
 }
@@ -44,83 +45,73 @@ ion-toolbar ion-icon{
     --background: transparent;
     --border-color:var(--rosa);
     --border-style:solid;
+    --border-width:2px;
     --color:var(--rosa);
 
     --border-radius:30px;
 
-    font-family:Ubuntu;
+    font-family: var(--ubuntu);
     text-align: center;
-    font-size:0.68em;
-    
-    
+    font-size:0.8em; 
 
-}
-//imagem de perfil
-div img{
-    margin-left: 2%;
 }
 
 //opções de post
-.radios{
-    display:flex;
-    justify-content: space-around;
+.select{
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-top: 4%;
+
+    margin-top: 5%;
     --background:var(--cinza-claro);
     --border:0;
-    
-    
-    
 }
 
-ion-radio{
-    --color-checked:var(--rosa);
-    margin-left: 5px;
+.select ion-item {
+   display:flex;
+   flex-direction: column;
+   align-items: center; 
 }
 
-ion-radio-group{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    --background:var(--cinza-claro);
-    
-
-    
-    
-}
-ion-list{
-    background:var(--);
-}
-
-ion-radio-group ion-label{
+.select ion-item ion-label {
     color: var(--marrom);
-    
-}
-//Titulo do radio
-.titleRadio{
     text-align: center;
     font-family: var(--ubuntu);
-    margin-top: 2%;
-    color: var(--marrom);
-    
+    font-size: 1.1em;
+    font-weight: 500;
+}
+
+.select ion-item ion-select{
+    --color-checked:var(--rosa);
+    font-family: var(--montserrat);
 }
 
 ion-item{
     --background:var(--cinza-claro);
     
 }
-.addTitle{
-    display: flex;
-    justify-content: center;
-    
 
-    
+.addTitle{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
 }
 
 .addTitle ion-label{
-    --color:var(--marrom);
+    color: var(--marrom);
     text-align: center;
-    
+    font-family: var(--ubuntu);
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.addTitle ion-item {
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: var(--montserrat);
+    font-size: 1.2em;
 }
 
 //Textarea
@@ -146,8 +137,8 @@ ion-item{
 
     height:370px;
     width: 300px;
-    font-family: Montserrat;
-    font-size:1.3em;
+    font-family: var(--montserrat);
+    font-size:1.2em;
     color: rgba(179,112,111,0.8);
     
     

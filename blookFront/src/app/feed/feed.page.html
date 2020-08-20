@@ -16,6 +16,10 @@
 
   <div class="cards">
     <app-feed-card *ngFor="let feedPost of feedPosts" [feedPost]="feedPost"></app-feed-card>
+
+    <div *ngIf="feedposts==null">
+      <h1> "Você ainda não segue ninguém :(" </h1>
+    </div>
   </div>
 
   <ion-fab horizontal="end" vertical="bottom" slot="fixed" *ngIf="auth">
