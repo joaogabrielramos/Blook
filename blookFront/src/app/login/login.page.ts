@@ -2,6 +2,10 @@ import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators} from '@angular/forms';
 
+/*Toast*/
+import { ToastController } from '@ionic/angular';
+
+
 /* Services */
 import { AuthService } from "./../services/auth.service";
 
@@ -17,12 +21,27 @@ loginForm:FormGroup;
 
   constructor(public formBuilder : FormBuilder,
               public router: Router,
-              public authService: AuthService 
+              public authService: AuthService,
+              public toastController :ToastController
              ) { 
     this.loginForm = this.formBuilder.group({
       email:[null,[Validators.email,Validators.required]],
       password:[null,[Validators.required,Validators.minLength(8)]]
     });
+    
+  }
+
+  backToHome() {
+    this.router.navigate(['/feed']);
+  }
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Login efetuado com sucesso!',
+      duration: 2000,
+      color:"dark"
+    });
+    toast.present();
   }
 
   submitLogin(form){
@@ -32,15 +51,20 @@ loginForm:FormGroup;
       (res) => {
         console.log(res);
         localStorage.setItem('userToken', res.success.token);
-        this.router.navigate(['/feed']);
+        console.log("entrei");
+        this.router.navigate(['/feed']).then(()=>window.location.reload());
+/*         if (this.router.url === '/feed') {
+          window.location.reload();
+        } */
       }, (err) => {
         console.log(err);
       }
     );
 
-    console.log("entrei");
+    
   }
-  
+
+ 
   ngOnInit() {
   }
 

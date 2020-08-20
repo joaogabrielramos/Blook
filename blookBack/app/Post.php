@@ -40,7 +40,7 @@ class Post extends Model
         $this->text = $request->text;
         $this->post_type = $request->post_type;
 
-        if ($request->image)
+        if ($request->title)
             $this->title = $request->title;
 
         if ($request->image)
@@ -53,8 +53,10 @@ class Post extends Model
     {
         if ($request->title)
             $this->title = $request->title;
+
         if ($request->text)
             $this->text = $request->text;
+
         if ($request->image)
             $this->image = $request->image;
 

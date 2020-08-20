@@ -11,4 +11,5 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {}
 
+  auth = localStorage.getItem("userToken")!==null;
 }

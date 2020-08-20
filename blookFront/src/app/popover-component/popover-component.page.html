@@ -1,0 +1,17 @@
+<ion-content>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col> Tem certeza que deseja sair? </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="closePopover()">Não</ion-button>
+      </ion-col>
+      <ion-col>
+        <ion-button (click)="logout()" fill="outline" routerLink="/feed">Sim</ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

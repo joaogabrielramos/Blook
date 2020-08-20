@@ -3,7 +3,7 @@
 <ion-header class="ion-no-border">
   <ion-toolbar>
     <div>
-      <ion-icon size="large" name="chevron-back-outline" routerLink="/home"></ion-icon>
+      <ion-icon size="large" name="chevron-back-outline" (click) = "backToHome()"></ion-icon>
       <img src="../../assets/logo.png" alt="logotipo">
     </div>
   </ion-toolbar>
@@ -18,40 +18,40 @@
     <form [formGroup]="registerForm" (ngSubmit)="submitRegister(registerForm)">
 
       <ion-item>
-        <ion-label  class="input" position="floating">Nome completo</ion-label>
+        <ion-label  class="input" position="floating">Nome completo<ion-text color="danger">*</ion-text></ion-label>
         <ion-input mode="md" type="text" formControlName="name"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label  class="input" position="floating">E-mail</ion-label>
+        <ion-label  class="input" position="floating">E-mail<ion-text color="danger">*</ion-text></ion-label>
         <ion-input type="text" formControlName="email"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label  class="input" position="floating">Telefone celular</ion-label>
+        <ion-label  class="input" position="floating">Telefone celular<ion-text color="danger">*</ion-text></ion-label>
         <ion-input type="text" formControlName="phone_number" [brmasker]="{phone: true}"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label  class="input" position="floating">Senha</ion-label>
+        <ion-label  class="input" position="floating">Senha<ion-text color="danger">*</ion-text></ion-label>
         <ion-input type="password" formControlName="password"></ion-input>
       </ion-item>
 
       <ion-item>
-        <ion-label  class="input" position="floating">Confirme sua senha</ion-label>
+        <ion-label  class="input" position="floating">Confirme sua senha<ion-text color="danger">*</ion-text></ion-label>
         <ion-input type="password" formControlName="confirmPassword"></ion-input>
       </ion-item>
 
       <div class="two-colums">
         
         <ion-item>
-          <ion-label  class="input" position="floating">Data de nascimento</ion-label>
+          <ion-label  class="input" position="floating">Data de nascimento<ion-text color="danger">*</ion-text></ion-label>
           <ion-input type="text" formControlName="date_of_birth" [brmasker]="{mask: '00/00/00000', len:10}"></ion-input>
         </ion-item>
         
         <ion-item>
-          <ion-label  class="input" position="floating">Gênero</ion-label>
-          <ion-select interface="popover" formControlName="genre">
+          <ion-label  class="input" position="floating">Gênero<ion-text color="danger">*</ion-text></ion-label>
+          <ion-select interface="popover" formControlName="gender">
             <ion-select-option value="feminino">Feminino</ion-select-option>
             <ion-select-option value="masculino">Masculino</ion-select-option>
             <ion-select-option value="outros">Outro</ion-select-option>
@@ -60,7 +60,7 @@
 
       </div>
 
-      <ion-button mode="ios" type="submit" expand="block" size="small" shape="round" [disabled]="registerForm.invalid">Finalizar</ion-button>
+      <ion-button mode="ios" type="submit" expand="block" size="small" shape="round" [disabled]="registerForm.invalid" (click)="presentToast()">Finalizar</ion-button>
 
     </form>
   </div>

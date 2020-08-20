@@ -1,0 +1,69 @@
+ion-content {
+    --background: var(--cinza-claro);
+}
+
+.info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    margin-right: 5%;
+    margin-left: 5%;
+}
+
+.info ion-avatar img {
+    width: 80px;
+}
+
+.bio {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    justify-content: center;
+
+    color: var(--marrom);
+
+    margin-left: 5%;
+}
+
+.bio h4 {
+    font-family: var(--ubuntu);
+    font-size: 1em;
+    font-weight: bold;
+
+    margin-bottom: 0;
+}
+
+.bio p {
+    font-family: var(--montserrat);
+    font-size: 0.9em;
+}
+
+.buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.atividade {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.atividade .count {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+
+    color: var(--cinza-escuro);
+    font-family: var(--ubuntu);
+
+}
+
+.atividade div h5 {
+    margin-top: 0;
+}

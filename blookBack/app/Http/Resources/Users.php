@@ -17,6 +17,7 @@ class Users extends JsonResource
         return [
             'name' => $this->name,
             'profile_pic' => $this->profile_pic,
+            'id' => $this->id,
         ];
     }
 }

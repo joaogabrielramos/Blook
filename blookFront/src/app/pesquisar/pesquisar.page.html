@@ -1,0 +1,92 @@
+<!-- Header -->
+<app-header></app-header>
+
+<ion-content>
+
+ 
+
+    <!-- Barra de pesquisa -->
+    <div class="searchBar">
+      <ion-searchbar placeholder="Pesquisar" [(ngModel)]="queryText" (ionInput)="filterUser($event)"(ionInput)="filterPost($event)" ></ion-searchbar>
+    </div>
+
+
+
+     <!-- Slide de gêneros de livro -->
+  <div class="slides">
+    <ion-slides mode="ios" scrollbar="false" pager="true">
+      <ion-slide>
+        <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+        <ion-chip style='background:var(--rosa)' mode="ios" >
+          <ion-label>Romance</ion-label>
+        </ion-chip>
+        <ion-chip  mode="ios" style="background:var(--azul);">
+          <ion-label>Ficção</ion-label>
+        </ion-chip>
+        <ion-chip color="success" mode="ios" style="background:var(--marrom);" >
+          <ion-label>Fantasia</ion-label>
+        </ion-chip>
+        <ion-icon slot="start" name="chevron-forward-outline"></ion-icon>
+      </ion-slide>
+
+      <ion-slide>
+        <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+
+        <ion-chip style="background:var(--vermelho)" mode="ios">
+          <ion-label>Comédia</ion-label>
+        </ion-chip>
+        <ion-chip style="background: var(--laranja);" mode="ios" >
+          <ion-label>Terror</ion-label>
+        </ion-chip>
+        <ion-chip style="background: var(--verde-musgo);" mode="ios" >
+          <ion-label>Suspense</ion-label>
+        </ion-chip>
+        
+      </ion-slide>
+    </ion-slides>
+    
+  </div>
+
+
+  <!-- Botão pra alternar a lista (Usuário,Livros e Resenhas) -->
+  <div class="segment">
+    <ion-segment mode="md" value="post">
+      <ion-segment-button value="user" *ngIf="auth" (click)="toggleModesOfSearch()">
+        <ion-label>Usuários</ion-label>
+      </ion-segment-button>
+      <ion-segment-button value="post" (click)="togglePost()">
+        <ion-label>Posts</ion-label>
+      </ion-segment-button>
+      
+    </ion-segment>
+  </div>
+
+  <div class="listUsers" *ngIf="userSearchMode">
+    <div *ngIf="auth">
+      <ion-card *ngFor="let user of users">
+        <div (click)="navigateToProfileUser(user.id)">
+          <ion-card-title>{{user.name}}</ion-card-title>
+        </div>
+      </ion-card>
+      <!-- <ion-item lines='none' *ngFor="let user of users">
+      
+        <h3>{{user.name}}</h3>
+      
+      </ion-item> -->
+    </div>
+  </div>
+  
+  <div class="postsCard" *ngIf="!userSearchMode">
+    <ion-card *ngFor="let post of posts">
+      <ion-card-title><h3>{{post.title}}</h3></ion-card-title>
+      <ion-card-content>
+        <h4>{{post.text}}</h4>
+        
+      </ion-card-content>
+    </ion-card>
+  </div>
+  
+</ion-content>
+
+<!-- TabMenu -->
+<app-tabmenu></app-tabmenu>

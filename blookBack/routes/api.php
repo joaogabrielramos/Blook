@@ -33,6 +33,7 @@ Route::GROUP(['middleware'=>'auth:api'], function (){
     Route::GET('showUser/{id}','UserController@showUser');
     Route::GET('listUsers','UserController@listUsers');
     Route::PUT('updateUser','UserController@updateUser');
+    Route::GET('listUsers','UserController@listUsers');
     Route::DELETE('deleteUser/{id}','UserController@deleteUser')->middleware('userPermission');
 
     //ROTAS DE LIVRO

@@ -4,12 +4,6 @@ import { Router } from '@angular/router';
 /* Services */
 import { PostService } from "./../services/post/post.service";
 
-class FeedPost {
-  photoUser: string;
-  user: string;
-  title: string;
-  text: string;
-}
 
 @Component({
   selector: 'app-feed',
@@ -18,45 +12,69 @@ class FeedPost {
 })
 export class FeedPage implements OnInit {
 
-  feedPosts: FeedPost[];
+  feedPosts;
 
+  feedMode: boolean = false;
+
+  message: string;
+
+  auth = localStorage.getItem("userToken")!==null;
+  
+  
   constructor(
     public postService: PostService,
     public router: Router) {
 
     }
-
+  
+  ionViewWillEnter() {
+    this.listPostCards();
+  }
+  
   ngOnInit() {
-    this.feedPosts = [
-      {
-        photoUser:'https://img.cancaonova.com/cnimages/canais/uploads/sites/6/2018/03/formacao_1600x1200-como-a-presenca-da-mulher-pode-ser-harmonia-no-mundo.jpg',
-        user:'Lorem',
-        title: 'A menina que roubava livros',
-        text:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse consequat vel ligula eget ultricies. Duis eu mattis ligula. Quisque lobortis risus tortor, ut pulvinar lectus mattis vel. Duis cursus elementum posuere. Phasellus egestas ut mauris at maximus. Vestibulum fermentum vel leo non bibendum. Nullam vestibulum'
-      }];
+    
   }
 
-  /* listPosts() {
-    this.postService.listPosts().subscribe(
-      (res) => {
-        console.log(res);
-        this.posts=res.posts;
-      }, (err) => {
-        console.log(err);
-      }
-    );
-  } */
-
+  toggleAllPosts(){
+    this.feedMode = true;
+    this.changeFeedPosts();
 }
 
+  toggleFollowingPosts() {
+    this.feedMode = false;
+    this.changeFeedPosts();
+  }
 
- //ngfor na pagina do feed com o card component
- //para cada um, o click esta setado pra função navigate do ts
- //dentro do ts, cria essa função e joga o trecho que ela mandou this.router.navigate(['/post', {'postId': parametroDaFuncao}]);
- // importa isso no post.page.ts import { ActivatedRoute } from 'router';
 
- //na post.page.ts:
-//1. import { ActivatedRoute } from 'router';
-//2. nos parâmetros do construtor: constructor (private route: ActivatedRoute)
-//3. dentro do ngOnInit ou dentro do construtor: this.route.params.subscribe((params) => (this.postId = params.postId));
-//postId = Number(postId)
+    /* Integração */
+    listPostCards() {
+      this.postService.listPostCards().subscribe(
+        (res) => {
+          this.feedPosts = res;
+          console.log(res);
+        }, (err) => {
+          console.log(err);
+        }
+      );
+      }
+    
+    listFollowingPosts() {
+      this.postService.listFollowingPosts().subscribe(
+        (res) => {
+          console.log('sigo', res);
+          this.feedPosts = res;
+        }, (err) => {
+          console.log(err);
+        }
+      );
+    }
+
+    changeFeedPosts() {
+      if(this.feedMode == true) {
+          this.listPostCards();
+      } else {
+          this.listFollowingPosts();
+          console.log(this.feedPosts);
+      }
+    }
+}

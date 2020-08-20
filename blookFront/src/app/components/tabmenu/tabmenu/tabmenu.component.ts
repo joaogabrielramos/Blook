@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
+
+/*Services*/
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-tabmenu',
@@ -6,15 +10,49 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./tabmenu.component.scss'],
 })
 export class TabmenuComponent implements OnInit {
+  
+  userDetails = { id: null,};
 
-  auth:boolean = localStorage.getItem("userToken")!==null;
+  userId;
 
-  constructor() { }
+  auth = localStorage.getItem("userToken")!==null;
 
-  /* isLoggedIn() {
-      return localStorage.getItem("userToken")!==null;
-    } */
+  constructor(
+    public router: Router,
+    public authService: AuthService) { }
 
-  ngOnInit() {}
+
+  /* Rotas */
+  navigateToSearch() {
+    this.router.navigate(['/pesquisar']);
+  }
+
+  navigateToHome() {
+    this.router.navigate(['/feed']);
+  }
+
+  navigateToMyProfile() {
+    this.router.navigate(['/perfil', {'profileUserId': this.userId}]);
+    
+  }
+
+  /* Integrações */
+  getDetails() {
+    this.authService.getDetails().subscribe(
+      (res) => {
+        console.log(res);
+        this.userDetails = res.success;
+        console.log('user:', this.userDetails);
+        this.userId = this.userDetails.id;
+        
+      }, (err) => {
+        console.log( err);
+      }
+    );
+  }
+
+  ngOnInit() {
+    this.getDetails();
+  }
 
 }

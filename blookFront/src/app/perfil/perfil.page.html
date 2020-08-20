@@ -1,0 +1,118 @@
+<!-- Header -->
+<app-header></app-header>
+
+<ion-content>
+<!-- Parte do perfil do Usuário -->
+<div *ngIf="!editProfileMode" class="perfil">
+
+    <div class="info">
+        <ion-avatar>
+            <img [src]="profileDetails.profile_pic" alt="Foto de perfil" />
+        </ion-avatar>
+
+        <div class="bio">
+            <h4>{{ profileDetails.name }}</h4>
+            <p>"O mundo está nas mãos daqueles que têm a coragem de sonhar e de correr o risco de viver seus sonhos" <br/>Paulo Coelho </p>
+        
+       
+            <div class="buttons">
+                
+                <div *ngIf="userId!=profileUserId">
+                    <ion-button shape="round" size="small" fill='outline' *ngIf="!following" (click)="followUser()">
+                        Seguir
+                    </ion-button>
+                </div>
+                <div *ngIf="userId!=profileUserId">
+                    <ion-button shape="round" size="small" *ngIf="following"(click)="followUser()">
+                        Seguindo
+                    </ion-button>
+                </div>
+                <ion-button shape="round" size="small" fill='outline' *ngIf="userId==profileUserId" (click)="toggleEdit()">
+                    Editar perfil
+                </ion-button>
+            </div>
+        </div>
+
+    </div>
+    
+
+</div>
+
+<!-- Atividade do Usuário  -->
+
+<div *ngIf="!editProfileMode" class="atividade">
+
+    <div class="count">
+        <h3>2</h3>
+        <h5>posts</h5>
+    </div>
+
+    <div class="count">
+        <h3>2</h3>
+        <h5>livros</h5>
+    </div>
+
+    <div class="count">
+        <h3>2</h3>
+        <h5>seguidores</h5>
+    </div>
+
+    <div class="count">
+        <h3>2</h3>
+        <h5>seguindo</h5>
+    </div>
+
+</div>
+<!-- Botão pra selecionar conteúdo postado do Usuário -->
+<div *ngIf="!editProfileMode" class="tipoConteudo">
+
+    <ion-segment mode="md" value="post">
+        <ion-segment-button value="post">
+            <ion-label>Posts</ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="book">
+            <ion-label>Livros</ion-label>
+        </ion-segment-button>
+    </ion-segment>
+
+
+</div>
+
+<form [formGroup]="updateUserForm" (ngSubmit)="updateProfile(updateUserForm)" *ngIf="editProfileMode">
+
+    <ion-item>
+      <ion-label  class="input" position="floating">Nome completo</ion-label>
+      <ion-input [value]='this.userDetails.name' type="text" formControlName="name"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-label  class="input" position="floating">Telefone celular</ion-label>
+      <ion-input type="text" formControlName="phone_number" [brmasker]="{phone: true}"></ion-input>
+    </ion-item>
+
+    <div class="two-colums">
+      
+      <ion-item>
+        <ion-label  class="input" position="floating">Data de nascimento</ion-label>
+        <ion-input type="text" formControlName="date_of_birth" [brmasker]="{mask: '00/00/0000', len:10}"></ion-input>
+      </ion-item>
+      
+      <ion-item>
+        <ion-label  class="input" position="floating">Gênero</ion-label>
+        <ion-select [value]='this.userDetails.genre' interface="popover" formControlName="genre">
+          <ion-select-option value="feminino">Feminino</ion-select-option>
+          <ion-select-option value="masculino">Masculino</ion-select-option>
+          <ion-select-option value="outros">Outro</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+    </div>
+
+    <ion-button mode="ios" type="submit" size="small" shape="round" [disabled]="updateUserForm.invalid">Atualizar</ion-button>
+
+  </form>
+
+</ion-content>
+
+<!-- TabMenu -->
+<app-tabmenu></app-tabmenu>

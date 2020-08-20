@@ -3,7 +3,7 @@
       <ion-toolbar >
             <div>
                 <!-- Icon de voltar -->
-                <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+                <ion-icon slot="start" name="chevron-back-outline" (click) = "backToHome()"></ion-icon>
                 <!-- Logo -->
                 <img src="../../assets/image/Logo.png" alt="">
             </div>
@@ -19,17 +19,17 @@
 
         <!-- Input de Email -->
         <ion-item>
-          <ion-label position="floating">E-mail <ion-text color="danger"></ion-text></ion-label>
+          <ion-label position="floating">E-mail<ion-text color="danger">*</ion-text></ion-label>
           <ion-input required formControlName="email" type="email"></ion-input>
         </ion-item>
         <!-- Input de Senha -->
         <ion-item>
-          <ion-label position="floating">Senha<ion-text color="danger"></ion-text></ion-label>
+          <ion-label position="floating">Senha<ion-text color="danger">*</ion-text></ion-label>
           <ion-input required formControlName="password" type="password"></ion-input>
         </ion-item>
         <!-- Botão de Finalizar Login -->
         <ion-row class="ion-justify-content-center">
-          <ion-button  type="submit" [disabled]="loginForm.invalid">
+          <ion-button  type="submit" [disabled]="loginForm.invalid" (click)="presentToast()">
             Entrar
           </ion-button>
         </ion-row>

@@ -7,9 +7,17 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
-import { AppRoutingModule } from './app-routing.module';
 
+import { AppRoutingModule } from './app-routing.module';
 import { HttpClientModule } from '@angular/common/http';
+
+
+
+import { PopoverComponentPageModule } from './popover-component/popover-component.module';
+import { PopoverComponentPage } from './popover-component/popover-component.page';
+
+
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,6 +27,8 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     AppRoutingModule,
     HttpClientModule,
+    PopoverComponentPageModule,
+  
   ],
   providers: [
     StatusBar,
