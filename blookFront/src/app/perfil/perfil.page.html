@@ -18,12 +18,12 @@
             <div class="buttons">
                 
                 <div *ngIf="userId!=profileUserId">
-                    <ion-button shape="round" size="small" fill='outline' *ngIf="!followMode" (click)="followUser()">
+                    <ion-button shape="round" size="small" fill='outline' *ngIf="!following" (click)="followUser()">
                         Seguir
                     </ion-button>
                 </div>
                 <div *ngIf="userId!=profileUserId">
-                    <ion-button shape="round" size="small" *ngIf="followMode"(click)="followUser()">
+                    <ion-button shape="round" size="small" *ngIf="following"(click)="followUser()">
                         Seguindo
                     </ion-button>
                 </div>

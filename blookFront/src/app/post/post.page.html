@@ -69,8 +69,9 @@
 </form>
 
 <div *ngIf="!editMode">
-  <div class="action">
-    <ion-icon name="heart-outline"></ion-icon>
+  <div class="action" *ngIf="auth">
+    <ion-icon name="heart-outline" *ngIf="!liked" (click)="likePost()"></ion-icon>
+    <ion-icon name="heart" *ngIf="liked" (click)="likePost()"></ion-icon>
     <ion-icon name="share-social-outline"></ion-icon>
   </div>
 

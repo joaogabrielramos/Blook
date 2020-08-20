@@ -12,9 +12,13 @@ import { PostService } from "./../services/post/post.service";
 })
 export class FeedPage implements OnInit {
 
-  feedPosts = [];
-  
+  feedPosts;
+
+  feedMode: boolean = false;
+
   auth = localStorage.getItem("userToken")!==null;
+  
+  
   constructor(
     public postService: PostService,
     public router: Router) {
@@ -26,9 +30,20 @@ export class FeedPage implements OnInit {
     
   }
 
+  toggleAllPosts(){
+    this.feedMode = true;
+    this.changeFeedPosts();
+}
+
+  toggleFollowingPosts() {
+    this.feedMode = false;
+    this.changeFeedPosts();
+  }
+
+
     /* Integração */
     listPostCards() {
-      this.postService.listPostCards().subscribe (
+      this.postService.listPostCards().subscribe(
         (res) => {
           this.feedPosts = res;
           console.log(res);
@@ -37,5 +52,24 @@ export class FeedPage implements OnInit {
         }
       );
       }
+    
+    listFollowingPosts() {
+      this.postService.listFollowingPosts().subscribe(
+        (res) => {
+          console.log('sigo', res);
+          this.feedPosts = res;
+        }, (err) => {
+          console.log(err);
+        }
+      );
+    }
 
+    changeFeedPosts() {
+      if(this.feedMode == true) {
+          this.listPostCards();
+      } else {
+          this.listFollowingPosts();
+          console.log(this.feedPosts);
+      }
+  }
 }

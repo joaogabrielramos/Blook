@@ -25,8 +25,9 @@ export class PostPage implements OnInit {
   user = [];
   comments = [];
   postId: any;
-  userId = -2;
+  userId = 0;
   postUserId = -1;
+  liked: boolean;
 
   auth=localStorage.getItem('userToken')!==null;
 
@@ -85,17 +86,29 @@ export class PostPage implements OnInit {
 
     /* Integração */
     showPost(id) {
-      this.postService.showPost(id).subscribe(
+      this.postService.showPost(id, this.userId).subscribe(
         (res) => {
           this.post = res.post;
           this.user = res.user;
           this.postUserId = res.user.id;
+          this.liked = res.liked;
           console.log(this.post);
           console.log('post', this.user);
         }, (err) => {
           console.log(err);
         }
       );
+    }
+
+    likePost() {
+      this.postService.likePost(this.postId).subscribe(
+        (res) => {
+          console.log(res);
+          this.liked = res.response;
+        }, (err) => {
+          console.log(err);
+        }
+      )
     }
 
     toggleEdit(){ 

@@ -70,7 +70,7 @@ Route::PUT('removeUser/{id}/{user_id}', 'BookController@removeUser');
 
 
 //ROTAS DE POST
-Route::GET('showPost/{id}','PostController@showPost');
+Route::GET('showPost/{id}/{user_id}','PostController@showPost');
 Route::GET('listPosts','PostController@listPosts');
 Route::GET('listPostCards','PostController@listPostCards');
 Route::GET('listUserPosts/{id}','PostController@listUserPosts');

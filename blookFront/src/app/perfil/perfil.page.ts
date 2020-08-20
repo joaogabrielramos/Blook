@@ -13,14 +13,14 @@ import { ProfileService } from '../services/profile/profile.service';
   styleUrls: ['./perfil.page.scss'],
 })
 export class PerfilPage implements OnInit {
-  userDetails = [];
+  myDetails = [];
 
   userId = -2;
   profileUserId = -1;
 
   updateUserForm: FormGroup;
   editProfileMode: boolean = false;
-  followMode:boolean;
+  following:boolean;
   profileDetails = [];
 
   constructor(public formbuilder:FormBuilder,
@@ -56,9 +56,9 @@ export class PerfilPage implements OnInit {
   getDetails() {
     this.authService.getDetails().subscribe(
       (res) => {
-        this.userDetails = res.success;
-        this.userId = this.userDetails.id;
-        console.log('user:', this.userDetails);
+        this.myDetails = res.success;
+        this.userId = this.myDetails.id;
+        console.log('user:', this.myDetails);
       }, (err) => {
         console.log(err);
       }
@@ -69,7 +69,8 @@ export class PerfilPage implements OnInit {
     this.profileService.showUser(this.profileUserId).subscribe(
       (res) => {
         console.log(res);
-        this.profileDetails = res;
+        this.profileDetails = res.userDetails;
+        this.following = res.following;
       }, (err) => {
         console.log(err);
       }
@@ -94,7 +95,7 @@ export class PerfilPage implements OnInit {
     this.profileService.followUser(this.profileUserId).subscribe(
       (res) => {
         console.log(res);
-        this.followMode = res.response;
+        this.following = res.response;
       }, (err) => {
         console.log(err);
       }

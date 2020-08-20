@@ -30,13 +30,23 @@ class PostController extends Controller
         return response()->json($post);
     }
 
-    public function showPost($id)
+    public function showPost($id, $user_id)
     {
-        $post = Post::findOrFail($id);
-        $user = User::findOrFail($post->user_id);
+        $post = Post::find($id);
+        $user = User::find($post->user_id);
+        $liked = false;
+
+        if($user_id != 0)
+        {
+            $authUser = User::find($user_id);
+
+            if($post->users->contains($authUser->id))
+                $liked = false;
+        }
 
         return response()->json([
             'post' => $post,
+            'liked' => $liked,
             'user' => new UserResource($user)
         ]);
     }

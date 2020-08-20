@@ -33,8 +33,14 @@ export class PostService {
     return this.http.delete(this.apiURL + 'deletePost/' + id, this.httpHeaders);
   }
 
-  showPost(id): Observable<any> {
-    return this.http.get(this.apiURL + 'showPost/' + id);
+  showPost(id, user_id): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken');
+    return this.http.get(this.apiURL + 'showPost/' + id + '/' + user_id, this.httpHeaders);
+  }
+
+  likePost(id): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken');
+    return this.http.get(this.apiURL + 'likePost/' + id, this.httpHeaders);
   }
 
   createComment(form): Observable<any> {
@@ -44,5 +50,10 @@ export class PostService {
   
   listPostCards(): Observable<any> {
     return this.http.get(this.apiURL + 'listPostCards');
+  }
+
+  listFollowingPosts(): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken');
+    return this.http.get(this.apiURL + 'listFollowingPosts', this.httpHeaders);
   }
 }
