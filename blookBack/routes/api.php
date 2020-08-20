@@ -31,6 +31,7 @@ Route::GROUP(['middleware'=>'auth:api'], function (){
     Route::GET('followUser/{id}','UserController@followUser');
     Route::GET('likePost/{id}','UserController@likePost');
     Route::GET('showUser/{id}','UserController@showUser');
+    Route::GET('listUsers','UserController@listUsers');
     Route::PUT('updateUser','UserController@updateUser');
     Route::DELETE('deleteUser/{id}','UserController@deleteUser')->middleware('userPermission');
 
@@ -54,7 +55,6 @@ Route::GROUP(['middleware'=>'auth:api'], function (){
 
 //ROTAS DE USUARIO
 Route::GET('searchUserByName/{name}','UserController@searchUserByName');
-Route::GET('listUsers','UserController@listUsers');
 Route::POST('createUser','UserController@createUser');
 
 
