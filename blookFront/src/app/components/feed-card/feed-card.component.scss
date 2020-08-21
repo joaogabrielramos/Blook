@@ -15,17 +15,22 @@ ion-card {
 .userPost .user {
     display: flex;
     flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
-    justify-content: start;
 }
 
-.user ion-label {
+.userPost .user ion-avatar {
+    width: 50px;
+    height: 50px;
+}
+
+.userPost .user ion-label {
     font-family: var(--ubuntu);
     font-size: 1em;
     font-weight: 500;
     color: black;
 
-    margin-left: 8%;
+    margin-left: 4vw;
 }
 
 ion-icon {
