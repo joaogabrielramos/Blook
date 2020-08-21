@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { UserGuard } from './guards/user/user.guard';
+import { VisitantGuard } from './guards/visitant/visitant.guard';
 
 const routes: Routes = [
   {
@@ -9,11 +11,11 @@ const routes: Routes = [
   },
   {
     path: 'folder/:id',
-    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
+    loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule),canActivate:[VisitantGuard]
   },
   {
     path: 'cadastro',
-    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
+    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule),canActivate:[UserGuard]
   },
   {
     path: 'feed',
@@ -21,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),canActivate:[UserGuard]
   },
   {
     path: 'register',
@@ -34,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'criar-post',
-    loadChildren: () => import('./criar-post/criar-post.module').then( m => m.CriarPostPageModule)
+    loadChildren: () => import('./criar-post/criar-post.module').then( m => m.CriarPostPageModule),canActivate:[VisitantGuard]
   },
   {
     path: 'popover-component',
@@ -42,12 +44,13 @@ const routes: Routes = [
   },
   {
     path: 'perfil',
-    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule),canActivate:[VisitantGuard]
   },
   {
     path: 'pesquisar',
     loadChildren: () => import('./pesquisar/pesquisar.module').then( m => m.PesquisarPageModule)
-  }
+  },
+  
 
 ];
 

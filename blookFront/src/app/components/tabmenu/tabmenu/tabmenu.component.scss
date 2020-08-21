@@ -9,6 +9,8 @@ ion-toolbar {
     justify-content: space-evenly;
 
     color: var(--rosa);
+
+    
     
     
 }
@@ -25,8 +27,24 @@ ion-toolbar {
     
 }
 
+
+.tabs ion-item{
+    --background-activated:var(--vermelho);
+        
+    
+}
+
+
+
 ion-icon {
     font-size: 25px;
 
     color: var(--rosa);
-  }
+}
+
+
+
+
+
+
+
