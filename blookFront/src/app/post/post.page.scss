@@ -183,3 +183,61 @@ form .radios ion-item, form .addTitle ion-item, form .texto ion-item {
     margin-left: 3%;
     margin-right: 3%;
 }
+
+.addTitle{
+    margin-top: 5%;
+    margin-bottom: 5%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+}
+
+.addTitle ion-label{
+    color: var(--marrom);
+    text-align: center;
+    font-family: var(--ubuntu);
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+.addTitle ion-item {
+    margin-left: 10%;
+    margin-right: 10%;
+    font-family: var(--montserrat);
+    font-size: 1.2em;
+}
+
+//Textarea
+.texto{
+    margin-top: 4%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.texto ion-item{
+    --border-color:var(--marrom);
+    --border-style:solid;
+    --border-radius:30px;
+    --border-width:1%;
+    
+}
+
+.texto ion-textarea{
+
+    width: 80vw;
+    height: 55vh;
+
+    font-family: var(--montserrat);
+    font-size:1em;
+    color: var(--cinza-escuro);
+     
+}
+
+.submit {
+    font-family: var(--ubuntu);
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+    margin: 3% 6%;
+}

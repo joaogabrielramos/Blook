@@ -78,7 +78,7 @@
 
 </div>
 
-<form [formGroup]="updateUserForm" (ngSubmit)="updateProfile(updateUserForm)" *ngIf="editProfileMode">
+<form class="form" [formGroup]="updateUserForm" (ngSubmit)="updateProfile(updateUserForm)" *ngIf="editProfileMode">
 
     <ion-item>
       <ion-label  class="input" position="floating">Nome completo</ion-label>
@@ -99,7 +99,7 @@
       
       <ion-item>
         <ion-label  class="input" position="floating">Gênero</ion-label>
-        <ion-select [value]='this.userDetails.genre' interface="popover" formControlName="genre">
+        <ion-select [value]='this.userDetails.gender' interface="popover" formControlName="gender">
           <ion-select-option value="feminino">Feminino</ion-select-option>
           <ion-select-option value="masculino">Masculino</ion-select-option>
           <ion-select-option value="outros">Outro</ion-select-option>

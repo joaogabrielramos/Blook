@@ -33,7 +33,7 @@ export class PerfilPage implements OnInit {
       name:[[Validators.required]],
       phone_number:[null, [Validators.required, Validators.maxLength(15)]],
       date_of_birth:[null, [Validators.required, Validators.maxLength(10)]],
-      genre: [Validators.required],
+      gender: [Validators.required],
     });
 
     this.route.params.subscribe(
@@ -56,8 +56,9 @@ export class PerfilPage implements OnInit {
   getDetails() {
     this.authService.getDetails().subscribe(
       (res) => {
-        this.myDetails = res.success;
         this.userId = this.myDetails.id;
+        this.myDetails = res.success;
+        
         console.log('user:', this.myDetails);
       }, (err) => {
         console.log(err);

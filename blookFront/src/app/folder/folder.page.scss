@@ -9,21 +9,22 @@ ion-menu-button {
   right: 0;
   top: 50%;
   transform: translateY(-50%);
-  margin: 0 5%;
+  margin: 0 8%;
 }
 
 #container strong {
   font-family: var(--ubuntu);
   font-size: 1.5em;
   margin-bottom: 10%;
+  color: var(--marrom);
 
 }
 
 #container p {
   font-family: var(--ubuntu);
   font-size: 0.9em;
-  margin-bottom: 5%;
-  color: #8c8c8c;
+  margin-top: 5%;
+  color: var(--marrom);
   margin: 0;
 }
 

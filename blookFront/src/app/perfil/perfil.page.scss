@@ -67,3 +67,40 @@ ion-content {
 .atividade div h5 {
     margin-top: 0;
 }
+
+/* Form de editar perfil */
+
+.form {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.form ion-item {
+    --background: var(--cinza-claro);
+}
+
+.input {
+    padding:0;
+    font-family: var(--montserrat);
+}
+
+.two-colums {
+    display: grid;
+    grid-template-columns: 65% 35%;
+    align-items: center;
+}
+
+.form ion-button {
+    font-family: var(--ubuntu);
+    font-weight: bold;
+    font-size: 1.2em;
+    text-align: center;
+    margin: 3% 6%;
+}
+
+.form ion-select {
+    padding-left: 0;
+}

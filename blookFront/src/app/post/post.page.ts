@@ -52,10 +52,8 @@ export class PostPage implements OnInit {
       });
       this.updateForm = this.formbuilder.group(
         {
-        post_type:[null, [Validators.required]],
         text:[null, [Validators.required]],
-        title:[null, [Validators.required]],
-        image:[null],
+        title:[null],
       })
 
       this.route.params.subscribe(
@@ -65,17 +63,24 @@ export class PostPage implements OnInit {
         });
     }
 
+    ionViewWillEnter() {
+      
+    }
+
     ngOnInit() {
-      this.showPost(this.postId);
       this.callGetDetails();
       this.listComments(this.postId);
       this.showDeleteButton();
     }
 
+    /* Rotas */
+
+
     callGetDetails() {
       this.authService.getDetails().subscribe(
         (res) => {
           this.userId = res.success.id;
+          this.showPost(this.postId);
           this.isAdmin = res.success.is_admin;
         }, (err) => {
           console.log(err);
@@ -102,11 +107,15 @@ export class PostPage implements OnInit {
 
     /* Integração */
     showPost(id) {
+      console.log("USUARIOOOO", this.userId);
       this.postService.showPost(id, this.userId).subscribe(
         (res) => {
+          
           this.post = res.post;
           this.user = res.user;
           this.postUserId = res.user.id;
+          console.log('RESPOSTA', res);
+          console.log('POST', this.post);
           this.liked = res.liked;
         }, (err) => {
           console.log(err);

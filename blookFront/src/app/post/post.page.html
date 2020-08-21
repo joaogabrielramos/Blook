@@ -27,46 +27,26 @@
   </div>
 
   <form [formGroup]="updateForm" (ngSubmit)="updatePost(updateForm)" *ngIf="editMode">
-  
-    <div class="radios">
-        <ion-radio-group [value]='this.post.post_type' mode="md" formControlName="post_type">
-
-          <ion-item lines='none'>
-            <ion-label>Resenha</ion-label>
-            <ion-radio slot="start" value="resenha" ></ion-radio>
-          </ion-item>
-          <ion-item lines='none'>
-            <ion-label>Post livre</ion-label>
-            <ion-radio slot="start" value="postLivre"></ion-radio>
-          </ion-item>
-          <ion-item lines='none'>
-            <ion-label>Livro</ion-label>
-            <ion-radio slot="start" value="livro"></ion-radio>
-          </ion-item>
-
-        </ion-radio-group>
-    </div>
-
+    
       <!-- Input de adicionar o título do post -->
     <div class="addTitle">
-      
-      <ion-item>
-        <ion-label position="floating">Título</ion-label>
-        <ion-input [value]='this.post.title' type="text" clearInput="true" formControlName="title"></ion-input>
+      <ion-label>Título:</ion-label>
+      <ion-item  mode="md">
+        <ion-input type="text" clearInput="true" formControlName="title" ></ion-input>
       </ion-item>
-
     </div>
 
     <!-- Text-area pra escrever o post -->
     <div class="texto">
 
       <ion-item lines='none'>
-        <ion-textarea [value]='this.post.text' placeholder="O que você está lendo?" rows='4' formControlName="text"></ion-textarea>
+        <ion-textarea placeholder="O que você está lendo?" rows='14' formControlName="text">
+        </ion-textarea>  
       </ion-item>
     
     </div>
-    <ion-button type="submit" [disabled]="updateForm.invalid"> Atualizar </ion-button>
-</form>
+    <ion-button class="submit" expand="block" color="primary" type="submit" [disabled]="updateForm.invalid"> Atualizar </ion-button>
+  </form>
 
   <div *ngIf="!editMode">
     <div class="action" *ngIf="auth">
