@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { UserGuard } from './guards/user/user.guard';
+import { VisitantGuard } from './guards/visitant/visitant.guard';
 
 const routes: Routes = [
   {
@@ -13,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: 'cadastro',
-    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule)
+    loadChildren: () => import('./cadastro/cadastro.module').then( m => m.CadastroPageModule),canActivate:[UserGuard]
   },
   {
     path: 'feed',
@@ -21,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule),canActivate:[UserGuard]
   },
   {
     path: 'register',
@@ -42,12 +44,13 @@ const routes: Routes = [
   },
   {
     path: 'perfil',
-    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule)
+    loadChildren: () => import('./perfil/perfil.module').then( m => m.PerfilPageModule),canActivate:[VisitantGuard]
   },
   {
     path: 'pesquisar',
     loadChildren: () => import('./pesquisar/pesquisar.module').then( m => m.PesquisarPageModule)
-  }
+  },
+  
 
 ];
 
