@@ -30,10 +30,10 @@ export class PerfilPage implements OnInit {
               public profileService: ProfileService, 
              ) {
     this.updateUserForm = this.formbuilder.group({
-      name:[[Validators.required]],
+      name:[null, [Validators.required]],
       phone_number:[null, [Validators.required, Validators.maxLength(15)]],
       date_of_birth:[null, [Validators.required, Validators.maxLength(10)]],
-      gender: [Validators.required],
+      gender: [null],
     });
 
     this.route.params.subscribe(
@@ -52,13 +52,17 @@ export class PerfilPage implements OnInit {
     this.editProfileMode = true;
   }
 
+  untoggleEdit(){ 
+    this.editProfileMode = false;
+  }
+
   /* Integrações */
   getDetails() {
     this.authService.getDetails().subscribe(
       (res) => {
-        this.userId = this.myDetails.id;
         this.myDetails = res.success;
-        
+        this.userId = this.myDetails.id;
+    
         console.log('user:', this.myDetails);
       }, (err) => {
         console.log(err);

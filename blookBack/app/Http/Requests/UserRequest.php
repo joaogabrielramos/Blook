@@ -68,7 +68,7 @@ class UserRequest extends FormRequest
             'phone_number.required' => 'Insira o seu número de telefone',
             'phone_number.min' => 'Insira um mínimo de caracteres no seu número de telefone',
             'date_of_birth.date_format' => 'Formato de data inválida',
-            'genre.required' => 'Insira o seu gênero',
+            'gender.required' => 'Insira o seu gênero',
             'profile_pic' => 'Formato de imagem inválida'
         ];
     }

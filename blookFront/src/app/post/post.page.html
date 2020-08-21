@@ -27,7 +27,7 @@
   </div>
 
   <form [formGroup]="updateForm" (ngSubmit)="updatePost(updateForm)" *ngIf="editMode">
-    
+    <ion-icon size="large" name="chevron-back-outline" (click)="untoggleEdit()"></ion-icon>
       <!-- Input de adicionar o título do post -->
     <div class="addTitle">
       <ion-label>Título:</ion-label>

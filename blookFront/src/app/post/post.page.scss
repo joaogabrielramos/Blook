@@ -184,8 +184,14 @@ form .radios ion-item, form .addTitle ion-item, form .texto ion-item {
     margin-right: 3%;
 }
 
+/* Form de edição */
+form ion-icon {
+    margin-top: 4%;
+    margin-left: 4%;
+    color: Var(--marrom);
+}
+
 .addTitle{
-    margin-top: 5%;
     margin-bottom: 5%;
     display: flex;
     flex-direction: column;
@@ -226,7 +232,7 @@ form .radios ion-item, form .addTitle ion-item, form .texto ion-item {
 .texto ion-textarea{
 
     width: 80vw;
-    height: 55vh;
+    height: 50vh;
 
     font-family: var(--montserrat);
     font-size:1em;

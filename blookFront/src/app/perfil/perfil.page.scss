@@ -3,16 +3,17 @@ ion-content {
 }
 
 .info {
-    display: flex;
-    flex-direction: row;
+    display: grid;
+    grid-template-columns: 25% 75%;
     align-items: center;
 
     margin-right: 5%;
     margin-left: 5%;
 }
 
-.info ion-avatar img {
+.info ion-avatar {
     width: 80px;
+    height: 80px;
 }
 
 .bio {
@@ -69,38 +70,35 @@ ion-content {
 }
 
 /* Form de editar perfil */
+form ion-icon {
+    margin-top: 4%;
+    margin-left: 4%;
+    color: Var(--marrom);
+}
 
-.form {
-    margin: 0;
+.form-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
+    margin: 5% 2%;
 }
 
-.form ion-item {
+.form-content ion-item {
+    width: 90%;
     --background: var(--cinza-claro);
+    margin-bottom: 3%;
+
 }
 
-.input {
-    padding:0;
-    font-family: var(--montserrat);
+.form-content ion-item ion-label {
+    font-family: var(--ubuntu);
+    color: var(--marrom);
 }
 
-.two-colums {
-    display: grid;
-    grid-template-columns: 65% 35%;
-    align-items: center;
-}
-
-.form ion-button {
+.submit {
     font-family: var(--ubuntu);
     font-weight: bold;
     font-size: 1.2em;
     text-align: center;
     margin: 3% 6%;
-}
-
-.form ion-select {
-    padding-left: 0;
 }

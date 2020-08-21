@@ -63,10 +63,6 @@ export class PostPage implements OnInit {
         });
     }
 
-    ionViewWillEnter() {
-      
-    }
-
     ngOnInit() {
       this.callGetDetails();
       this.listComments(this.postId);
@@ -136,6 +132,10 @@ export class PostPage implements OnInit {
 
     toggleEdit(){ 
       this.editMode = true;
+    }
+    
+    untoggleEdit(){ 
+      this.editMode = false;
     }
 
     updatePost(form) {
