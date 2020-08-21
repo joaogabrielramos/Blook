@@ -37,16 +37,15 @@ class Post extends Model
         $user = Auth::user();
         $this->user_id = $user->id;
 
-        if ($request->title) {
-        $this->title = $request->title;
-        }
-        
         $this->text = $request->text;
         $this->post_type = $request->post_type;
-        
-        if ($request->image) {
-        $this->image = $request->image;
-        }
+
+        if ($request->title)
+            $this->title = $request->title;
+
+        if ($request->image)
+            $this->image = $request->image;
+
         $this->save();
     }
 
@@ -58,9 +57,8 @@ class Post extends Model
         if ($request->text)
             $this->text = $request->text;
 
-        if ($request->image) {
+        if ($request->image)
             $this->image = $request->image;
-        }
 
         $this->save();
     }
