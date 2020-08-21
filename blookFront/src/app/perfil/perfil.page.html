@@ -82,7 +82,14 @@
     <ion-icon size="large" name="chevron-back-outline" (click)="untoggleEdit()"></ion-icon>
     
     <div class="form-content">
-        
+         <!--Botão da câmera -->
+         <div class="photo">
+            <img [src]="photo" vertical="center" horizontal="center" class="addFoto">
+            <ion-button size='small' (click)="takePicture()">
+                Mudar foto de perfil
+            </ion-button>
+
+          </div>  
         <ion-item mode="md">
             <ion-label  class="input" position="floating">Nome completo</ion-label>
             <ion-input type="text" formControlName="name"></ion-input>

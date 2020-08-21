@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
+import { Plugins, CameraResultType, CameraSource } from '@capacitor/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 /*Services*/
@@ -15,6 +17,7 @@ import { ProfileService } from '../services/profile/profile.service';
 export class PerfilPage implements OnInit {
   myDetails = { id: null,};
 
+  photo: SafeResourceUrl;
   userId = -2;
   profileUserId = -1;
 
@@ -27,13 +30,15 @@ export class PerfilPage implements OnInit {
               public router: Router,
               private route: ActivatedRoute,
               public authService: AuthService,
-              public profileService: ProfileService, 
+              public profileService: ProfileService,
+              public sanitizer: DomSanitizer,
              ) {
     this.updateUserForm = this.formbuilder.group({
       name:[null, [Validators.required]],
       phone_number:[null, [Validators.required, Validators.maxLength(15)]],
       date_of_birth:[null, [Validators.required, Validators.maxLength(10)]],
-      gender: [null],
+      gender: [null, [Validators.required]],
+      profile_pic: [null],
     });
 
     this.route.params.subscribe(
@@ -85,6 +90,9 @@ export class PerfilPage implements OnInit {
   updateProfile(form) {
     console.log(form.value);
 
+    if(this.photo) {
+      form.value.profile_pic = this.photo['changingThisBreaksApplicationSecurity'];
+    }
     this.profileService.updateProfile(form.value).subscribe(
       (res) => {
         console.log(res);
@@ -106,5 +114,18 @@ export class PerfilPage implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  /*   Função upload câmera capacitor */
+  async takePicture() {
+    const profile_pic = await Plugins.Camera.getPhoto({
+      quality: 100,
+      allowEditing: true,
+      saveToGallery: true,
+      resultType: CameraResultType.DataUrl,
+      source: CameraSource.Camera
+    });
+
+    this.photo = this.sanitizer.bypassSecurityTrustResourceUrl(profile_pic && (profile_pic.dataUrl));
   }
 }
