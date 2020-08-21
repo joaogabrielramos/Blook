@@ -38,7 +38,10 @@ ion-segment-button{
 
 ion-chip{
     height:5vh;
-    color:#FFFF
+    color:#FFFF;
+    font-family: var(--montserrat);
+    font-weight: 500;
+    text-align: center;
     
 }
 
@@ -47,29 +50,42 @@ ion-chip{
 .postsCard{
     display: grid;
     grid-template-columns:100%;
-    
 }
 
 .postsCard ion-card{
     text-align: center;    
     --background:var(--amarelo);
-    height: 30vh;
     border-radius: 20px;
+
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 0;
+}
+.postsCard ion-card ion-card-title {
+    margin-top: 4%;
+    margin-right: 4%;
+    margin-left: 4%;
+    font-family: var(--ubuntu);
+    color: #000;
+    font-size: 1.5em;
 }
 
 .postsCard ion-card h4{
-    font-family: 'Montserrat',sans-serif;
+    margin-right: 2%;
+    margin-left: 2%;
+
+    font-family: var(--montserrat);
     color: #000;
     font-size: 0.9em;
+    text-align: justify;
 }
 
 
 // Lista de Usuários
 .listUsers div{
-    display: grid;
-    
-    grid-template-columns:50% 50%;
-    
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .listUsers ion-card{
@@ -77,16 +93,30 @@ ion-chip{
     --background:var(--amarelo);
     height: 11vh;
     border-radius: 20px;
-    width: 45vw;
-  
-    
+    width: 90%;
+    margin-right: 5%;
+    margin-left: 5%;
+    margin-bottom: 0;
+
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.listUsers ion-card ion-avatar {
+    margin-left: 2%;
 }
 
 .listUsers ion-card-title{
     
-    text-align: center;
+    text-align: left;
     font-family: "Ubuntu",sans-serif;
     color: #000;
-    font-size: 1em;
-    margin:10% 5% 5% 5%;
+    font-weight: 500;
+    font-size: 1.4em;
+
+    width: 70vw;
+    margin-left: 4%;
+    margin-right: 4%;
 }

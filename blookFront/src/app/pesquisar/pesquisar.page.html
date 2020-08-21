@@ -32,10 +32,10 @@
       <ion-slide>
         <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
 
-        <ion-chip style="background:var(--vermelho)" mode="ios">
+        <ion-chip style="background:var(--laranja)" mode="ios">
           <ion-label>Comédia</ion-label>
         </ion-chip>
-        <ion-chip style="background: var(--laranja);" mode="ios" >
+        <ion-chip style="background: var(--vermelho);" mode="ios" >
           <ion-label>Terror</ion-label>
         </ion-chip>
         <ion-chip style="background: var(--verde-musgo);" mode="ios" >
@@ -64,6 +64,9 @@
   <div class="listUsers" *ngIf="userSearchMode">
     <div *ngIf="auth">
       <ion-card *ngFor="let user of users">
+        <ion-avatar size="medium">
+          <img [src]="user.profile_pic">
+        </ion-avatar>
         <div (click)="navigateToProfileUser(user.id)">
           <ion-card-title>{{user.name}}</ion-card-title>
         </div>
@@ -78,10 +81,9 @@
   
   <div class="postsCard" *ngIf="!userSearchMode">
     <ion-card *ngFor="let post of posts">
-      <ion-card-title><h3>{{post.title}}</h3></ion-card-title>
+      <ion-card-title>{{post.title}}</ion-card-title>
       <ion-card-content>
         <h4>{{post.text}}</h4>
-        
       </ion-card-content>
     </ion-card>
   </div>

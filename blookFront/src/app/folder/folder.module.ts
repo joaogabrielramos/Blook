@@ -8,6 +8,9 @@ import { FolderPageRoutingModule } from './folder-routing.module';
 
 import { FolderPage } from './folder.page';
 
+import { HeaderComponent } from '../components/header/header.component';
+import { TabmenuComponent } from '../components/tabmenu/tabmenu/tabmenu.component';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -15,6 +18,6 @@ import { FolderPage } from './folder.page';
     IonicModule,
     FolderPageRoutingModule
   ],
-  declarations: [FolderPage]
+  declarations: [FolderPage, HeaderComponent, TabmenuComponent]
 })
 export class FolderPageModule {}
