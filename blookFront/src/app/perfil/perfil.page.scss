@@ -120,3 +120,21 @@ form ion-icon {
     text-align: center;
     margin: 3% 6%;
 }
+
+.card {
+    background: var(--amarelo);
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border-radius: 20px;
+}
+
+.card ion-card-title {
+    font-family: var(--ubuntu);
+    font-size: 1.1em;
+    text-align: center;
+
+    margin-left: 5%;
+    margin-right: 5%;
+}

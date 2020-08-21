@@ -2,123 +2,137 @@
 <app-header></app-header>
 
 <ion-content>
-<!-- Parte do perfil do Usuário -->
-<div *ngIf="!editProfileMode" class="perfil">
+    <!-- Parte do perfil do Usuário -->
+    <div *ngIf="!editProfileMode" class="perfil">
 
-    <div class="info">
-        <ion-avatar size="large">
-            <img [src]="profileDetails.profile_pic" alt="Foto de perfil" />
-        </ion-avatar>
+        <div class="info">
+            <ion-avatar size="large">
+                <img [src]="profileDetails.profile_pic" alt="Foto de perfil" />
+            </ion-avatar>
 
-        <div class="bio">
-            <h4>{{ profileDetails.name }}</h4>
-            <p>"O mundo está nas mãos daqueles que têm a coragem de sonhar e de correr o risco de viver seus sonhos" <br/>Paulo Coelho </p>
+            <div class="bio">
+                <h4>{{ profileDetails.name }}</h4>
+                <p>"O mundo está nas mãos daqueles que têm a coragem de sonhar e de correr o risco de viver seus sonhos" <br/>Paulo Coelho </p>
+            
         
-       
-            <div class="buttons">
-                
-                <div *ngIf="userId!=profileUserId">
-                    <ion-button shape="round" size="small" fill='outline' *ngIf="!following" (click)="followUser()">
-                        Seguir
+                <div class="buttons">
+                    
+                    <div *ngIf="userId!=profileUserId">
+                        <ion-button shape="round" size="small" fill='outline' *ngIf="!following" (click)="followUser()">
+                            Seguir
+                        </ion-button>
+                    </div>
+                    <div *ngIf="userId!=profileUserId">
+                        <ion-button shape="round" size="small" *ngIf="following"(click)="followUser()">
+                            Seguindo
+                        </ion-button>
+                    </div>
+                    <ion-button shape="round" size="small" fill='outline' *ngIf="userId==profileUserId" (click)="toggleEdit()">
+                        Editar perfil
                     </ion-button>
                 </div>
-                <div *ngIf="userId!=profileUserId">
-                    <ion-button shape="round" size="small" *ngIf="following"(click)="followUser()">
-                        Seguindo
-                    </ion-button>
-                </div>
-                <ion-button shape="round" size="small" fill='outline' *ngIf="userId==profileUserId" (click)="toggleEdit()">
-                    Editar perfil
-                </ion-button>
             </div>
+
+        </div>
+        
+
+    </div>
+
+    <!-- Atividade do Usuário  -->
+
+    <div *ngIf="!editProfileMode" class="atividade">
+
+        <div class="count">
+            <h3>2</h3>
+            <h5>posts</h5>
+        </div>
+
+        <div class="count">
+            <h3>2</h3>
+            <h5>livros</h5>
+        </div>
+
+        <div class="count">
+            <h3>2</h3>
+            <h5>seguidores</h5>
+        </div>
+
+        <div class="count">
+            <h3>2</h3>
+            <h5>seguindo</h5>
         </div>
 
     </div>
-    
+    <!-- Botão pra selecionar conteúdo postado do Usuário -->
+    <div *ngIf="!editProfileMode" class="tipoConteudo">
 
-</div>
+        <ion-segment mode="md" value="post">
+            <ion-segment-button value="post">
+                <ion-label>Posts</ion-label>
+            </ion-segment-button>
+            <ion-segment-button value="book">
+                <ion-label>Livros</ion-label>
+            </ion-segment-button>
+        </ion-segment>
 
-<!-- Atividade do Usuário  -->
 
-<div *ngIf="!editProfileMode" class="atividade">
-
-    <div class="count">
-        <h3>2</h3>
-        <h5>posts</h5>
     </div>
 
-    <div class="count">
-        <h3>2</h3>
-        <h5>livros</h5>
-    </div>
 
-    <div class="count">
-        <h3>2</h3>
-        <h5>seguidores</h5>
-    </div>
-
-    <div class="count">
-        <h3>2</h3>
-        <h5>seguindo</h5>
-    </div>
-
-</div>
-<!-- Botão pra selecionar conteúdo postado do Usuário -->
-<div *ngIf="!editProfileMode" class="tipoConteudo">
-
-    <ion-segment mode="md" value="post">
-        <ion-segment-button value="post">
-            <ion-label>Posts</ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="book">
-            <ion-label>Livros</ion-label>
-        </ion-segment-button>
-    </ion-segment>
+    <ion-grid>
+        <ion-row>
+            <ion-col size="6" *ngFor=" let post of posts">
+                <ion-card class="card" (click)="navigateToPost(post.id)">
+                    <ion-card-title>{{post.title}}</ion-card-title>
+                </ion-card>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 
 
-</div>
 
-<form class="form" [formGroup]="updateUserForm" (ngSubmit)="updateProfile(updateUserForm)" *ngIf="editProfileMode">
-    <ion-icon size="large" name="chevron-back-outline" (click)="untoggleEdit()"></ion-icon>
-    
-    <div class="form-content">
-         <!--Botão da câmera -->
-         <div class="photo">
-            <img [src]="photo" vertical="center" horizontal="center" class="addFoto">
-            <ion-button size='small' (click)="takePicture()">
-                Mudar foto de perfil
-            </ion-button>
 
-          </div>  
-        <ion-item mode="md">
-            <ion-label  class="input" position="floating">Nome completo</ion-label>
-            <ion-input type="text" formControlName="name"></ion-input>
-        </ion-item>
-
-        <ion-item mode="md">
-        <ion-label  class="input" position="floating">Telefone celular</ion-label>
-        <ion-input type="text" formControlName="phone_number" [brmasker]="{phone: true}"></ion-input>
-        </ion-item>
-
+    <form class="form" [formGroup]="updateUserForm" (ngSubmit)="updateProfile(updateUserForm)" *ngIf="editProfileMode">
+        <ion-icon size="large" name="chevron-back-outline" (click)="untoggleEdit()"></ion-icon>
         
-        <ion-item mode="md">
-            <ion-label  class="input" position="floating">Data de nascimento</ion-label>
-            <ion-input type="text" formControlName="date_of_birth" [brmasker]="{mask: '00/00/0000', len:10}"></ion-input>
-        </ion-item>
-        
-        <ion-item mode="md">
-            <ion-label  class="input" position="floating">Gênero</ion-label>
-            <ion-select mode="ios" interface="popover" formControlName="gender">
-                <ion-select-option value="feminino">Feminino</ion-select-option>
-                <ion-select-option value="masculino">Masculino</ion-select-option>
-                <ion-select-option value="outros">Outro</ion-select-option>
-            </ion-select>
-        </ion-item>
-    </div>
+        <div class="form-content">
+            <!--Botão da câmera -->
+            <div class="photo">
+                <img [src]="photo" vertical="center" horizontal="center" class="addFoto">
+                <ion-button size='small' (click)="takePicture()">
+                    Mudar foto de perfil
+                </ion-button>
 
-    <ion-button class="submit" expand="block" mode="ios" type="submit" size="small" shape="round" [disabled]="updateUserForm.invalid">Atualizar</ion-button>
+            </div>  
+            <ion-item mode="md">
+                <ion-label  class="input" position="floating">Nome completo</ion-label>
+                <ion-input type="text" formControlName="name"></ion-input>
+            </ion-item>
 
-  </form>
+            <ion-item mode="md">
+            <ion-label  class="input" position="floating">Telefone celular</ion-label>
+            <ion-input type="text" formControlName="phone_number" [brmasker]="{phone: true}"></ion-input>
+            </ion-item>
+
+            
+            <ion-item mode="md">
+                <ion-label  class="input" position="floating">Data de nascimento</ion-label>
+                <ion-input type="text" formControlName="date_of_birth" [brmasker]="{mask: '00/00/0000', len:10}"></ion-input>
+            </ion-item>
+            
+            <ion-item mode="md">
+                <ion-label  class="input" position="floating">Gênero</ion-label>
+                <ion-select mode="ios" interface="popover" formControlName="gender">
+                    <ion-select-option value="feminino">Feminino</ion-select-option>
+                    <ion-select-option value="masculino">Masculino</ion-select-option>
+                    <ion-select-option value="outros">Outro</ion-select-option>
+                </ion-select>
+            </ion-item>
+        </div>
+
+        <ion-button class="submit" expand="block" mode="ios" type="submit" size="small" shape="round" [disabled]="updateUserForm.invalid">Atualizar</ion-button>
+
+    </form>
 
 </ion-content>
 

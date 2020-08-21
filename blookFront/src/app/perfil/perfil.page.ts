@@ -20,6 +20,7 @@ export class PerfilPage implements OnInit {
   photo: SafeResourceUrl;
   userId = -2;
   profileUserId = -1;
+  posts = [];
 
   updateUserForm: FormGroup;
   editProfileMode: boolean = false;
@@ -48,6 +49,12 @@ export class PerfilPage implements OnInit {
       });
   }
 
+  navigateToPost(id) {
+    this.router.navigate(['/post', {'postId': id}]);
+    console.log(id);
+  }
+
+
   ngOnInit() {
     this.getDetails();
     this.showUser();
@@ -67,7 +74,7 @@ export class PerfilPage implements OnInit {
       (res) => {
         this.myDetails = res.success;
         this.userId = this.myDetails.id;
-    
+        this.listUserPosts();
         console.log('user:', this.myDetails);
       }, (err) => {
         console.log(err);
@@ -114,6 +121,18 @@ export class PerfilPage implements OnInit {
         console.log(err);
       }
     );
+  }
+
+  listUserPosts() {
+    this.profileService.listUserPosts(this.profileUserId).subscribe(
+      (res) => {
+        this.posts = res[0];
+        console.log('USER POSTS', this.posts);
+      },
+      (err) => {
+        console.log('ERRO', err);
+      }
+    )
   }
 
   /*   Função upload câmera capacitor */

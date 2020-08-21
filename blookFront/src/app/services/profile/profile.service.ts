@@ -34,4 +34,8 @@ export class ProfileService {
     return this.http.get(this.apiURL + 'followUser/' + id, this.httpHeaders);
   }
 
+  listUserPosts(id): Observable<any> {
+    return this.http.get(this.apiURL + 'listUserPosts/' + id, this.httpHeaders);
+  }
+
 }

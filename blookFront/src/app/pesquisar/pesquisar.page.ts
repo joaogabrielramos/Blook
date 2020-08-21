@@ -44,7 +44,13 @@ export class PesquisarPage implements OnInit {
     console.log(id);
   }
 
+  navigateToPost(id) {
+    this.router.navigate(['/post', {'postId': id}]);
+    console.log(id);
+  }
 
+
+  /* Toggles */
   toggleModesOfSearch(){
       this.userSearchMode = true;
   }
