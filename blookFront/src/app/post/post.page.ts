@@ -108,6 +108,7 @@ export class PostPage implements OnInit {
           this.user = res.user;
           this.postUserId = res.user.id;
           this.liked = res.liked;
+          console.log('RESPOSTA', res);
         }, (err) => {
           console.log(err);
         }

@@ -102,4 +102,40 @@ export class PerfilPage implements OnInit {
       }
     );
   }
+
+  listUserPosts() {
+    this.profileService.listUserPosts(this.userId).subscribe(
+      (res) => {
+        this.posts = res;
+        console.log('USER POSTS', res);
+      },
+      (err) => {
+        console.log('ERRO', err);
+      }
+    )
+  }
+
+  getFollowers() {
+    this.profileService.getFollowers(this.userId).subscribe(
+      (res) => {
+        this.followers = res;
+        console.log('followers', res );
+      },
+      (err) => {
+        console.log('ERRO', err);
+      }
+    )
+  }
+
+  getFollowing() {
+    this.profileService.getFollowing(this.userId).subscribe(
+      (res) => {
+        this.following = res;
+        console.log('following', res );
+      },
+      (err) => {
+        console.log('ERRO', err);
+      }
+    )
+  }
 }

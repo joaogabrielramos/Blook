@@ -34,4 +34,17 @@ export class ProfileService {
     return this.http.get(this.apiURL + 'followUser/' + id, this.httpHeaders);
   }
 
+  listUserPosts(id): Observable<any> {
+    return this.http.get(this.apiURL + 'listUserPosts/' + id, this.httpHeaders);
+  }
+
+  getFollowers(id): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken');
+    return this.http.get(this.apiURL + 'getFollowers/' + id, this.httpHeaders);
+  }
+
+  getFollowing(id): Observable<any> {
+    this.httpHeaders.headers["Authorization"] = "Bearer " + localStorage.getItem('userToken');
+    return this.http.get(this.apiURL + 'getFollowing/' + id, this.httpHeaders);
+  }
 }
